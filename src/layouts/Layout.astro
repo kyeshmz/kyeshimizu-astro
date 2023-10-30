@@ -6,6 +6,7 @@ import SectionContainer from "@/src/components/SectionContainer.astro";
 import SEO from "@/src/components/SEO.astro";
 import { Icon } from "astro-icon";
 import { SOCIALS } from "../config";
+import { ViewTransitions } from "astro:transitions";
 
 const currentYear = new Date().getFullYear();
 
@@ -30,6 +31,7 @@ const {
             url={url}
             image={image}
         />
+        <ViewTransitions />
     </head>
     <body>
         <main class={className}>
