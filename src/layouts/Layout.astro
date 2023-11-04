@@ -8,8 +8,8 @@ import { Icon } from 'astro-icon'
 import { SOCIALS } from '../config'
 import { ViewTransitions } from 'astro:transitions'
 import Navigation from '../components/Navigation'
-import BodyLayout from './BodyLayout'
 import Sidebar from '../components/SideBar'
+import ProjectYearList from '../components/ProjectYearList'
 
 const currentYear = new Date().getFullYear()
 
@@ -30,11 +30,10 @@ const { class: className, title, description, keywords, url, twitterhandle, imag
   </head>
   <body>
     <Navigation />
-    <BodyLayout>
-      <main class={className}>
-        <slot />
-      </main>
-      <Sidebar />
-    </BodyLayout>
+    <Sidebar />
+
+    <main class='py-6 w-15 mx-6 md:mx-28 my-0 pt-[72px]'>
+      <slot />
+    </main>
   </body>
 </html>

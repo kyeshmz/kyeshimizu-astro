@@ -16,9 +16,11 @@
     "@astrojs/sitemap": "^3.0.2",
     "@astrojs/tailwind": "^5.0.2",
     "@fontsource/inter": "^5.0.15",
+    "@nanostores/preact": "^0.5.0",
     "astro": "^3.4.0",
     "astro-icon": "^0.8.1",
     "dayjs": "^1.11.10",
+    "nanostores": "^0.9.4",
     "preact": "^10.18.1",
     "satori": "^0.10.9",
     "tailwindcss": "^3.3.5"
@@ -32,6 +34,7 @@
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
     "prettier-plugin-astro": "^0.12.1",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.2.2"
   }
 }
