@@ -32,9 +32,11 @@
     "clsx": "^2.0.0",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.8.0",
+    "mdast-util-to-string": "^4.0.0",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
     "prettier-plugin-astro": "^0.12.1",
+    "reading-time": "^1.5.0",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.2.2"
   }
