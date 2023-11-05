@@ -6,6 +6,13 @@ import { ViewTransitions } from 'astro:transitions'
 
 import ProjectYearList from '../components/ProjectYearList'
 import ProjectSectionWrap from '../components/ProjectSectionWrap'
+
+import { Content as ExhibitionContent } from '../content/about/exhibition.mdx'
 ---
 
-<Layout />
+<Layout>
+  <div>
+    <h3>Exhibition</h3>
+    <ExhibitionContent />
+  </div>
+</Layout>

@@ -14,12 +14,11 @@ export default function ProjectYearList({ year }: { year: number }) {
         <ProjectListItem
           onMouseEnter={() => {
             $projectHoverImageAtom.set(ProjectName.RhizomatiksFencing)
-            console.log('projhover',$projectHoverImageAtom)
           }}
         />
         <ProjectListItem
           onMouseEnter={() => {
-            $projectHoverImageAtom.set('Synflux')
+            $projectHoverImageAtom.set(ProjectName.Synflux)
           }}
         />
       </ul>

@@ -1,3 +1,4 @@
+import { $projectHoverImageAtom, ProjectName } from '../state/projectHoverImage'
 import ProjectTag from './ProjectTag'
 
 export default function ProjectListItem({ onMouseEnter }: { onMouseEnter: () => void }) {
@@ -6,6 +7,9 @@ export default function ProjectListItem({ onMouseEnter }: { onMouseEnter: () => 
       className={'flex flex-col w-6/12 max-w-[160px] animate-in  duration-700 fade-in fade-out'}
       onMouseEnter={() => {
         onMouseEnter()
+      }}
+      onMouseLeave={()=>{
+        $projectHoverImageAtom.set(null)
       }}
     >
       <a href={''} rel={'preload-intent'} className={''}>
