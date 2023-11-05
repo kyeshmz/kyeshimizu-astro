@@ -14,8 +14,8 @@ export default function Navigation() {
           <ul className='list-none m-0 p-0 flex gap-5'>
             <NavigationItem title='About' />
             <NavigationItem title='Projects' />
-            <NavigationItem title='Studies' />
-            <NavigationItem title='Store' />
+            {/* <NavigationItem title='Studies' />
+            <NavigationItem title='Store' /> */}
           </ul>
           <p className='text-[13px] leading-4 tracking-wide float-right m-0 p-0 hidden md:inline'>
             TYO: {dayjs().tz('Asia/Tokyo').format('hh:mm a - MMMM d, YYYY (Z)')}
