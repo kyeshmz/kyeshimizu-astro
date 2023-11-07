@@ -1,6 +1,6 @@
 import satori, { type SatoriOptions } from "satori";
 import { writeFile } from "node:fs/promises";
-import { Resvg } from "@resvg/resvg-js";
+// import { Resvg } from "@resvg/resvg-js";
 import { SITE } from "../config";
 
 const fetchFonts = async () => {
@@ -127,17 +127,17 @@ const generateOgImage = async (mytext = SITE.title) => {
 	const svg = await satori(ogImage(mytext), options);
 
 	// render png in production mode
-	if (import.meta.env.MODE === "production") {
-		const resvg = new Resvg(svg);
-		const pngData = resvg.render();
-		const pngBuffer = pngData.asPng();
+	// if (import.meta.env.MODE === "production") {
+	// 	const resvg = new Resvg(svg);
+	// 	const pngData = resvg.render();
+	// 	const pngBuffer = pngData.asPng();
 
-		const title = mytext.replace(/\s+/g, "-").toLowerCase();
+	// 	const title = mytext.replace(/\s+/g, "-").toLowerCase();
 
-		console.info("Output PNG Image  :", `${title}.png`);
+	// 	console.info("Output PNG Image  :", `${title}.png`);
 
-		await writeFile(`./dist/${title}.png`, pngBuffer);
-	}
+	// 	await writeFile(`./dist/${title}.png`, pngBuffer);
+	// }
 
 	return svg;
 };
