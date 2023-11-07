@@ -1,4 +1,4 @@
-import { useStore } from '@nanostores/preact'
+import { useStore } from '@nanostores/react'
 import { ProjectName, $projectHoverImageAtom } from '@/src/state/projectHoverImage'
 import ProjectHoverImage from './ProjectHoverImage'
 

@@ -14,6 +14,7 @@ export default function Navigation() {
           <ul className='list-none m-0 p-0 flex gap-5'>
             <NavigationItem title='About' />
             <NavigationItem title='Projects' />
+
             {/* <NavigationItem title='Studies' />
             <NavigationItem title='Store' /> */}
           </ul>

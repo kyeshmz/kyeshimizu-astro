@@ -1,12 +1,16 @@
 {
-	"extends": "astro/tsconfigs/strict",
-	"compilerOptions": {
-		"types": ["bun-types"],
-		"jsx": "react-jsx",
-		"jsxImportSource": "preact",
-		"baseUrl": ".",
-		"paths": {
-			"@/*": ["*"]
-		}
-	}
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "types": [
+      "bun-types"
+    ],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "baseUrl": "/Users/kyeshmz-mbp/Documents/personal/kyeshimizu.com",
+    "paths": {
+      "@/*": [
+        "*"
+      ]
+    }
+  }
 }

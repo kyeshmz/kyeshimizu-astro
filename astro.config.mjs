@@ -1,19 +1,18 @@
 import { defineConfig } from 'astro/config';
-import preact from '@astrojs/preact';
 import prefetch from '@astrojs/prefetch';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import mdx from "@astrojs/mdx";
-
 import { remarkModifiedTime } from './remark-modified-time.mjs';
 import { remarkReadingTime } from './remark-reading-time.mjs';
+
+import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://kyeshimizu.com',
-  integrations: [preact(), prefetch(), sitemap(), tailwind(), mdx()],
-
-  markdown:{
-    remarkPlugins: [remarkModifiedTime, remarkReadingTime],
+  integrations: [ prefetch(), sitemap(), tailwind(), mdx(), react()],
+  markdown: {
+    remarkPlugins: [remarkModifiedTime, remarkReadingTime]
   }
 });
