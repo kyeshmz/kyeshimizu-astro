@@ -1,8 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Card from '../components/Card.astro'
 import Navigation from '../components/Navigation'
-import { ViewTransitions } from 'astro:transitions'
 
 import ProjectYearList from '../components/ProjectYearList'
 import ProjectSectionWrap from '../components/ProjectSectionWrap'
@@ -11,7 +9,16 @@ import { Content as ExhibitionContent } from '../content/about/exhibition.mdx'
 import ScrollableTable from '../components/ScrollableTable'
 import '../styles/globals.css'
 import { Separator } from '../components/ui/separator'
-import ExhibitionHoverCard from '../components/ExhibitionHoverCard'
+import ExhibitionTable, { columns } from '../components/AboutAccordion/exhibition/ExhibitionTable'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '../components/ui/accordion'
+import TableWrapper from '../components/TableWrapper'
+import exhibitionData from '../content/about/exhibition.json'
+import AboutAccordion from '../components/AboutAccordion/AboutAccordion'
 ---
 
 <Layout>
@@ -40,10 +47,10 @@ import ExhibitionHoverCard from '../components/ExhibitionHoverCard'
       </div>
     </div>
     <Separator />
-    <h3>Exhibition</h3>
-    <ExhibitionContent />
+
     <Separator client:only='react' />
-    <ExhibitionHoverCard title='aaaaaaa' client:only='react' />
-    <ScrollableTable client:only='react' />
+    <!-- <ScrollableTable client:only='react' /> -->
+    <AboutAccordion client:only='react' />
   </div>
 </Layout>
+ ../components/AboutAccordion/exhibition/ExhibitionTable

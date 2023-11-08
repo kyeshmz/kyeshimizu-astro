@@ -1,12 +1,14 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "verbatimModuleSyntax": true,
     "types": [
       "bun-types"
+      
     ],
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "baseUrl": "/Users/kyeshmz-mbp/Documents/personal/kyeshimizu.com",
+    "baseUrl": ".",
     "paths": {
       "@/*": [
         "*"

@@ -8,7 +8,7 @@ export default function ProjectListItem({ onMouseEnter }: { onMouseEnter: () => 
       onMouseEnter={() => {
         onMouseEnter()
       }}
-      onMouseLeave={()=>{
+      onMouseLeave={() => {
         $projectHoverImageAtom.set(null)
       }}
     >
