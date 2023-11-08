@@ -1,6 +1,6 @@
-import type { ExhibitionTableRow } from './ExhibitionTable'
+import type { ExhibitionTableRow } from './ExhibitionsTable'
 
-export const ExhibitionData2: ExhibitionTableRow[] = [
+export const ExhibitionData: ExhibitionTableRow[] = [
   {
     work: 'Deviation Game',
     exhibition_name: 'PARCO POND 2023',

@@ -20,6 +20,7 @@ import {
 import { ArrowUpRight } from 'lucide-react'
 import { useState } from 'react'
 import { DataTableColumnHeader } from '../../DataTableColumnHeader'
+import type { DataTableProps } from '../../../types/table'
 
 export type ExhibitionTableRow = {
   work: string
@@ -29,7 +30,7 @@ export type ExhibitionTableRow = {
   date: string
 }
 
-export const columns: ColumnDef<ExhibitionTableRow>[] = [
+export const DataTableColumns: ColumnDef<ExhibitionTableRow>[] = [
   {
     accessorKey: 'work',
     header: 'Work',
@@ -52,12 +53,7 @@ export const columns: ColumnDef<ExhibitionTableRow>[] = [
   },
 ]
 
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
-}
-
-export default function ExhibitionTable<TData, TValue>({
+export default function ExhibitionsTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
