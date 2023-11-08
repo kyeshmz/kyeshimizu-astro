@@ -1,23 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Navigation from '../components/Navigation'
 
-import ProjectYearList from '../components/ProjectYearList'
-import ProjectSectionWrap from '../components/ProjectSectionWrap'
-
-import { Content as ExhibitionContent } from '../content/about/exhibition.mdx'
-import ScrollableTable from '../components/ScrollableTable'
 import '../styles/globals.css'
 import { Separator } from '../components/ui/separator'
-import ExhibitionTable, { columns } from '../components/AboutAccordion/exhibition/ExhibitionTable'
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '../components/ui/accordion'
-import TableWrapper from '../components/TableWrapper'
-import exhibitionData from '../content/about/exhibition.json'
+
 import AboutAccordion from '../components/AboutAccordion/AboutAccordion'
 ---
 
@@ -53,4 +39,3 @@ import AboutAccordion from '../components/AboutAccordion/AboutAccordion'
     <AboutAccordion client:only='react' />
   </div>
 </Layout>
- ../components/AboutAccordion/exhibition/ExhibitionTable

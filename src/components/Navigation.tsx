@@ -14,6 +14,16 @@ export default function Navigation() {
           <ul className='list-none m-0 p-0 flex gap-5'>
             <NavigationItem title='About' />
             <NavigationItem title='Projects' />
+            <li className={'underline-offset-4	hover:underline'}>
+              <a
+                href={
+                  'https://docs.google.com/document/d/1RqA2MraEd-mTt8dUOvBCjQ2gB9e0jYut/edit?usp=sharing&ouid=100481767147351988160&rtpof=true&sd=true'
+                }
+                className={''}
+              >
+                CV
+              </a>
+            </li>
 
             {/* <NavigationItem title='Studies' />
             <NavigationItem title='Store' /> */}
