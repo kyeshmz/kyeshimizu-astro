@@ -6,11 +6,13 @@ import { Separator } from '../components/ui/separator'
 
 import AboutAccordion from '../components/AboutAccordion/AboutAccordion'
 import { getCollection } from 'astro:content'
-import type { PublicationTableRow } from '../components/AboutAccordion/publications/PublicationsTable'
-import type { MediaTableRow } from '../components/AboutAccordion/media/MediaTable'
-import type { ExhibitionTableRow } from '../components/AboutAccordion/exhibition/ExhibitionsTable'
-import type { TalkTableRow } from '../components/AboutAccordion/talks/TalksTable'
-import type { AwardTableRow } from '../components/AboutAccordion/award/AwardTable'
+import type { AwardTableRow } from '../components/AboutAccordion/AwardTable'
+import type { ExhibitionTableRow } from '../components/AboutAccordion/ExhibitionsTable'
+import type { MediaTableRow } from '../components/AboutAccordion/MediaTable'
+import type { PublicationTableRow } from '../components/AboutAccordion/PublicationsTable'
+import type { TalkTableRow } from '../components/AboutAccordion/TalksTable'
+import type { TeachingTableRow } from '../components/AboutAccordion/TeachingTable'
+
 const allPosts = await getCollection('projects')
 ---
 
@@ -79,6 +81,28 @@ const allPosts = await getCollection('projects')
           work: post.data.title,
         })),
       )}
+      TeachingData={[
+        {
+          workshop_name: 'TA for Data Driven Art Summer School with Yasuaki Kakehi, Daito Manabe',
+          place: 'Keio University SFC',
+          date: '2017/2018',
+        },
+        {
+          workshop_name: 'TA for Moving Picture with Saito Tatsuya',
+          place: 'Keio University SFC',
+          date: '2018',
+        },
+        {
+          workshop_name: 'Workshop Name',
+          place: '',
+          date: '',
+        },
+        {
+          workshop_name: 'Workshop Name',
+          place: '',
+          date: '',
+        },
+      ]}
     />
   </div>
 </Layout>

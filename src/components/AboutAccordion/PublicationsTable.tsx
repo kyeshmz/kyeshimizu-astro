@@ -8,6 +8,7 @@ import {
   TableBody,
   TableCell,
 } from '@/src/components/ui/table'
+import { HoverCard, HoverCardTrigger, HoverCardContent } from '@radix-ui/react-hover-card'
 import {
   flexRender,
   getCoreRowModel,
@@ -16,21 +17,10 @@ import {
   type ColumnDef,
   type SortingState,
 } from '@tanstack/react-table'
-import type { DataTableProps } from '../../../types/table'
-import { useState } from 'react'
-import { DataTableColumnHeader } from '@/src/components/AboutAccordion/DataTableColumnHeader'
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
 import { ArrowUpRight } from 'lucide-react'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '../../ui/dropdown-menu'
-import { DotsHorizontalIcon } from '@radix-ui/react-icons'
-import { Button } from '../../ui/button'
+import { useState } from 'react'
+import type { DataTableProps } from '../../types/table'
+import { DataTableColumnHeader } from './DataTableColumnHeader'
 
 export type PublicationTableRow = {
   work?: string

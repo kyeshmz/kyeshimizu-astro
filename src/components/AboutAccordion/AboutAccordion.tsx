@@ -1,19 +1,15 @@
 import { Accordion } from '../ui/accordion'
-
-import PublicationTable, { type PublicationTableRow } from './publications/PublicationsTable'
-
-import PublicationsTable from './publications/PublicationsTable'
-
-import { PublicationTableColumn } from '@/src/components/AboutAccordion/publications/PublicationsTable'
-
-import MediaTable, { MediaTableColumn, type MediaTableRow } from './media/MediaTable'
-import ExhibitionsTable, {
-  DataTableColumns,
-  type ExhibitionTableRow,
-} from './exhibition/ExhibitionsTable'
-import TalksTable, { TalksTableColumn, type TalkTableRow } from './talks/TalksTable'
-import AwardTable, { type AwardTableRow } from './award/AwardTable'
-import { AwardTableColumn } from '@/src/components/AboutAccordion/award/AwardTable'
+import AwardTable, { type AwardTableRow, AwardTableColumn } from './AwardTable'
+import ExhibitionsTable, { type ExhibitionTableRow } from './ExhibitionsTable'
+import MediaTable, { type MediaTableRow, MediaTableColumn } from './MediaTable'
+import PublicationsTable, {
+  type PublicationTableRow,
+  PublicationTableColumn,
+} from './PublicationsTable'
+import TalksTable, { type TalkTableRow, TalksTableColumn } from './TalksTable'
+import TeachingTable, { type TeachingTableRow } from './TeachingTable'
+import { TeachingTableColumn } from '@/src/components/AboutAccordion/TeachingTable'
+import { DataTableColumn } from '@/src/components/AboutAccordion/ExhibitionsTable'
 
 export default function AboutAccordion({
   PublicationData,
@@ -21,16 +17,18 @@ export default function AboutAccordion({
   ExhibitionData,
   TalkData,
   AwardData,
+  TeachingData,
 }: {
   PublicationData: PublicationTableRow[]
   MediaData: MediaTableRow[]
   ExhibitionData: ExhibitionTableRow[]
   TalkData: TalkTableRow[]
   AwardData: AwardTableRow[]
+  TeachingData: TeachingTableRow[]
 }) {
   return (
     <Accordion type='single' collapsible className='w-full'>
-      <ExhibitionsTable columns={DataTableColumns} data={ExhibitionData}></ExhibitionsTable>
+      <ExhibitionsTable columns={DataTableColumn} data={ExhibitionData}></ExhibitionsTable>
       <PublicationsTable
         columns={PublicationTableColumn}
         data={PublicationData}
@@ -38,6 +36,7 @@ export default function AboutAccordion({
       <AwardTable columns={AwardTableColumn} data={AwardData}></AwardTable>
       <TalksTable columns={TalksTableColumn} data={TalkData}></TalksTable>
       <MediaTable columns={MediaTableColumn} data={MediaData}></MediaTable>
+      <TeachingTable columns={TeachingTableColumn} data={TeachingData}></TeachingTable>
     </Accordion>
   )
 }

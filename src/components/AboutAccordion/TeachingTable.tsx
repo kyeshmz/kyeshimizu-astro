@@ -7,7 +7,7 @@ import {
   TableCell,
 } from '@/src/components/ui/table'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
-import { AccordionContent, AccordionItem, AccordionTrigger } from '../../ui/accordion'
+import { AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion'
 
 import {
   getCoreRowModel,
@@ -19,31 +19,36 @@ import {
 } from '@tanstack/react-table'
 import { ArrowUpRight } from 'lucide-react'
 import { useState } from 'react'
-import { DataTableColumnHeader } from '../DataTableColumnHeader'
-import type { DataTableProps } from '../../../types/table'
+import { DataTableColumnHeader } from './DataTableColumnHeader'
+import type { DataTableProps } from '../../types/table'
 
-export type AwardTableRow = {
-  work: string
-  award_name: string
-  year: number
+export type TeachingTableRow = {
+  work?: string
+  workshop_name: string
+  place: string
+  date: string
 }
 
-export const AwardTableColumn: ColumnDef<AwardTableRow>[] = [
+export const TeachingTableColumn: ColumnDef<TeachingTableRow>[] = [
   {
     accessorKey: 'work',
     header: 'Work',
   },
   {
-    accessorKey: 'award_name',
-    header: 'Award Name',
+    accessorKey: 'workshop_name',
+    header: 'Workshop Name',
   },
   {
-    accessorKey: 'year',
-    header: ({ column }) => <DataTableColumnHeader column={column} title='Year' />,
+    accessorKey: 'place',
+    header: 'Place',
+  },
+  {
+    accessorKey: 'date',
+    header: ({ column }) => <DataTableColumnHeader column={column} title='Date' />,
   },
 ]
 
-export default function AwardTable<TData, TValue>({
+export default function TeachingTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
@@ -61,8 +66,8 @@ export default function AwardTable<TData, TValue>({
   })
 
   return (
-    <AccordionItem value='item-3'>
-      <AccordionTrigger>Awards</AccordionTrigger>
+    <AccordionItem value='item-1'>
+      <AccordionTrigger>Teaching / Workshops</AccordionTrigger>
       <AccordionContent>
         <Table>
           <TableHeader>

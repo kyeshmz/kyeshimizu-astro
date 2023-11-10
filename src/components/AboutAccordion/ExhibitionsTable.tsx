@@ -1,5 +1,3 @@
-import { AccordionContent, AccordionItem, AccordionTrigger } from '@/src/components/ui/accordion'
-
 import {
   Table,
   TableHeader,
@@ -8,54 +6,54 @@ import {
   TableBody,
   TableCell,
 } from '@/src/components/ui/table'
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
+import { AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion'
+
 import {
-  flexRender,
   getCoreRowModel,
-  getSortedRowModel,
   useReactTable,
   type ColumnDef,
+  flexRender,
+  getSortedRowModel,
   type SortingState,
 } from '@tanstack/react-table'
-import type { DataTableProps } from '../../../types/table'
-import { useState } from 'react'
-import { DataTableColumnHeader } from '@/src/components/AboutAccordion/DataTableColumnHeader'
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
 import { ArrowUpRight } from 'lucide-react'
+import { useState } from 'react'
+import { DataTableColumnHeader } from './DataTableColumnHeader'
+import type { DataTableProps } from '../../types/table'
 
-export type TalkTableRow = {
-  talk_name: string
-  reference: string
+export type ExhibitionTableRow = {
+  work: string
+  exhibition_name: string
   city: string
   place: string
-  year: number
-  event_name: string
+  date: string
 }
 
-export const TalksTableColumn: ColumnDef<TalkTableRow>[] = [
+export const DataTableColumn: ColumnDef<ExhibitionTableRow>[] = [
   {
-    accessorKey: 'talk_name',
-    header: 'Talk',
+    accessorKey: 'work',
+    header: 'Work',
+  },
+  {
+    accessorKey: 'exhibition_name',
+    header: 'Exhibition Name',
+  },
+  {
+    accessorKey: 'city',
+    header: 'City, Country',
   },
   {
     accessorKey: 'place',
     header: 'Place',
   },
   {
-    accessorKey: 'city',
-    header: 'City',
-  },
-  {
-    accessorKey: 'reference',
-    header: 'Reference',
-  },
-  {
-    accessorKey: 'year',
-    // header: 'Year',
-    header: ({ column }) => <DataTableColumnHeader column={column} title='Year' />,
+    accessorKey: 'date',
+    header: ({ column }) => <DataTableColumnHeader column={column} title='Date' />,
   },
 ]
 
-export default function TalksTable<TData, TValue>({
+export default function ExhibitionsTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
@@ -73,8 +71,8 @@ export default function TalksTable<TData, TValue>({
   })
 
   return (
-    <AccordionItem value='item-4'>
-      <AccordionTrigger>Talks</AccordionTrigger>
+    <AccordionItem value='item-1'>
+      <AccordionTrigger>Exhibitions</AccordionTrigger>
       <AccordionContent>
         <Table>
           <TableHeader>
