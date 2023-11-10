@@ -1,9 +1,15 @@
 export const Works = {
-  harmonize: 'Harmonize',
-  algorithmic_couture: 'Algorithmic Couture',
-  aubik: 'Aubik',
-  morphing_identity: 'Morphing Identity',
-  deviation_game: 'Deviation Game',
+  Harmonize: 'Harmonize',
+  AlgorithmicCouture: 'Algorithmic Couture',
+  Aubik: 'Aubik',
+  MorphingIdentity: 'Morphing Identity',
+  DeviationGame: 'Deviation Game',
+  RhizomatiksFencing: 'Rhizomatiks Fencing',
+  Synflux: 'Synflux',
+  BaobaoDazzle: 'Baobao Dazzle',
+  DoubleHorizon: 'Double Horizon',
+  UrbanOrchestra: 'Urban Orchestra',
+  SoranoProjection: 'Sorano Projection',
 } as const
 
 // type SizeType = 'small' | 'medium' | 'large'

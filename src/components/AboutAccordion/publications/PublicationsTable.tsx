@@ -21,6 +21,16 @@ import { useState } from 'react'
 import { DataTableColumnHeader } from '@/src/components/DataTableColumnHeader'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
 import { ArrowUpRight } from 'lucide-react'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '../../ui/dropdown-menu'
+import { DotsHorizontalIcon } from '@radix-ui/react-icons'
+import { Button } from '../../ui/button'
 
 export type PublicationTableRow = {
   work: string
@@ -98,9 +108,12 @@ export default function PublicationsTable<TData, TValue>({
                         </HoverCardTrigger>
                         <HoverCardContent className='w-80' key={row.getVisibleCells()[0].id}>
                           <a
-                            href={String(row.getVisibleCells()[0].getValue())
-                              .toLocaleLowerCase()
-                              .replace(/ /g, '_')}
+                            href={
+                              '/projects/' +
+                              String(row.getVisibleCells()[0].getValue())
+                                .toLocaleLowerCase()
+                                .replace(/ /g, '-')
+                            }
                           >
                             <div className='flex justify-between items-center'>
                               <h4 className='text-sm font-semibold'>

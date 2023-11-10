@@ -4,8 +4,8 @@ import Layout from '../layouts/Layout.astro'
 import ProjectYearList from '../components/ProjectYearList'
 import ProjectHoverImages from '../components/ProjectHoverImages'
 import ProjectListItem from '../components/ProjectListItem'
-import { $projectHoverImageAtom, ProjectName } from '../state/projectHoverImage'
 import { getCollection } from 'astro:content'
+import { Works } from '../types/works'
 const posts = await getCollection('projects')
 // const posts = await Astro.glob('../content/projects/*.mdx') // returns an array of posts that live at ./src/pages/post/*.md
 console.log(posts)
@@ -33,8 +33,8 @@ console.log(posts)
             )
           })
         }
-        <ProjectListItem
-          title='Mac Miller'
+        <!-- <ProjectListItem
+          title={Works.BaobaoDazzle}
           date='8-16-2023'
           tags={['Art Direction', 'Art Direction', 'Art Direction', 'Art Direction']}
           onMouseEnter={() => {
@@ -42,13 +42,13 @@ console.log(posts)
           }}
         />
         <ProjectListItem
-          title='Mac Miller'
+          title={Works.BaobaoDazzle}
           tags={['Art Direction', 'Art Direction', 'Art Direction', 'Art Direction']}
           date='8-16-2023'
           onMouseEnter={() => {
             // $projectHoverImageAtom.set(ProjectName.Synflux)
           }}
-        />
+        /> -->
       </ul>
     </div>
   </section>

@@ -1,5 +1,6 @@
-import { $projectHoverImageAtom, ProjectName } from '../state/projectHoverImage'
+import { $projectHoverImageAtom } from '../state/projectHoverImage'
 import ProjectTag from './ProjectTag'
+import { type WorkType } from '@/src/types/works'
 
 export default function ProjectListItem({
   onMouseEnter,
@@ -9,23 +10,33 @@ export default function ProjectListItem({
 }: {
   onMouseEnter: () => void
   date: string
-  title: string
+  title: WorkType
   tags: Array<string>
 }) {
   return (
     <li
       className={'flex flex-col w-6/12 max-w-[160px] animate-in  duration-700 fade-in fade-out'}
       onMouseEnter={() => {
+        $projectHoverImageAtom.set(title)
+
         onMouseEnter()
       }}
       onMouseLeave={() => {
         $projectHoverImageAtom.set(null)
       }}
     >
-      <a href={''} rel={'preload-intent'} className={''}>
+      <a
+        href={'/projects/' + title.toLocaleLowerCase().replace(/\s/g, '-')}
+        rel={'preload-intent'}
+        className={''}
+      >
         {date}
       </a>
-      <a href='' className={'letter-spacing-2 underline underline-offset-4 leading-2'}>
+      <a
+        href={'/projects/' + title.toLocaleLowerCase().replace(/\s/g, '-')}
+        rel={'preload-intent'}
+        className={'letter-spacing-2 underline underline-offset-4 leading-2'}
+      >
         {title}
       </a>
       <div className=''>

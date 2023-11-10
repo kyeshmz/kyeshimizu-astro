@@ -5,6 +5,8 @@ import '../styles/globals.css'
 import { Separator } from '../components/ui/separator'
 
 import AboutAccordion from '../components/AboutAccordion/AboutAccordion'
+import { getCollection } from 'astro:content'
+const allPosts = await getCollection('projects')
 ---
 
 <Layout>
@@ -36,6 +38,16 @@ import AboutAccordion from '../components/AboutAccordion/AboutAccordion'
 
     <Separator client:only='react' />
     <!-- <ScrollableTable client:only='react' /> -->
-    <AboutAccordion client:only='react' />
+    <AboutAccordion
+      client:only='react'
+      PublicationData={[
+        ...allPosts.flatMap((post) =>
+          post.data.publications.map((publication) => ({
+            ...publication,
+            work: post.data.title,
+          })),
+        ),
+      ]}
+    />
   </div>
 </Layout>

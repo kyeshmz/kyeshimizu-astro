@@ -1,4 +1,5 @@
 import { defineCollection, z } from 'astro:content'
+import { Works } from '../types/works'
 
 const blog = defineCollection({
   // Type-check frontmatter using a schema
@@ -23,7 +24,17 @@ const blog = defineCollection({
 })
 const projects = defineCollection({
   schema: z.object({
-    title: z.string(),
+    title: z.union([
+      z.literal(Works.RhizomatiksFencing),
+      z.literal(Works.Synflux),
+      z.literal(Works.DeviationGame),
+      z.literal(Works.MorphingIdentity),
+      z.literal(Works.Aubik),
+      z.literal(Works.AlgorithmicCouture),
+      z.literal(Works.Harmonize),
+      z.literal(Works.RhizomatiksFencing),
+      z.literal(Works.RhizomatiksFencing),
+    ]),
     // description: z.string(),
     date: z.string(),
     updatedDate: z
@@ -31,6 +42,27 @@ const projects = defineCollection({
       .optional()
       .transform((str) => (str ? new Date(str) : undefined)),
     tags: z.array(z.string()).default(['others']),
+    publications: z.array(
+      z.object({
+        conference_name: z.string(),
+        year: z.number(),
+        reference: z.string(),
+        url: z.string(),
+      }),
+    ),
+    media: z.array(
+      z.object({
+        media_name: z.string(),
+        reference: z.string(),
+        year: z.number(),
+      }),
+    ),
+    awards: z.array(
+      z.object({
+        award_name: z.string(),
+        year: z.number(),
+      }),
+    ),
   }),
 })
 

@@ -1,10 +1,4 @@
 import { atom } from 'nanostores'
+import type { WorkType } from '../types/works'
 
-export const ProjectName = {
-  RhizomatiksFencing: 'Rhizomatiks Fencing',
-  Synflux: 'Synflux'
-} as const // as constをつけることでWideningされないように✅
-
-export type ProjectNameType = (typeof ProjectName)[keyof typeof ProjectName] | null
-
-export const $projectHoverImageAtom = atom<ProjectNameType>(null)
+export const $projectHoverImageAtom = atom<WorkType | null>(null)
