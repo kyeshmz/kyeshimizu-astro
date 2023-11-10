@@ -20,7 +20,7 @@ import { type DataTableProps } from '@/src/types/table'
 import { useState } from 'react'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
 import { ArrowUpRight } from 'lucide-react'
-import { DataTableColumnHeader } from '@/src/components/DataTableColumnHeader'
+import { DataTableColumnHeader } from '@/src/components/AboutAccordion/DataTableColumnHeader'
 
 export type MediaTableRow = {
   media_name: string

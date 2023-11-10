@@ -1,5 +1,5 @@
-import dayjs from '../lib/day'
-import NavigationItem from './NavigationItem'
+import dayjs from '../../lib/day'
+import NavigationItem from '../layout/NavigationItem'
 
 export default function Navigation() {
   return (

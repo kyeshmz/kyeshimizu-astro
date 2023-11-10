@@ -76,6 +76,7 @@ const projects = defineCollection({
       z.object({
         grant_name: z.string(),
         year: z.number(),
+        reference: z.string(),
       }),
     ),
     talks: z.array(
@@ -85,6 +86,7 @@ const projects = defineCollection({
         place: z.string(),
         city: z.string(),
         year: z.number(),
+        event_name: z.string(),
       }),
     ),
   }),

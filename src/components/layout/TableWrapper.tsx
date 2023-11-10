@@ -1,4 +1,4 @@
-import { Accordion } from './ui/accordion'
+import { Accordion } from '../ui/accordion'
 
 export default function TableWrapper({ children }: { children: React.ReactNode }) {
   return (

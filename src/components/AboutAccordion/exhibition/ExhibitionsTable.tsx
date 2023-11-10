@@ -19,7 +19,7 @@ import {
 } from '@tanstack/react-table'
 import { ArrowUpRight } from 'lucide-react'
 import { useState } from 'react'
-import { DataTableColumnHeader } from '../../DataTableColumnHeader'
+import { DataTableColumnHeader } from '../DataTableColumnHeader'
 import type { DataTableProps } from '../../../types/table'
 
 export type ExhibitionTableRow = {

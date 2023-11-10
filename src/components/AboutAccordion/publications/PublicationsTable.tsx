@@ -18,7 +18,7 @@ import {
 } from '@tanstack/react-table'
 import type { DataTableProps } from '../../../types/table'
 import { useState } from 'react'
-import { DataTableColumnHeader } from '@/src/components/DataTableColumnHeader'
+import { DataTableColumnHeader } from '@/src/components/AboutAccordion/DataTableColumnHeader'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
 import { ArrowUpRight } from 'lucide-react'
 import {
@@ -33,6 +33,7 @@ import { DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { Button } from '../../ui/button'
 
 export type PublicationTableRow = {
+  work?: string
   conference_name: string
   reference: string
   year: number

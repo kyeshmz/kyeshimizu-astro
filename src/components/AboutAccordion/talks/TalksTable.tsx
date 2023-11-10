@@ -18,7 +18,7 @@ import {
 } from '@tanstack/react-table'
 import type { DataTableProps } from '../../../types/table'
 import { useState } from 'react'
-import { DataTableColumnHeader } from '@/src/components/DataTableColumnHeader'
+import { DataTableColumnHeader } from '@/src/components/AboutAccordion/DataTableColumnHeader'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
 import { ArrowUpRight } from 'lucide-react'
 
@@ -28,6 +28,7 @@ export type TalkTableRow = {
   city: string
   place: string
   year: number
+  event_name: string
 }
 
 export const TalksTableColumn: ColumnDef<TalkTableRow>[] = [
