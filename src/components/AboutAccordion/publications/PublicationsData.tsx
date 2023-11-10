@@ -1,15 +1,16 @@
 import type { PublicationTableRow } from '@/src/components/AboutAccordion/publications/PublicationsTable'
+import { Works } from '@/src/types/works'
 
 export const PublicationData: PublicationTableRow[] = [
   {
-    work: 'Morphing Identity',
+    work: Works.morphing_identity,
     conference_name: 'ACM SIGGRAPH',
     reference:
       'A Demonstration of Morphing Identity: Exploring Self-Other Identity Continuum through Interpersonal Facial Morphing Kye Shimizu, Santa Naruse, Jun Nishida, and Shunichi Kasahara. 2023. ACM SIGGRAPH 2023 Emerging Technologies. https://dl.acm.org/doi/10.1145/3588037.3595394',
     year: 2023,
   },
   {
-    work: 'Morphing Identity',
+    work: Works.morphing_identity,
     conference_name: 'ACM CHI',
     reference:
       'Kye Shimizu, Santa Naruse, Jun Nishida, and Shunichi Kasahara. 2023. Morphing Identity: Exploring Self-Other Identity Continuum through Interpersonal Facial Morphing Experience. In Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems (CHI ’23), April 23– 28, 2023, Hamburg, Germany. ACM, New York, NY, USA, 15 pages. https://doi.org/10.1145/3544548.3580853',

@@ -9,11 +9,17 @@ export default function ProjectYearList({ year }: { year: number }) {
       </span>
       <ul className={'flex w-11/12 gap-x-20 gap-y-11 flex-wrap md:flex-row flex-col'}>
         <ProjectListItem
+          title='Mac Miller'
+          date='8-16-2023'
+          tags={['Art Direction', 'Art Direction', 'Art Direction', 'Art Direction']}
           onMouseEnter={() => {
             $projectHoverImageAtom.set(ProjectName.RhizomatiksFencing)
           }}
         />
         <ProjectListItem
+          title='Mac Miller'
+          tags={['Art Direction', 'Art Direction', 'Art Direction', 'Art Direction']}
+          date='8-16-2023'
           onMouseEnter={() => {
             $projectHoverImageAtom.set(ProjectName.Synflux)
           }}

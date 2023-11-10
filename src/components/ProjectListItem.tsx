@@ -1,7 +1,17 @@
 import { $projectHoverImageAtom, ProjectName } from '../state/projectHoverImage'
 import ProjectTag from './ProjectTag'
 
-export default function ProjectListItem({ onMouseEnter }: { onMouseEnter: () => void }) {
+export default function ProjectListItem({
+  onMouseEnter,
+  date,
+  title,
+  tags,
+}: {
+  onMouseEnter: () => void
+  date: string
+  title: string
+  tags: Array<string>
+}) {
   return (
     <li
       className={'flex flex-col w-6/12 max-w-[160px] animate-in  duration-700 fade-in fade-out'}
@@ -13,19 +23,15 @@ export default function ProjectListItem({ onMouseEnter }: { onMouseEnter: () => 
       }}
     >
       <a href={''} rel={'preload-intent'} className={''}>
-        8-16-2023
+        {date}
       </a>
       <a href='' className={'letter-spacing-2 underline underline-offset-4 leading-2'}>
-        Mac Miller
+        {title}
       </a>
       <div className=''>
-        {/* TODO : we render enough of these as there are in the frontmatter */}
-        <ProjectTag title='Art Direction'></ProjectTag>{' '}
-        <ProjectTag title='Art Direction'></ProjectTag>
-        <ProjectTag title='Art Direction'></ProjectTag>
-        <ProjectTag title='Art Direction'></ProjectTag>
-        <ProjectTag title='Art Direction'></ProjectTag>
-        <ProjectTag title='Art Direction'></ProjectTag>
+        {tags.map((tag) => {
+          return <ProjectTag title={tag}></ProjectTag>
+        })}
       </div>
     </li>
   )

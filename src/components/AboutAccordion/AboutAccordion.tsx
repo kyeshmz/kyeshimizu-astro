@@ -10,6 +10,8 @@ import { PublicationData } from '@/src/components/AboutAccordion/publications/Pu
 import { PublicationTableColumn } from '@/src/components/AboutAccordion/publications/PublicationsTable'
 import TalksTable, { TalksTableColumn } from './talks/TalksTable'
 import { TalksData } from './talks/TalksData'
+import MediaTable, { MediaTableColumn } from './media/MediaTable'
+import { MediaData } from '@/src/components/AboutAccordion/media/MediaData'
 
 export default function AboutAccordion() {
   return (
@@ -20,6 +22,7 @@ export default function AboutAccordion() {
         data={PublicationData}
       ></PublicationsTable>
       <TalksTable columns={TalksTableColumn} data={TalksData}></TalksTable>
+      <MediaTable columns={MediaTableColumn} data={MediaData}></MediaTable>
     </Accordion>
   )
 }

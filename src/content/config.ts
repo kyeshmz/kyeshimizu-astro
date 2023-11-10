@@ -21,11 +21,17 @@ const blog = defineCollection({
     featured: z.boolean().optional(),
   }),
 })
-const works = defineCollection({
+const projects = defineCollection({
   schema: z.object({
-    title: z.enum(['aaaa', 'bbbb']),
-    description: z.string(),
+    title: z.string(),
+    // description: z.string(),
+    date: z.string(),
+    updatedDate: z
+      .string()
+      .optional()
+      .transform((str) => (str ? new Date(str) : undefined)),
+    tags: z.array(z.string()).default(['others']),
   }),
 })
 
-export const collections = { blog, works }
+export const collections = { blog, projects }

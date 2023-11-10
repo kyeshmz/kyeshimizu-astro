@@ -1,13 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Card from '../components/Card.astro'
-import Navigation from '../components/Navigation'
-import { ViewTransitions } from 'astro:transitions'
 
 import ProjectYearList from '../components/ProjectYearList'
-import ProjectSectionWrap from '../components/ProjectSectionWrap'
 import ProjectHoverImages from '../components/ProjectHoverImages'
-import { ModeToggle } from '../components/ModeToggle'
+import ProjectListItem from '../components/ProjectListItem'
+import { $projectHoverImageAtom, ProjectName } from '../state/projectHoverImage'
+import { getCollection } from 'astro:content'
+const posts = await getCollection('projects')
+// const posts = await Astro.glob('../content/projects/*.mdx') // returns an array of posts that live at ./src/pages/post/*.md
+console.log(posts)
 ---
 
 <Layout>
@@ -15,5 +16,40 @@ import { ModeToggle } from '../components/ModeToggle'
     <!-- TODO we need to break this down so that we dont have to make  -->
     <ProjectYearList year={2023} client:only='react' />
     <ProjectHoverImages client:only='react' />
+    <div class={'mb-14 w-100 overflow-hidden'}>
+      <span class={'cursor-pointer block float-right text-xs leading-4 tracking-wide '}> 2023</span>
+      <ul class={'flex w-11/12 gap-x-20 gap-y-11 flex-wrap md:flex-row flex-col'}>
+        {
+          posts.map((post) => {
+            return (
+              <ProjectListItem
+                title={post.data.title}
+                date={post.data.date}
+                tags={post.data.tags}
+                onMouseEnter={() => {
+                  // $projectHoverImageAtom.set(post.metadata.title)
+                }}
+              />
+            )
+          })
+        }
+        <ProjectListItem
+          title='Mac Miller'
+          date='8-16-2023'
+          tags={['Art Direction', 'Art Direction', 'Art Direction', 'Art Direction']}
+          onMouseEnter={() => {
+            // $projectHoverImageAtom.set(ProjectName.RhizomatiksFencing)
+          }}
+        />
+        <ProjectListItem
+          title='Mac Miller'
+          tags={['Art Direction', 'Art Direction', 'Art Direction', 'Art Direction']}
+          date='8-16-2023'
+          onMouseEnter={() => {
+            // $projectHoverImageAtom.set(ProjectName.Synflux)
+          }}
+        />
+      </ul>
+    </div>
   </section>
 </Layout>
