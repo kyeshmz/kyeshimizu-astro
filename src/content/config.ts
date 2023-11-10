@@ -47,7 +47,6 @@ const projects = defineCollection({
         conference_name: z.string(),
         year: z.number(),
         reference: z.string(),
-        url: z.string(),
       }),
     ),
     media: z.array(
@@ -60,6 +59,31 @@ const projects = defineCollection({
     awards: z.array(
       z.object({
         award_name: z.string(),
+        year: z.number(),
+      }),
+    ),
+    exhibitions: z.array(
+      z.object({
+        exhibition_name: z.string(),
+        date: z.string(),
+        city: z.string(),
+        place: z.string(),
+      }),
+    ),
+    credits: z.array(z.string()),
+    thanks: z.array(z.string()),
+    grants: z.array(
+      z.object({
+        grant_name: z.string(),
+        year: z.number(),
+      }),
+    ),
+    talks: z.array(
+      z.object({
+        talk_name: z.string(),
+        reference: z.string(),
+        place: z.string(),
+        city: z.string(),
         year: z.number(),
       }),
     ),

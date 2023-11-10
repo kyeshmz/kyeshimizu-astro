@@ -1,32 +1,43 @@
-import ExhibitionTable, { DataTableColumns } from './exhibition/ExhibitionsTable'
 import { Accordion } from '../ui/accordion'
-import { ExhibitionData } from './exhibition/ExhibitionData'
-import { AccordionItem } from '@/src/components/ui/accordion'
+
 import PublicationTable, { type PublicationTableRow } from './publications/PublicationsTable'
 
 import PublicationsTable from './publications/PublicationsTable'
-import ExhibitionsTable from './exhibition/ExhibitionsTable'
 
 import { PublicationTableColumn } from '@/src/components/AboutAccordion/publications/PublicationsTable'
-import TalksTable, { TalksTableColumn } from './talks/TalksTable'
 
-import MediaTable, { MediaTableColumn } from './media/MediaTable'
-import { MediaData } from '@/src/components/AboutAccordion/media/MediaData'
+import MediaTable, { MediaTableColumn, type MediaTableRow } from './media/MediaTable'
+import ExhibitionsTable, {
+  DataTableColumns,
+  type ExhibitionTableRow,
+} from './exhibition/ExhibitionsTable'
+import TalksTable, { TalksTableColumn, type TalkTableRow } from './talks/TalksTable'
+import AwardTable, { type AwardTableRow } from './award/AwardTable'
+import { AwardTableColumn } from '@/src/components/AboutAccordion/award/AwardTable'
 
 export default function AboutAccordion({
   PublicationData,
+  MediaData,
+  ExhibitionData,
+  TalkData,
+  AwardData,
 }: {
   PublicationData: PublicationTableRow[]
+  MediaData: MediaTableRow[]
+  ExhibitionData: ExhibitionTableRow[]
+  TalkData: TalkTableRow[]
+  AwardData: AwardTableRow[]
 }) {
   return (
     <Accordion type='single' collapsible className='w-full'>
-      {/* <ExhibitionsTable columns={DataTableColumns} data={ExhibitionData}></ExhibitionsTable> */}
+      <ExhibitionsTable columns={DataTableColumns} data={ExhibitionData}></ExhibitionsTable>
       <PublicationsTable
         columns={PublicationTableColumn}
         data={PublicationData}
       ></PublicationsTable>
-      {/* <TalksTable columns={TalksTableColumn} data={TalksData}></TalksTable>
-      <MediaTable columns={MediaTableColumn} data={MediaData}></MediaTable> */}
+      <AwardTable columns={AwardTableColumn} data={AwardData}></AwardTable>
+      <TalksTable columns={TalksTableColumn} data={TalkData}></TalksTable>
+      <MediaTable columns={MediaTableColumn} data={MediaData}></MediaTable>
     </Accordion>
   )
 }

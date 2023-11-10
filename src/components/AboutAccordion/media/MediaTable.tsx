@@ -23,7 +23,6 @@ import { ArrowUpRight } from 'lucide-react'
 import { DataTableColumnHeader } from '@/src/components/DataTableColumnHeader'
 
 export type MediaTableRow = {
-  work: WorkType
   media_name: string
 
   reference: string
@@ -68,7 +67,7 @@ export default function MediaTable<TData, TValue>({
   })
 
   return (
-    <AccordionItem value='item-4'>
+    <AccordionItem value='item-5'>
       <AccordionTrigger>Media</AccordionTrigger>
       <AccordionContent>
         <Table>
@@ -101,7 +100,7 @@ export default function MediaTable<TData, TValue>({
                           <a
                             href={String(row.getVisibleCells()[0].getValue())
                               .toLocaleLowerCase()
-                              .replace(/ /g, '_')}
+                              .replace(/ /g, '-')}
                           >
                             <div className='flex justify-between items-center'>
                               <h4 className='text-sm font-semibold'>

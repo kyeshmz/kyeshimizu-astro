@@ -22,21 +22,26 @@ import { DataTableColumnHeader } from '@/src/components/DataTableColumnHeader'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
 import { ArrowUpRight } from 'lucide-react'
 
-export type TalksTableRow = {
-  talk: string
+export type TalkTableRow = {
+  talk_name: string
   reference: string
+  city: string
   place: string
   year: number
 }
 
-export const TalksTableColumn: ColumnDef<TalksTableRow>[] = [
+export const TalksTableColumn: ColumnDef<TalkTableRow>[] = [
   {
-    accessorKey: 'talk',
+    accessorKey: 'talk_name',
     header: 'Talk',
   },
   {
     accessorKey: 'place',
     header: 'Place',
+  },
+  {
+    accessorKey: 'city',
+    header: 'City',
   },
   {
     accessorKey: 'reference',
@@ -67,7 +72,7 @@ export default function TalksTable<TData, TValue>({
   })
 
   return (
-    <AccordionItem value='item-3'>
+    <AccordionItem value='item-4'>
       <AccordionTrigger>Talks</AccordionTrigger>
       <AccordionContent>
         <Table>
@@ -100,7 +105,7 @@ export default function TalksTable<TData, TValue>({
                           <a
                             href={String(row.getVisibleCells()[0].getValue())
                               .toLocaleLowerCase()
-                              .replace(/ /g, '_')}
+                              .replace(/ /g, '-')}
                           >
                             <div className='flex justify-between items-center'>
                               <h4 className='text-sm font-semibold'>

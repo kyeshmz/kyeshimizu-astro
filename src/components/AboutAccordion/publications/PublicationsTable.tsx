@@ -33,7 +33,6 @@ import { DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { Button } from '../../ui/button'
 
 export type PublicationTableRow = {
-  work: string
   conference_name: string
   reference: string
   year: number

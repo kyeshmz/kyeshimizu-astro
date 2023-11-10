@@ -22,38 +22,28 @@ import { useState } from 'react'
 import { DataTableColumnHeader } from '../../DataTableColumnHeader'
 import type { DataTableProps } from '../../../types/table'
 
-export type ExhibitionTableRow = {
+export type AwardTableRow = {
   work: string
-  exhibition_name: string
-  city: string
-  place: string
-  date: string
+  award_name: string
+  year: number
 }
 
-export const DataTableColumns: ColumnDef<ExhibitionTableRow>[] = [
+export const AwardTableColumn: ColumnDef<AwardTableRow>[] = [
   {
     accessorKey: 'work',
     header: 'Work',
   },
   {
-    accessorKey: 'exhibition_name',
-    header: 'Exhibition Name',
+    accessorKey: 'award_name',
+    header: 'Award Name',
   },
   {
-    accessorKey: 'city',
-    header: 'City, Country',
-  },
-  {
-    accessorKey: 'place',
-    header: 'Place',
-  },
-  {
-    accessorKey: 'date',
-    header: ({ column }) => <DataTableColumnHeader column={column} title='Date' />,
+    accessorKey: 'year',
+    header: ({ column }) => <DataTableColumnHeader column={column} title='Year' />,
   },
 ]
 
-export default function ExhibitionsTable<TData, TValue>({
+export default function AwardTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
@@ -71,8 +61,8 @@ export default function ExhibitionsTable<TData, TValue>({
   })
 
   return (
-    <AccordionItem value='item-1'>
-      <AccordionTrigger>Exhibitions</AccordionTrigger>
+    <AccordionItem value='item-3'>
+      <AccordionTrigger>Awards</AccordionTrigger>
       <AccordionContent>
         <Table>
           <TableHeader>

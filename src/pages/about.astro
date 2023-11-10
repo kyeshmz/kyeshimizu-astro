@@ -6,6 +6,11 @@ import { Separator } from '../components/ui/separator'
 
 import AboutAccordion from '../components/AboutAccordion/AboutAccordion'
 import { getCollection } from 'astro:content'
+import type { PublicationTableRow } from '../components/AboutAccordion/publications/PublicationsTable'
+import type { MediaTableRow } from '../components/AboutAccordion/media/MediaTable'
+import type { ExhibitionTableRow } from '../components/AboutAccordion/exhibition/ExhibitionsTable'
+import type { TalkTableRow } from '../components/AboutAccordion/talks/TalksTable'
+import type { AwardTableRow } from '../components/AboutAccordion/award/AwardTable'
 const allPosts = await getCollection('projects')
 ---
 
@@ -42,12 +47,38 @@ const allPosts = await getCollection('projects')
       client:only='react'
       PublicationData={[
         ...allPosts.flatMap((post) =>
-          post.data.publications.map((publication) => ({
+          (post.data.publications as PublicationTableRow[]).map((publication) => ({
             ...publication,
             work: post.data.title,
           })),
         ),
       ]}
+      MediaData={[
+        ...allPosts.flatMap((post) =>
+          (post.data.media as MediaTableRow[]).map((media) => ({
+            ...media,
+            work: post.data.title,
+          })),
+        ),
+      ]}
+      ExhibitionData={allPosts.flatMap((post) =>
+        (post.data.exhibitions as ExhibitionTableRow[]).map((exhibition) => ({
+          ...exhibition,
+          work: post.data.title,
+        })),
+      )}
+      AwardData={allPosts.flatMap((post) =>
+        (post.data.awards as AwardTableRow[]).map((award) => ({
+          ...award,
+          work: post.data.title,
+        })),
+      )}
+      TalkData={allPosts.flatMap((post) =>
+        (post.data.talks as TalkTableRow[]).map((talk) => ({
+          ...talk,
+          work: post.data.title,
+        })),
+      )}
     />
   </div>
 </Layout>
