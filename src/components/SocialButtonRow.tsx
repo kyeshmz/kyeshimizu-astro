@@ -9,19 +9,23 @@ export default function SocialButtonRow() {
       <p>Socials</p>
       <Separator />
       <div className='flex justify-between w-full'>
-        <a href='https://github.com/kyeshmz'>
+        <a href='https://github.com/kyeshmz' target='_blank' rel='noopener noreferrer'>
           <Button variant='outline' className='flex justify-between'>
             <GitHubLogoIcon />
             <p>@kyeshmz</p>
           </Button>
         </a>
-        <a href='https://twitter.com/kyeshimizu'>
+        <a href='https://twitter.com/kyeshimizu' target='_blank' rel='noopener noreferrer'>
           <Button variant='outline' className='flex justify-between'>
             <TwitterLogoIcon />
             <p>@kyeshimizu</p>
           </Button>
         </a>
-        <a href='https://linkedin.com/in/kye-shimizu-363805a8'>
+        <a
+          href='https://linkedin.com/in/kye-shimizu-363805a8'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
           <Button variant='outline' className='flex justify-between'>
             <LinkedInLogoIcon />
             <p>@kyeshimizu</p>
