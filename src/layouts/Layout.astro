@@ -32,11 +32,30 @@ const { class: className, title, description, keywords, url, twitterhandle, imag
     <ViewTransitions />
   </head>
   <body>
-    <Navigation />
+    <Navigation client:only='react' />
     <Sidebar />
 
     <main class='py-6 w-15 mx-6 md:mx-28 my-0 pt-[72px]'>
       <slot />
     </main>
+
+    <script is:inline>
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme')
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark'
+        }
+        return 'light'
+      })()
+
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark')
+      } else {
+        document.documentElement.classList.add('dark')
+      }
+      window.localStorage.setItem('theme', theme)
+    </script>
   </body>
 </html>

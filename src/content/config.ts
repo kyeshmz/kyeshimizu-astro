@@ -32,7 +32,7 @@ const projects = defineCollection({
       z.literal(Works.Aubik),
       z.literal(Works.AlgorithmicCouture),
       z.literal(Works.Harmonize),
-      z.literal(Works.RhizomatiksFencing),
+      z.literal(Works.HumanLatentMetrics),
       z.literal(Works.RhizomatiksFencing),
     ]),
     // description: z.string(),

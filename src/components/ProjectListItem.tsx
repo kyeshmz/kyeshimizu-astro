@@ -1,14 +1,12 @@
-import { $projectHoverImageAtom } from '../state/projectHoverImage'
+import { $projectHoverImageAtom } from '../state/ProjectHoverState'
 import ProjectTag from './ProjectTag'
 import { type WorkType } from '@/src/types/works'
 
 export default function ProjectListItem({
-  onMouseEnter,
   date,
   title,
   tags,
 }: {
-  onMouseEnter: () => void
   date: string
   title: WorkType
   tags: Array<string>
@@ -18,8 +16,6 @@ export default function ProjectListItem({
       className={'flex flex-col w-6/12 max-w-[160px] animate-in  duration-700 fade-in fade-out'}
       onMouseEnter={() => {
         $projectHoverImageAtom.set(title)
-
-        onMouseEnter()
       }}
       onMouseLeave={() => {
         $projectHoverImageAtom.set(null)

@@ -5,14 +5,17 @@ import tailwind from '@astrojs/tailwind';
 import mdx from "@astrojs/mdx";
 import { remarkModifiedTime } from './remark-modified-time.mjs';
 import { remarkReadingTime } from './remark-reading-time.mjs';
-
 import react from "@astrojs/react";
+
+import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://kyeshimizu.com',
-  integrations: [ prefetch(), sitemap(), tailwind(), mdx(), react()],
+  integrations: [prefetch(), sitemap(), tailwind(), mdx(), react()],
   markdown: {
     remarkPlugins: [remarkModifiedTime, remarkReadingTime]
-  }
+  },
+  output: "server",
+  adapter: cloudflare()
 });

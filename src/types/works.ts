@@ -10,6 +10,7 @@ export const Works = {
   DoubleHorizon: 'Double Horizon',
   UrbanOrchestra: 'Urban Orchestra',
   SoranoProjection: 'Sorano Projection',
+  HumanLatentMetrics: 'Human Latent Metrics',
 } as const
 
 // type SizeType = 'small' | 'medium' | 'large'

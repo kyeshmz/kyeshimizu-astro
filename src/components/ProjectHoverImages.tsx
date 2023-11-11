@@ -1,6 +1,7 @@
 import { useStore } from '@nanostores/react'
-import { ProjectName, $projectHoverImageAtom } from '@/src/state/projectHoverImage'
+import { $projectHoverImageAtom } from '@/src/state/ProjectHoverState'
 import ProjectHoverImage from './ProjectHoverImage'
+import { Works } from '../types/works'
 
 export default function ProjectHoverImages() {
   //TODO: we need to populate the images from the front matter or something
@@ -9,11 +10,11 @@ export default function ProjectHoverImages() {
     <div>
       <ProjectHoverImage
         src='https://public-library.org/wp-content/uploads/2023/08/Screenshot-2023-05-09-at-9.53.17-AM.png'
-        isVisible={hoverImage === ProjectName.RhizomatiksFencing}
+        isVisible={hoverImage === Works.RhizomatiksFencing}
       ></ProjectHoverImage>
       <ProjectHoverImage
         src='https://public-library.org/wp-content/uploads/2023/03/Scan.jpeg'
-        isVisible={hoverImage === ProjectName.Synflux}
+        isVisible={hoverImage === Works.Synflux}
       ></ProjectHoverImage>
     </div>
   )

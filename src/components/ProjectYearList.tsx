@@ -1,4 +1,5 @@
-import { $projectHoverImageAtom, ProjectName } from '../state/projectHoverImage'
+import { $projectHoverImageAtom } from '../state/ProjectHoverState'
+import { Works } from '../types/works'
 import ProjectListItem from './ProjectListItem'
 
 export default function ProjectYearList({ year }: { year: number }) {
@@ -9,20 +10,14 @@ export default function ProjectYearList({ year }: { year: number }) {
       </span>
       <ul className={'flex w-11/12 gap-x-20 gap-y-11 flex-wrap md:flex-row flex-col'}>
         <ProjectListItem
-          title='Mac Miller'
+          title={Works.RhizomatiksFencing}
           date='8-16-2023'
           tags={['Art Direction', 'Art Direction', 'Art Direction', 'Art Direction']}
-          onMouseEnter={() => {
-            $projectHoverImageAtom.set(ProjectName.RhizomatiksFencing)
-          }}
         />
         <ProjectListItem
-          title='Mac Miller'
+          title={Works.RhizomatiksFencing}
           tags={['Art Direction', 'Art Direction', 'Art Direction', 'Art Direction']}
           date='8-16-2023'
-          onMouseEnter={() => {
-            $projectHoverImageAtom.set(ProjectName.Synflux)
-          }}
         />
       </ul>
     </div>

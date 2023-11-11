@@ -1,9 +1,10 @@
 import dayjs from '../../lib/day'
+import { ModeToggle } from '../ModeToggle'
 import NavigationItem from '../layout/NavigationItem'
 
 export default function Navigation() {
   return (
-    <header className='fixed left-0 top-0 w-full z-50 bg-white'>
+    <header className='fixed left-0 top-0 w-full z-50'>
       <div className={'py-6 w-15 mx-6  md:mx-28 my-0'}>
         <h1 className='fixed left-7'>
           <a href='/' rel='prefetch-intent'>

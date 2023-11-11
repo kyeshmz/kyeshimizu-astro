@@ -66,7 +66,7 @@ export default function TeachingTable<TData, TValue>({
   })
 
   return (
-    <AccordionItem value='item-1'>
+    <AccordionItem value='item-6'>
       <AccordionTrigger>Teaching / Workshops</AccordionTrigger>
       <AccordionContent>
         <Table>
