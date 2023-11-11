@@ -10,8 +10,9 @@ import { ViewTransitions } from 'astro:transitions'
 import Navigation from '../components/layout/Navigation'
 import ProjectYearList from '../components/ProjectYearList'
 import '../styles/globals.css'
+import 'react-toastify/dist/ReactToastify.css'
 import Sidebar from '../components/layout/SideBar'
-
+import { ToastContainer } from 'react-toastify'
 const currentYear = new Date().getFullYear()
 
 const { class: className, title, description, keywords, url, twitterhandle, image } = Astro.props
@@ -34,6 +35,19 @@ const { class: className, title, description, keywords, url, twitterhandle, imag
   <body>
     <Navigation client:only='react' />
     <Sidebar />
+    <ToastContainer
+      client:only='react'
+      position='bottom-right'
+      autoClose={1000}
+      limit={3}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      draggable
+      pauseOnHover
+      theme='light'
+    />
 
     <main class='py-6 w-15 mx-6 md:mx-28 my-0 pt-[72px]'>
       <slot />
