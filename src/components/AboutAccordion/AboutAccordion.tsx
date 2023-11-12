@@ -10,6 +10,7 @@ import TalksTable, { type TalkTableRow, TalksTableColumn } from './TalksTable'
 import TeachingTable, { type TeachingTableRow } from './TeachingTable'
 import { TeachingTableColumn } from '@/src/components/AboutAccordion/TeachingTable'
 import { DataTableColumn } from '@/src/components/AboutAccordion/ExhibitionsTable'
+import GrantsTable, { type GrantsTableRow } from './GrantsTable'
 
 export default function AboutAccordion({
   PublicationData,
@@ -18,6 +19,7 @@ export default function AboutAccordion({
   TalkData,
   AwardData,
   TeachingData,
+  GrantData
 }: {
   PublicationData: PublicationTableRow[]
   MediaData: MediaTableRow[]
@@ -25,6 +27,7 @@ export default function AboutAccordion({
   TalkData: TalkTableRow[]
   AwardData: AwardTableRow[]
   TeachingData: TeachingTableRow[]
+  GrandData: GrantTableRow[]
 }) {
   return (
     <Accordion type='multiple' collapsible className='w-full' defaultValue={["item-1","item-2","item-3","item-4","item-5", "item-6"]}>
@@ -37,6 +40,7 @@ export default function AboutAccordion({
       <TalksTable columns={TalksTableColumn} data={TalkData}></TalksTable>
       <MediaTable columns={MediaTableColumn} data={MediaData}></MediaTable>
       <TeachingTable columns={TeachingTableColumn} data={TeachingData}></TeachingTable>
+      <GrantsTable columns={GrantTableColumn} data={GrantData}></GrantsTable>
     </Accordion>
   )
 }
