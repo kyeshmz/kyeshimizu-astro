@@ -33,16 +33,16 @@ const projects = defineCollection({
       z.literal(Works.AlgorithmicCouture),
       z.literal(Works.Harmonize),
       z.literal(Works.HumanLatentMetrics),
-      z.literal(Works.RhizomatiksFencing),
     ]),
     // description: z.string(),
-    youtube: z.string().optional(),
     date: z.string(),
     updatedDate: z
       .string()
       .optional()
       .transform((str) => (str ? new Date(str) : undefined)),
     tags: z.array(z.string()).default(['others']),
+    client: z.string().optional(),
+    youtube: z.string().optional(),
     publications: z.array(
       z.object({
         conference_name: z.string(),
@@ -67,7 +67,6 @@ const projects = defineCollection({
       z.object({
         exhibition_name: z.string(),
         date: z.string(),
-        // reference: z.string().optional(),
         city: z.string(),
         place: z.string(),
       }),

@@ -15,5 +15,4 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkModifiedTime, remarkReadingTime]
   },
-
 });

@@ -13,15 +13,12 @@ import type { PublicationTableRow } from '../components/AboutAccordion/Publicati
 import type { TalkTableRow } from '../components/AboutAccordion/TalksTable'
 import type { TeachingTableRow } from '../components/AboutAccordion/TeachingTable'
 
-const allPosts = await getCollection('projects')
 import { Content as AboutContent } from '../content/about/about.mdx'
-import ThemeToggle from '../components/ThemeToggle'
-import { ModeToggle } from '../components/ModeToggle'
-import { Button } from '../components/ui/button'
-import { GithubIcon, MailIcon } from 'lucide-react'
-import { GitHubLogoIcon, LinkedInLogoIcon, TwitterLogoIcon } from '@radix-ui/react-icons'
-import MailButton from '../components/MailButton'
+
 import SocialButtonRow from '../components/SocialButtonRow'
+import type { GrantTableRow } from '../components/AboutAccordion/GrantsTable'
+
+const allPosts = await getCollection('projects')
 ---
 
 <Layout>
@@ -98,8 +95,8 @@ import SocialButtonRow from '../components/SocialButtonRow'
           date: '',
         },
       ]}
-       GrantData={allPosts.flatMap((post) =>
-        (post.data.grants as GrantsTableRow[]).map((grant) => ({
+      GrantData={allPosts.flatMap((post) =>
+        (post.data.grants as GrantTableRow[]).map((grant) => ({
           ...grant,
           work: post.data.title,
         })),
