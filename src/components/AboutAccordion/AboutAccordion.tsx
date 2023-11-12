@@ -27,7 +27,7 @@ export default function AboutAccordion({
   TeachingData: TeachingTableRow[]
 }) {
   return (
-    <Accordion type='single' collapsible className='w-full'>
+    <Accordion type='multiple' collapsible className='w-full' defaultValue={["item-1","item-2","item-3","item-4","item-5", "item-6"]}>
       <ExhibitionsTable columns={DataTableColumn} data={ExhibitionData}></ExhibitionsTable>
       <PublicationsTable
         columns={PublicationTableColumn}

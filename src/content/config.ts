@@ -36,6 +36,7 @@ const projects = defineCollection({
       z.literal(Works.RhizomatiksFencing),
     ]),
     // description: z.string(),
+    youtube: z.string().optional(),
     date: z.string(),
     updatedDate: z
       .string()
