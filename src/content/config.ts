@@ -67,7 +67,7 @@ const projects = defineCollection({
       z.object({
         exhibition_name: z.string(),
         date: z.string(),
-        reference: z.string().optional(),
+        // reference: z.string().optional(),
         city: z.string(),
         place: z.string(),
       }),
