@@ -11,6 +11,8 @@ export const Works = {
   UrbanOrchestra: 'Urban Orchestra',
   SoranoProjection: 'Sorano Projection',
   HumanLatentMetrics: 'Human Latent Metrics',
+  Nanco: 'Nanco',
+  Xenon: 'Xenon',
 } as const
 
 // type SizeType = 'small' | 'medium' | 'large'

@@ -24,16 +24,7 @@ const blog = defineCollection({
 })
 const projects = defineCollection({
   schema: z.object({
-    title: z.union([
-      z.literal(Works.RhizomatiksFencing),
-      z.literal(Works.Synflux),
-      z.literal(Works.DeviationGame),
-      z.literal(Works.MorphingIdentity),
-      z.literal(Works.Aubik),
-      z.literal(Works.AlgorithmicCouture),
-      z.literal(Works.Harmonize),
-      z.literal(Works.HumanLatentMetrics),
-    ]),
+    title: z.nativeEnum(Works),
     // description: z.string(),
     date: z.string(),
     updatedDate: z

@@ -1,6 +1,6 @@
 export default function Sidebar() {
   return (
-    <div className={'float-left w-100'}>
+    <div className={'float-left w-100 relative'}>
       <span className={'fixed bottom-6 right-8 -rotate-90 whitespace-nowrap text-xs w-0'}>
         ( c ) 2015 - 2023
       </span>
