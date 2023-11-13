@@ -1,0 +1,20 @@
+---
+import ProjectHoverImages from '../components/ProjectHoverImages'
+import ProjectListItem from '../components/ProjectListItem'
+import { getCollection } from 'astro:content'
+import { Works } from '../types/works'
+const posts = await getCollection('projects')
+---
+
+<div class={'mb-14 w-100 overflow-hidden'}>
+  <span class={'cursor-pointer block float-right text-xs leading-4 tracking-wide '}> 2023</span>
+  <ul class={'flex w-11/12 gap-x-20 gap-y-11 flex-wrap md:flex-row flex-col'}>
+    {
+      posts.map((post) => {
+        return (
+          <ProjectListItem title={post.data.title} date={post.data.date} tags={post.data.tags} />
+        )
+      })
+    }
+  </ul>
+</div>

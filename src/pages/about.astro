@@ -22,85 +22,93 @@ const allPosts = await getCollection('projects')
 ---
 
 <Layout>
-  <div>
-    <div class='flex space-between pb-8'>
-      <img
-        class='h-[500px]'
-        src='https://images.unsplash.com/photo-1698948233567-341329ce43a9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMHx8fGVufDB8fHx8fA%3D%3D'
-      />
-      <div class='flex flex-col'>
-        <p><AboutContent /></p>
+  <div class='flex pb-8 md:flex-row flex-col gap-4 w-full'>
+    <img
+      class='h-[500px]'
+      src='https://images.unsplash.com/photo-1698948233567-341329ce43a9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMHx8fGVufDB8fHx8fA%3D%3D'
+    />
+    <div class='flex flex-col gap-2 w-full'>
+      <p class='wrap-'><AboutContent /></p>
 
-        <SocialButtonRow client:only='react' />
-      </div>
+      <SocialButtonRow client:only='react' />
     </div>
+  </div>
 
-    <Separator />
-    <!-- <ScrollableTable client:only='react' /> -->
-    <AboutAccordion
-      client:only='react'
-      PublicationData={[
-        ...allPosts.flatMap((post) =>
+  <Separator />
+  <!-- <ScrollableTable client:only='react' /> -->
+  <AboutAccordion
+    client:only='react'
+    PublicationData={[
+      ...allPosts
+        .flatMap((post) =>
           (post.data.publications as PublicationTableRow[]).map((publication) => ({
             ...publication,
             work: post.data.title,
           })),
-        ),
-      ]}
-      MediaData={[
-        ...allPosts.flatMap((post) =>
+        )
+        .sort((a, b) => b.year - a.year),
+    ]}
+    MediaData={[
+      ...allPosts
+        .flatMap((post) =>
           (post.data.media as MediaTableRow[]).map((media) => ({
             ...media,
             work: post.data.title,
           })),
-        ),
-      ]}
-      ExhibitionData={allPosts.flatMap((post) =>
-        (post.data.exhibitions as ExhibitionTableRow[]).map((exhibition) => ({
-          ...exhibition,
-          work: post.data.title,
-        })),
-      )}
-      AwardData={allPosts.flatMap((post) =>
+        )
+        .sort((a, b) => b.year - a.year),
+    ]}
+    ExhibitionData={allPosts.flatMap((post) =>
+      (post.data.exhibitions as ExhibitionTableRow[]).map((exhibition) => ({
+        ...exhibition,
+        work: post.data.title,
+      })),
+    )}
+    AwardData={allPosts
+      .flatMap((post) =>
         (post.data.awards as AwardTableRow[]).map((award) => ({
           ...award,
           work: post.data.title,
         })),
-      )}
-      TalkData={allPosts.flatMap((post) =>
+      )
+      .sort((a, b) => b.year - a.year)}
+    TalkData={allPosts
+      .flatMap((post) =>
         (post.data.talks as TalkTableRow[]).map((talk) => ({
           ...talk,
           work: post.data.title,
         })),
-      )}
-      TeachingData={[
-        {
-          workshop_name: 'TA for Data Driven Art Summer School with Yasuaki Kakehi, Daito Manabe',
-          place: 'Keio University SFC',
-          date: '2017/2018',
-        },
-        {
-          workshop_name: 'TA for Moving Picture with Saito Tatsuya',
-          place: 'Keio University SFC',
-          date: '2018',
-        },
-        {
-          workshop_name: 'Workshop Name',
-          place: '',
-          date: '',
-        },
-        {
-          workshop_name: 'Workshop Name',
-          place: '',
-          date: '',
-        },
-      ]}
-      GrantData={allPosts.flatMap((post) =>
+      )
+      .sort((a, b) => b.year - a.year)}
+    TeachingData={[
+      {
+        workshop_name: 'TA for Data Driven Art Summer School with Yasuaki Kakehi, Daito Manabe',
+        place: 'Keio University SFC',
+        date: '2017/2018',
+      },
+      {
+        workshop_name: 'TA for Moving Picture with Saito Tatsuya',
+        place: 'Keio University SFC',
+        date: '2018',
+      },
+      {
+        workshop_name: 'Workshop Name',
+        place: '',
+        date: '',
+      },
+      {
+        workshop_name: 'Workshop Name',
+        place: '',
+        date: '',
+      },
+    ]}
+    GrantData={allPosts
+      .flatMap((post) =>
         (post.data.grants as GrantTableRow[]).map((grant) => ({
           ...grant,
           work: post.data.title,
         })),
-      )}
-    />
-  </div>
+      )
+      .sort((a, b) => b.year - a.year)}
+  />
 </Layout>

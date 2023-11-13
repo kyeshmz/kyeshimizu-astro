@@ -67,7 +67,7 @@ export default function GrantsTable<TData, TValue>({
 
   return (
     <AccordionItem value='item-7'>
-      <AccordionTrigger>Teaching / Workshops</AccordionTrigger>
+      <AccordionTrigger>Participating Grants</AccordionTrigger>
       <AccordionContent>
         <Table>
           <TableHeader>

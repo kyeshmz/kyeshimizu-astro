@@ -10,12 +10,12 @@ export default function ProjectYearList({ year }: { year: number }) {
       </span>
       <ul className={'flex w-11/12 gap-x-20 gap-y-11 flex-wrap md:flex-row flex-col'}>
         <ProjectListItem
-          title={Works.RhizomatiksFencing}
+          title={Works.Nanco}
           date='8-16-2023'
           tags={['Art Direction', 'Art Direction', 'Art Direction', 'Art Direction']}
         />
         <ProjectListItem
-          title={Works.RhizomatiksFencing}
+          title={Works.Nanco}
           tags={['Art Direction', 'Art Direction', 'Art Direction', 'Art Direction']}
           date='8-16-2023'
         />
