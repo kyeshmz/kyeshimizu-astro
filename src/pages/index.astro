@@ -7,11 +7,47 @@ import ProjectListItem from '../components/ProjectListItem'
 import { getCollection } from 'astro:content'
 import { Works } from '../types/works'
 const posts = await getCollection('projects')
-// const posts = await Astro.glob('../content/projects/*.mdx') // returns an array of posts that live at ./src/pages/post/*.md
-console.log(posts)
+
+// Group posts by year
+const postsByYear = posts.reduce<{ [year: string]: typeof posts }>((acc, post) => {
+  const year = new Date(post.data.date).getFullYear()
+  if (!acc[year]) {
+    acc[year] = []
+  }
+  acc[year].push(post)
+  return acc
+}, {})
+
+// Sort years in descending order
+const sortedYears = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a))
 ---
 
 <Layout>
+  <section class='pt-3 w-full'>
+    <ProjectYearList year={2023} client:only='react' />
+    <ProjectHoverImages client:only='react' />
+    {
+      sortedYears.map((year) => (
+        <>
+          <span class={'cursor-pointer block float-right text-xs leading-4 tracking-wide '}>
+            {year}
+          </span>
+          <ul class={'flex w-11/12 gap-x-20 gap-y-11 flex-wrap md:flex-row flex-col'}>
+            {postsByYear[year].map((post) => (
+              <ProjectListItem
+                title={post.data.title}
+                date={post.data.date}
+                tags={post.data.tags}
+              />
+            ))}
+          </ul>
+        </>
+      ))
+    }
+  </section>
+</Layout>
+
+<!-- <Layout>
   <section class='pt-3 w-full'>
     <ProjectYearList year={2023} client:only='react' />
     <ProjectHoverImages client:only='react' />
@@ -32,4 +68,4 @@ console.log(posts)
       </ul>
     </div>
   </section>
-</Layout>
+</Layout> -->

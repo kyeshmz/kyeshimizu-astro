@@ -3,10 +3,10 @@ import {
   TwitterLogoIcon,
   LinkedInLogoIcon,
   InstagramLogoIcon,
+  EnvelopeClosedIcon,
 } from '@radix-ui/react-icons'
 import { Button } from './ui/button'
 import { Separator } from './ui/separator'
-import { FacebookIcon, MailIcon } from 'lucide-react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { toast } from 'react-toastify'
 
@@ -17,7 +17,7 @@ export default function SocialButtonRow() {
     <div className='flex flex-col gap-2'>
       <p>Socials</p>
       <Separator />
-      <div className='flex w-full md:flex-row flex-col gap-4'>
+      <div className='flex md:flex-row flex-col min-w-0 flex-wrap gap-4'>
         <SocialButton href='https://github.com/kyeshmz'>
           <GitHubLogoIcon />
           <p>@kyeshmz</p>
@@ -36,9 +36,9 @@ export default function SocialButtonRow() {
         </SocialButton>
 
         <CopyToClipboard text='hello@kyeshimizu.com'>
-          <Button variant='outline' className='flex space-between' onClick={notify}>
-            <MailIcon />
-            <p>hello@kyeshimizu.com</p>
+          <Button variant='outline' className='flex gap-2  justiy-center' onClick={notify}>
+            <EnvelopeClosedIcon />
+            <p className='text-sm'>hello@kyeshimizu.com</p>
           </Button>
         </CopyToClipboard>
       </div>

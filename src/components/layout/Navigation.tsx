@@ -33,7 +33,7 @@ export default function Navigation() {
         <nav className='flex md:justify-between items-center justify-end'>
           <ul className='list-none m-0 p-0 flex gap-5'>
             <NavigationItem title='About' />
-            <NavigationItem title='Projects' />
+            {/* <NavigationItem title='Projects' /> */}
             <li className={'underline-offset-4	hover:underline'}>
               <a
                 href={

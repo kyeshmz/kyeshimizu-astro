@@ -33,6 +33,10 @@ export type TalkTableRow = {
 
 export const TalksTableColumn: ColumnDef<TalkTableRow>[] = [
   {
+    accessorKey: 'work',
+    header: 'Work',
+  },
+  {
     accessorKey: 'talk_name',
     header: 'Talk',
   },

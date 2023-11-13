@@ -32,9 +32,11 @@ export default function AboutAccordion({
 }) {
   return (
     <Accordion
-      type='multiple'
-      className='w-full'
-      defaultValue={['item-1', 'item-2', 'item-3', 'item-4', 'item-5', 'item-6']}
+      // type='multiple'
+      type='single'
+      collapsible
+      className='w-full animate-in  duration-700 fade-in fade-out'
+      defaultValue='item-2'
     >
       <ExhibitionsTable columns={DataTableColumn} data={ExhibitionData}></ExhibitionsTable>
       <PublicationsTable

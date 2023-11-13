@@ -31,10 +31,6 @@ export type TeachingTableRow = {
 
 export const TeachingTableColumn: ColumnDef<TeachingTableRow>[] = [
   {
-    accessorKey: 'work',
-    header: 'Work',
-  },
-  {
     accessorKey: 'workshop_name',
     header: 'Workshop Name',
   },
@@ -91,27 +87,7 @@ export default function TeachingTable<TData, TValue>({
                 <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      <HoverCard key={row.id}>
-                        <HoverCardTrigger key={row.id}>
-                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                        </HoverCardTrigger>
-                        <HoverCardContent className='w-80' key={row.getVisibleCells()[0].id}>
-                          <a
-                            href={String(row.getVisibleCells()[0].getValue())
-                              .toLocaleLowerCase()
-                              .replace(/ /g, '-')}
-                          >
-                            <div className='flex justify-between items-center'>
-                              <h4 className='text-sm font-semibold'>
-                                {String(row.getVisibleCells()[0].getValue())}
-                              </h4>
-                              <ArrowUpRight className='h-4 w-4' />
-                            </div>
-
-                            <p className='text-sm'>Click to know more about the project</p>
-                          </a>
-                        </HoverCardContent>
-                      </HoverCard>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </TableCell>
                   ))}
                 </TableRow>

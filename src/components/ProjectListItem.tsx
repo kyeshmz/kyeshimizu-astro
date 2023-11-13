@@ -36,8 +36,8 @@ export default function ProjectListItem({
         {title}
       </a>
       <div className=''>
-        {tags.map((tag) => {
-          return <ProjectTag title={tag}></ProjectTag>
+        {tags.map((tag, i) => {
+          return <ProjectTag title={tag} key={i}></ProjectTag>
         })}
       </div>
     </li>
