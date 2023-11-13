@@ -11,7 +11,7 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://kyeshimizu.com',
-  integrations: [prefetch(), sitemap(), tailwind(), mdx(), react()],
+  integrations: [prefetch(), sitemap(), tailwind({      applyBaseStyles: false,}), mdx(), react()],
   markdown: {
     remarkPlugins: [remarkModifiedTime, remarkReadingTime]
   },

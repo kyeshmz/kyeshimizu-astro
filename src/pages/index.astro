@@ -13,7 +13,6 @@ console.log(posts)
 
 <Layout>
   <section class='pt-3 w-full'>
-    <!-- TODO we need to break this down so that we dont have to make  -->
     <ProjectYearList year={2023} client:only='react' />
     <ProjectHoverImages client:only='react' />
     <div class={'mb-14 w-100 overflow-hidden'}>
@@ -30,22 +29,6 @@ console.log(posts)
             )
           })
         }
-        <!-- <ProjectListItem
-          title={Works.BaobaoDazzle}
-          date='8-16-2023'
-          tags={['Art Direction', 'Art Direction', 'Art Direction', 'Art Direction']}
-          onMouseEnter={() => {
-            // $projectHoverImageAtom.set(ProjectName.RhizomatiksFencing)
-          }}
-        />
-        <ProjectListItem
-          title={Works.BaobaoDazzle}
-          tags={['Art Direction', 'Art Direction', 'Art Direction', 'Art Direction']}
-          date='8-16-2023'
-          onMouseEnter={() => {
-            // $projectHoverImageAtom.set(ProjectName.Synflux)
-          }}
-        /> -->
       </ul>
     </div>
   </section>

@@ -4,7 +4,7 @@ export const Works = {
   Aubik: 'Aubik',
   MorphingIdentity: 'Morphing Identity',
   DeviationGame: 'Deviation Game',
-  RhizomatiksFencing: 'Rhizomatiks Fencing',
+  FencingVisualized: 'Fencing Visualized',
   Synflux: 'Synflux',
   BaobaoDazzle: 'Baobao Dazzle',
   DoubleHorizon: 'Double Horizon',
@@ -13,6 +13,8 @@ export const Works = {
   HumanLatentMetrics: 'Human Latent Metrics',
   Nanco: 'Nanco',
   Xenon: 'Xenon',
+  WhoElseIfNotYou: 'Who else if not you?',
+  AlgorithmicUrbanComposition: 'Algorithmic Urban Composition',
 } as const
 
 // type SizeType = 'small' | 'medium' | 'large'
