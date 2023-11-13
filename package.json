@@ -50,7 +50,7 @@
     "cloudflare": "^2.9.1",
     "clsx": "^2.0.0",
     "eslint": "^8.36.0",
-    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-mdx": "^2.2.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-simple-import-sort": "^8.0.0",
