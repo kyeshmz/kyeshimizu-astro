@@ -3,18 +3,36 @@ import ProjectHoverImages from '../components/ProjectHoverImages'
 import ProjectListItem from '../components/ProjectListItem'
 import { getCollection } from 'astro:content'
 import { Works } from '../types/works'
+
 const posts = await getCollection('projects')
+
+// Group posts by year
+const postsByYear = posts.reduce<{ [year: string]: typeof posts }>((acc, post) => {
+  const year = new Date(post.data.date).getFullYear()
+  if (!acc[year]) {
+    acc[year] = []
+  }
+  acc[year].push(post)
+  return acc
+}, {})
+
+// Sort years in descending order
+const sortedYears = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a))
 ---
 
 <div class={'mb-14 w-100 overflow-hidden'}>
-  <span class={'cursor-pointer block float-right text-xs leading-4 tracking-wide '}> 2023</span>
-  <ul class={'flex w-11/12 gap-x-20 gap-y-11 flex-wrap md:flex-row flex-col'}>
-    {
-      posts.map((post) => {
-        return (
-          <ProjectListItem title={post.data.title} date={post.data.date} tags={post.data.tags} />
-        )
-      })
-    }
-  </ul>
+  {
+    sortedYears.map((year) => (
+      <div class='pb-8'>
+        <span class={'cursor-pointer block float-right text-xs leading-4 tracking-wide '}>
+          {year}
+        </span>
+        <ul class={'flex w-11/12 gap-x-20 gap-y-11 flex-wrap md:flex-row flex-col'}>
+          {postsByYear[year].map((post) => (
+            <ProjectListItem title={post.data.title} date={post.data.date} tags={post.data.tags} />
+          ))}
+        </ul>
+      </div>
+    ))
+  }
 </div>

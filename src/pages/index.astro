@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro'
 
-import ProjectYearList from '../components/ProjectYearList'
 import ProjectHoverImages from '../components/ProjectHoverImages'
 import ProjectListItem from '../components/ProjectListItem'
 import { getCollection } from 'astro:content'
 import { Works } from '../types/works'
+import ProjectYearList from '../components/ProjectYearList.astro'
 const posts = await getCollection('projects')
 
 // Group posts by year
@@ -24,26 +24,8 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a
 
 <Layout>
   <section class='pt-3 w-full'>
-    <ProjectYearList year={2023} client:only='react' />
+    <ProjectYearList />
     <ProjectHoverImages client:only='react' />
-    {
-      sortedYears.map((year) => (
-        <>
-          <span class={'cursor-pointer block float-right text-xs leading-4 tracking-wide '}>
-            {year}
-          </span>
-          <ul class={'flex w-11/12 gap-x-20 gap-y-11 flex-wrap md:flex-row flex-col'}>
-            {postsByYear[year].map((post) => (
-              <ProjectListItem
-                title={post.data.title}
-                date={post.data.date}
-                tags={post.data.tags}
-              />
-            ))}
-          </ul>
-        </>
-      ))
-    }
   </section>
 </Layout>
 

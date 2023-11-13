@@ -1,6 +1,14 @@
 import { ModeToggle } from '../ModeToggle'
 import NavigationItem from '../layout/NavigationItem'
 
+import dayjs from 'dayjs'
+import timezone from 'dayjs/plugin/timezone'
+import utc from 'dayjs/plugin/utc'
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
+dayjs.tz.setDefault('Asia/Tokyo')
+
 export default function Navigation() {
   function getCurrentDate() {
     const now = new Date()
@@ -23,7 +31,7 @@ export default function Navigation() {
     return formattedDate
   }
   return (
-    <header className='fixed left-0 top-0 w-full z-50'>
+    <header className='fixed left-0 top-0 w-full z-50 bg-[hsl(var(--background))] '>
       <div className={'py-6 w-15 mx-6  md:mx-28 my-0'}>
         <h1 className='fixed left-7'>
           <a href='/' rel='prefetch-intent'>
@@ -49,7 +57,7 @@ export default function Navigation() {
             <NavigationItem title='Store' /> */}
           </ul>
           <p className='text-[13px] leading-4 tracking-wide float-right m-0 p-0 hidden md:inline'>
-            TYO: {getCurrentDate()}
+            TYO: {dayjs().tz('Asia/Tokyo').format('hh:mm a - MMMM d, YYYY (Z)')}
           </p>
         </nav>
       </div>

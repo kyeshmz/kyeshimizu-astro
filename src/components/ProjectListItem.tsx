@@ -13,7 +13,9 @@ export default function ProjectListItem({
 }) {
   return (
     <li
-      className={'flex flex-col w-6/12 max-w-[160px] animate-in  duration-700 fade-in fade-out'}
+      className={
+        'flex flex-col w-6/12 max-w-[160px] animate-in  duration-700 fade-in fade-out flex-wrap'
+      }
       onMouseEnter={() => {
         $projectHoverImageAtom.set(title)
       }}
@@ -35,11 +37,10 @@ export default function ProjectListItem({
       >
         {title}
       </a>
-      <div className=''>
-        {tags.map((tag, i) => {
-          return <ProjectTag title={tag} key={i}></ProjectTag>
-        })}
-      </div>
+
+      {tags.map((tag, i) => {
+        return <ProjectTag title={tag} key={i}></ProjectTag>
+      })}
     </li>
   )
 }
