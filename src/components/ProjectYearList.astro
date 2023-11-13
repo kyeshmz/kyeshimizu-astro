@@ -4,10 +4,15 @@ import ProjectListItem from '../components/ProjectListItem'
 import { getCollection } from 'astro:content'
 import { Works } from '../types/works'
 
+const { tags } = Astro.props
+
 const posts = await getCollection('projects')
 
+// Filter posts by tag if tag is provided
+const filteredPosts = tags ? posts.filter((post) => post.data.tags.includes(tags)) : posts
+
 // Group posts by year
-const postsByYear = posts.reduce<{ [year: string]: typeof posts }>((acc, post) => {
+const postsByYear = filteredPosts.reduce<{ [year: string]: typeof posts }>((acc, post) => {
   const year = new Date(post.data.date).getFullYear()
   if (!acc[year]) {
     acc[year] = []
@@ -20,7 +25,7 @@ const postsByYear = posts.reduce<{ [year: string]: typeof posts }>((acc, post) =
 const sortedYears = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a))
 ---
 
-<div class={'mb-14 w-100 overflow-hidden'}>
+<div class={'mb-14 w-100 overflow-hidden'} transition:animate='fade'>
   {
     sortedYears.map((year) => (
       <div class='pb-8'>

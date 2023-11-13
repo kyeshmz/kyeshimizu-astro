@@ -61,7 +61,7 @@ export default function AwardTable<TData, TValue>({
   })
 
   return (
-    <AccordionItem value='item-3'>
+    <AccordionItem value='item-1'>
       <AccordionTrigger>Awards</AccordionTrigger>
       <AccordionContent>
         <Table>

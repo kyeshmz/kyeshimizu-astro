@@ -57,9 +57,10 @@ import { ToastContainer } from 'react-toastify'
     <ViewTransitions />
   </head>
   <body>
-    <Navigation client:only='react' />
-    <Sidebar />
+    <Navigation client:only='react' transition:persist />
+    <Sidebar transition:persist />
     <ToastContainer
+      transition:persist
       client:only='react'
       position='bottom-right'
       autoClose={1000}

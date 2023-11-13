@@ -12,8 +12,13 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props
 const { Content } = await entry.render()
+import { YouTube } from '@astro-community/astro-embed-youtube'
 ---
 
 <Layout>
+  <div class='flex justify-center'>
+    {entry.data.youtube && <YouTube id={entry.data.youtube!} class={'block w-full'} />}
+  </div>
+
   <Content />
 </Layout>

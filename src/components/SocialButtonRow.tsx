@@ -48,7 +48,7 @@ export default function SocialButtonRow() {
 
 function SocialButton({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <a href={href} target='_blank' rel='noopener noreferrer'>
+    <a href={href} target='_blank' rel='noopener noreferrer prefetch-intent'>
       <Button variant='outline' className='w-full gap-2 flex justify-center'>
         {children}
       </Button>
