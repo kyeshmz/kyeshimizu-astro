@@ -5,6 +5,7 @@ import { Works } from '../types/works'
 
 export default function ProjectHoverImages() {
   //TODO: we need to populate the images from the front matter or something
+  //@ts-ignore
   const hoverImage = useStore($projectHoverImageAtom)
   return (
     <div>
