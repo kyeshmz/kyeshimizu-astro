@@ -13,9 +13,7 @@ export default function ProjectListItem({
 }) {
   return (
     <li
-      className={
-        'flex flex-col w-6/12 max-w-[160px] animate-in  duration-700 fade-in fade-out flex-wrap'
-      }
+      className={'flex flex-col w-6/12 max-w-[160px]  flex-wrap '}
       onMouseEnter={() => {
         $projectHoverImageAtom.set(title)
       }}

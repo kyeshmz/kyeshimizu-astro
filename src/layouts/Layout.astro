@@ -6,11 +6,12 @@ import SectionContainer from '@/src/components/SectionContainer.astro'
 import SEO from '@/src/components/SEO.astro'
 import { SOCIALS } from '../config'
 import { ViewTransitions } from 'astro:transitions'
-import Navigation from '../components/layout/Navigation'
+import Navigation from '../components/layout/Navigation.astro'
 import '../styles/globals.css'
 import 'react-toastify/dist/ReactToastify.css'
 import Sidebar from '../components/layout/SideBar'
 import { ToastContainer } from 'react-toastify'
+import NavigationClock from '../components/layout/NavigationClock'
 ---
 
 <!doctype html>
@@ -57,9 +58,12 @@ import { ToastContainer } from 'react-toastify'
     <ViewTransitions />
   </head>
   <body>
-    <Navigation client:only='react' />
-    <Sidebar />
+    <Navigation transition:persist>
+      <NavigationClock transition:persist client:load client:only='react' />
+    </Navigation>
+    <Sidebar transition:persist />
     <ToastContainer
+      transition:persist
       client:only='react'
       position='bottom-right'
       autoClose={1000}

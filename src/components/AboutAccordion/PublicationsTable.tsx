@@ -67,7 +67,7 @@ export default function PublicationsTable<TData, TValue>({
   })
 
   return (
-    <AccordionItem value='item-2'>
+    <AccordionItem value='item-3'>
       <AccordionTrigger>Publications / Symposiums</AccordionTrigger>
       <AccordionContent>
         <Table>

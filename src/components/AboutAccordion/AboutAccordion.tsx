@@ -36,14 +36,15 @@ export default function AboutAccordion({
       type='single'
       collapsible
       className='w-full animate-in  duration-700 fade-in fade-out'
-      defaultValue='item-2'
+      defaultValue='item-1'
     >
+      <AwardTable columns={AwardTableColumn} data={AwardData}></AwardTable>
       <ExhibitionsTable columns={DataTableColumn} data={ExhibitionData}></ExhibitionsTable>
       <PublicationsTable
         columns={PublicationTableColumn}
         data={PublicationData}
       ></PublicationsTable>
-      <AwardTable columns={AwardTableColumn} data={AwardData}></AwardTable>
+
       <TalksTable columns={TalksTableColumn} data={TalkData}></TalksTable>
       <MediaTable columns={MediaTableColumn} data={MediaData}></MediaTable>
       <TeachingTable columns={TeachingTableColumn} data={TeachingData}></TeachingTable>

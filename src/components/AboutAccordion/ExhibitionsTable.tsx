@@ -71,7 +71,7 @@ export default function ExhibitionsTable<TData, TValue>({
   })
 
   return (
-    <AccordionItem value='item-1'>
+    <AccordionItem value='item-2'>
       <AccordionTrigger>Exhibitions</AccordionTrigger>
       <AccordionContent>
         <Table>

@@ -1,0 +1,34 @@
+---
+import NavigationItem from './NavigationItem'
+---
+
+<header class='fixed left-0 top-0 w-full z-50 bg-[hsl(var(--background))]'>
+  <div class={'py-6 w-15 mx-6  md:mx-28 my-0'}>
+    <h1 class='fixed left-7'>
+      <a href='/' rel='prefetch-intent'> K / S</a>
+    </h1>
+    <nav class='flex md:justify-between items-center justify-end'>
+      <ul class='list-none m-0 p-0 flex gap-5'>
+        <NavigationItem title='About' />
+        {/* <NavigationItem title='Projects' /> */}
+        <li class={'underline-offset-4	hover:underline'}>
+          <a
+            rel='prefetch-intent'
+            href={'https://docs.google.com/document/d/1RqA2MraEd-mTt8dUOvBCjQ2gB9e0jYut/edit?usp=sharing&ouid=100481767147351988160&rtpof=true&sd=true'}
+            class={''}
+          >
+            CV
+          </a>
+        </li>
+
+        {
+          /* <NavigationItem title='Studies' />
+          <NavigationItem title='Store' /> */
+        }
+      </ul>
+      <div class='float-right m-0 p-0 hidden md:inline'>
+        <slot />
+      </div>
+    </nav>
+  </div>
+</header>

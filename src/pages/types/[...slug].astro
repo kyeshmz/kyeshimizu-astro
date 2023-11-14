@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+import ProjectHoverImages from '../../components/ProjectHoverImages'
+import ProjectYearList from '../../components/ProjectYearList.astro'
+import { getCollection } from 'astro:content'
+import { ProjectTags } from '../../types/ProjectTags'
+
+export async function getStaticPaths() {
+  const tagsArray = Object.values(ProjectTags)
+
+  return tagsArray.map((entry) => ({
+    params: { slug: entry },
+  }))
+}
+
+const { slug } = Astro.params
+---
+
+<Layout>
+  <section class='pt-3 w-full'>
+    <ProjectYearList tags={slug} transition:persist />
+    <ProjectHoverImages client:only='react' />
+  </section>
+</Layout>
