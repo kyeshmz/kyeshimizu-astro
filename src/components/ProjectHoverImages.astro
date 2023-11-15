@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content'
+import ProjectHoverImage from './ProjectHoverImage'
+
+const posts = await getCollection('projects')
+
+const hoverImages: Array<string> = []
+// get the hover image of each project
+posts.map((post) => {
+  if (post.data.hoverImage) hoverImages.push(post.data.hoverImage)
+})
+---
+
+{
+  hoverImages.length > 0 &&
+    hoverImages.map((hoverImage) => {
+      console.log(hoverImage)
+      return <ProjectHoverImage client:only='react' src={hoverImage} />
+    })
+}
+
+<!-- <ProjectHoverImage
+  src='https://public-library.org/wp-content/uploads/2023/08/Screenshot-2023-05-09-at-9.53.17-AM.png'
+/>
+<ProjectHoverImage src='https://public-library.org/wp-content/uploads/2023/03/Scan.jpeg' /> -->

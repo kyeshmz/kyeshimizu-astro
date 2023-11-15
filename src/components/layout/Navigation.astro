@@ -1,5 +1,16 @@
 ---
 import NavigationItem from './NavigationItem'
+import {
+  DropdownMenu,
+  DropdownMenuItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from '../ui/dropdown-menu'
+import { ProjectTags } from '../../types/ProjectTags'
+import { Sun, Moon } from 'lucide-react'
+import { Button } from '../ui/button'
+
+const tagsArray = Object.values(ProjectTags)
 ---
 
 <header class='fixed left-0 top-0 w-full z-50 bg-[hsl(var(--background))]'>
@@ -11,6 +22,7 @@ import NavigationItem from './NavigationItem'
       <ul class='list-none m-0 p-0 flex gap-5'>
         <NavigationItem title='About' />
         {/* <NavigationItem title='Projects' /> */}
+
         <li class={'underline-offset-4	hover:underline'}>
           <a
             rel='prefetch-intent'

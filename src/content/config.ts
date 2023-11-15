@@ -13,6 +13,7 @@ const projects = defineCollection({
     tags: z.array(z.string()).default(['others']),
     client: z.string().optional(),
     youtube: z.string().optional(),
+    hoverImage: z.string().optional(),
     publications: z.array(
       z.object({
         conference_name: z.string(),
