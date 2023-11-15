@@ -6,10 +6,12 @@ export default function ProjectListItem({
   date,
   title,
   tags,
+  selectedTag,
 }: {
   date: string
   title: WorkType
   tags: Array<string>
+  selectedTag?: string
 }) {
   return (
     <li
@@ -37,7 +39,7 @@ export default function ProjectListItem({
       </a>
 
       {tags.map((tag, i) => {
-        return <ProjectTag title={tag} key={i}></ProjectTag>
+        return <ProjectTag title={tag} key={i} isSelected={tag === selectedTag}></ProjectTag>
       })}
     </li>
   )

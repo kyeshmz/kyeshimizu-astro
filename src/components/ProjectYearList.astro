@@ -34,7 +34,12 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a
         </span>
         <ul class={'flex w-11/12 gap-x-20 gap-y-11 flex-wrap md:flex-row flex-col'}>
           {postsByYear[year].map((post) => (
-            <ProjectListItem title={post.data.title} date={post.data.date} tags={post.data.tags} />
+            <ProjectListItem
+              title={post.data.title}
+              date={post.data.date}
+              tags={post.data.tags}
+              selectedTag={tags}
+            />
           ))}
         </ul>
       </div>
