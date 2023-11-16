@@ -36,7 +36,7 @@ export default function SocialButtonRow() {
         </SocialButton>
 
         <CopyToClipboard text='hello@kyeshimizu.com'>
-          <Button variant='outline' className='flex gap-2  justiy-center' onClick={notify}>
+          <Button variant='secondary' className='flex gap-2  justiy-center' onClick={notify}>
             <EnvelopeClosedIcon />
             <p className='text-sm'>hello@kyeshimizu.com</p>
           </Button>
@@ -49,7 +49,7 @@ export default function SocialButtonRow() {
 function SocialButton({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <a href={href} target='_blank' rel='noopener noreferrer prefetch-intent'>
-      <Button variant='outline' className='w-full gap-2 flex justify-center'>
+      <Button variant='secondary' className='w-full gap-2 flex justify-center'>
         {children}
       </Button>
     </a>

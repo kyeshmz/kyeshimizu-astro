@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content'
 import Layout from '../../layouts/Layout.astro'
+import { Picture } from 'astro:assets'
+import { YouTube } from '@astro-community/astro-embed-youtube'
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('projects')
@@ -12,10 +14,32 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props
 const { Content } = await entry.render()
-import { YouTube } from '@astro-community/astro-embed-youtube'
 ---
 
 <Layout>
+  {
+    entry.data.hoverVideo && (
+      <video
+        src={entry.data.hoverVideo}
+        autoplay
+        muted
+        transition:persist
+        transition:name={entry.data.hoverVideo}
+      />
+    )
+  }
+  {
+    entry.data.hoverImage && (
+      <Picture
+        formats={['avif', 'webp']}
+        src={entry.data.hoverImage}
+        transition:persist
+        alt='A description of my image.'
+        transition:name={entry.data.hoverImage.src}
+      />
+    )
+  }
+
   <div class='flex justify-center'>
     {entry.data.youtube && <YouTube id={entry.data.youtube!} class={'block w-full'} />}
   </div>

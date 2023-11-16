@@ -1,20 +1,26 @@
 import { useStore } from '@nanostores/react'
-import { Image } from 'astro:assets'
 import clsx from 'clsx'
 import { $projectHoverImageAtom } from '../state/ProjectHoverState'
 
-export default function ProjectHoverImage({ src }: { src: string }) {
+export default function ProjectHoverImage({
+  src,
+  children,
+}: {
+  src: string
+  children: React.ReactNode
+}) {
   //@ts-ignore
   const hoverImage = useStore($projectHoverImageAtom)
   //TODO: we need to populate the images from the front matter or something
   return (
     <div
       className={clsx(
-        'float-right h-auto w-100 max-w-lg',
+        'float-right h-auto w-100 max-w-lg ',
+        // 'visible',
         hoverImage === src ? 'visible' : 'hidden',
       )}
     >
-      <img src={src}></img>
+      {children}
     </div>
   )
 }

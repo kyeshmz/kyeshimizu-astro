@@ -25,6 +25,6 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a
 <Layout>
   <section class='pt-3 w-full'>
     <ProjectYearList transition:persist />
-    <ProjectHoverImages client:only='react' />
+    <ProjectHoverImages />
   </section>
 </Layout>

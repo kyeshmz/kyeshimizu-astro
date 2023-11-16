@@ -2,9 +2,6 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <SEO /> component.
 
-import SectionContainer from '@/src/components/SectionContainer.astro'
-import SEO from '@/src/components/SEO.astro'
-import { SOCIALS } from '../config'
 import { ViewTransitions } from 'astro:transitions'
 import Navigation from '../components/layout/Navigation.astro'
 import '../styles/globals.css'
@@ -12,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import Sidebar from '../components/layout/SideBar'
 import { ToastContainer } from 'react-toastify'
 import NavigationClock from '../components/layout/NavigationClock'
+import SEO from '../components/layout/SEO.astro'
 ---
 
 <!doctype html>
@@ -27,7 +25,7 @@ import NavigationClock from '../components/layout/NavigationClock'
 
     <SEO
       title='Kye Shimizu'
-      description='A heavily optimized description full of well-researched keywords.'
+      description='A personal portfolio of Kye Shimizu'
       openGraph={{
         basic: {
           title: 'Kye Shimizu',
@@ -87,7 +85,7 @@ import NavigationClock from '../components/layout/NavigationClock'
           return localStorage.getItem('theme')
         }
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark'
+          return 'light'
         }
         return 'light'
       })()

@@ -1,8 +1,6 @@
 ---
-import ProjectHoverImages from '../components/ProjectHoverImages'
 import ProjectListItem from '../components/ProjectListItem'
 import { getCollection } from 'astro:content'
-import { Works } from '../types/works'
 
 const { tags } = Astro.props
 
@@ -28,13 +26,12 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a
 <div class={'mb-14 w-100 overflow-hidden'} transition:animate='slide'>
   {
     sortedYears.map((year) => (
-      <div class='pb-8'>
-        <span class={'cursor-pointer block float-right text-xs leading-4 tracking-wide '}>
-          {year}
-        </span>
+      <div class='pb-16'>
+        <span class={' block float-right text-xs leading-4 tracking-wide '}>{year}</span>
         <ul class={'flex w-11/12 gap-x-20 gap-y-11 flex-wrap md:flex-row flex-col'}>
           {postsByYear[year].map((post) => (
             <ProjectListItem
+              client:only='react'
               title={post.data.title}
               date={post.data.date}
               tags={post.data.tags}

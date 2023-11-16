@@ -7,7 +7,10 @@ export default function ProjectTag({ title, isSelected }: { title: string; isSel
     <a
       href={'/types/' + title}
       rel={'prefetch-intent'}
-      className={clsx(isSelected ? 'font-semibold' : '')}
+      className={clsx(
+        'hover:underline hover:underline-offset-4 text-sm',
+        isSelected ? 'font-semibold' : '',
+      )}
     >
       {formattedTitle},
     </a>

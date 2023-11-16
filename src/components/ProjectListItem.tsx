@@ -1,6 +1,7 @@
 import { $projectHoverImageAtom } from '../state/ProjectHoverState'
 import ProjectTag from './ProjectTag'
 import { type WorkType } from '@/src/types/works'
+import { Spacer } from './layout/Spacer'
 
 export default function ProjectListItem({
   date,
@@ -18,6 +19,7 @@ export default function ProjectListItem({
       className={'flex flex-col w-6/12 max-w-[160px]  flex-wrap '}
       onMouseEnter={() => {
         $projectHoverImageAtom.set(title)
+        console.log('hover set to : ', title)
       }}
       onMouseLeave={() => {
         $projectHoverImageAtom.set(null)
@@ -37,6 +39,7 @@ export default function ProjectListItem({
       >
         {title}
       </a>
+      <Spacer size={8}></Spacer>
 
       {tags.map((tag, i) => {
         return <ProjectTag title={tag} key={i} isSelected={tag === selectedTag}></ProjectTag>

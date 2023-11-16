@@ -108,9 +108,12 @@ export default function TalksTable<TData, TValue>({
                         </HoverCardTrigger>
                         <HoverCardContent className='w-80' key={row.getVisibleCells()[0].id}>
                           <a
-                            href={String(row.getVisibleCells()[0].getValue())
-                              .toLocaleLowerCase()
-                              .replace(/ /g, '-')}
+                            href={
+                              '/projects/' +
+                              String(row.getVisibleCells()[0].getValue())
+                                .toLocaleLowerCase()
+                                .replace(/ /g, '-')
+                            }
                           >
                             <div className='flex justify-between items-center'>
                               <h4 className='text-sm font-semibold'>
