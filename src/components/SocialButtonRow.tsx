@@ -8,10 +8,11 @@ import {
 import { Button } from './ui/button'
 import { Separator } from './ui/separator'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { toast } from 'react-toastify'
+import { useToast } from './ui/use-toast'
 
 export default function SocialButtonRow() {
-  const notify = () => toast.success('Copied successfully!')
+  const { toast } = useToast()
+  const notify = () => toast({ title: 'Copied successfully!' })
 
   return (
     <div className='flex flex-col gap-2'>

@@ -6,6 +6,7 @@ import ProjectListItem from '../components/ProjectListItem'
 import { getCollection } from 'astro:content'
 import { Works } from '../types/works'
 import ProjectYearList from '../components/ProjectYearList.astro'
+import WorkInProgress from '../components/WorkInProgress'
 const posts = await getCollection('projects')
 
 // Group posts by year
@@ -23,6 +24,7 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a
 ---
 
 <Layout>
+  <WorkInProgress />
   <section class='pt-3 w-full'>
     <ProjectYearList transition:persist />
     <ProjectHoverImages />

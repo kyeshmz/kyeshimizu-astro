@@ -3,5 +3,12 @@
   "eslint.runtime": "bun",
   "eslint.execArgv": ["--bun"],
   "eslint.trace.server": "messages",
-  "eslint.workingDirectories": [{ "mode": "auto" }]
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "astro", // Enable .astro
+    "typescript", // Enable .ts
+    "typescriptreact" // Enable .tsx
+  ]
 }

@@ -5,11 +5,10 @@
 import { ViewTransitions } from 'astro:transitions'
 import Navigation from '../components/layout/Navigation.astro'
 import '../styles/globals.css'
-import 'react-toastify/dist/ReactToastify.css'
 import Sidebar from '../components/layout/SideBar'
-import { ToastContainer } from 'react-toastify'
 import NavigationClock from '../components/layout/NavigationClock'
 import SEO from '../components/layout/SEO.astro'
+import { Toaster } from '../components/ui/toaster'
 ---
 
 <!doctype html>
@@ -60,20 +59,8 @@ import SEO from '../components/layout/SEO.astro'
       <NavigationClock transition:persist client:load client:only='react' />
     </Navigation>
     <Sidebar transition:persist />
-    <ToastContainer
-      transition:persist
-      client:only='react'
-      position='bottom-right'
-      autoClose={1000}
-      limit={3}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      draggable
-      pauseOnHover
-      theme='light'
-    />
+
+    <Toaster client:only='react' />
 
     <main class='py-6 w-15 mx-6 md:mx-28 my-0 pt-[72px] relative'>
       <slot />
