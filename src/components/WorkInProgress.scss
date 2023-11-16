@@ -1,34 +1,11 @@
 .building-section-wrapper {
-  width: 110%;
-  margin-top: 30px;
-  margin-left: -5%;
-  padding-top: 15px;
-  padding-bottom: 15px;
-
-  background-image: repeating-linear-gradient(-55deg, #000, #000 20px, #ffb101 20px, #ffb101 40px);
-  background-color: #ffb101;
-  transform: rotate(-1deg);
 }
 
 .building-section-content {
-  width: fit-content;
-  margin: auto;
-  padding: 7px;
-  padding-left: 20px;
-  padding-right: 20px;
-
-  background-color: #ffb101;
-  border: 3px solid black;
-
-  text-align: center;
-  text-transform: uppercase;
-  font-family: Stardos Stencil;
-  font-size: 1.3em;
 }
 
 @media only screen and (max-width: 768px) {
   .building-section-content {
     width: 100%;
-    border: 3px transparent;
   }
 }
