@@ -62,7 +62,7 @@ import { Toaster } from '../components/ui/toaster'
     </Navigation>
     <Sidebar transition:persist />
 
-    <Toaster client:only='react' />
+    <Toaster client:idle client:only='react' />
 
     <main class='py-6 w-15 mx-6 md:mx-28 my-0 pt-[72px] relative'>
       <slot />

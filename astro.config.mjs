@@ -22,4 +22,5 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkModifiedTime, remarkReadingTime],
   },
+  vite: { optimizeDeps: { exclude: ['@resvg/resvg-js'] } },
 })

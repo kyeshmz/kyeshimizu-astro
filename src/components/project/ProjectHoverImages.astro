@@ -1,0 +1,43 @@
+---
+import { Picture } from 'astro:assets'
+import { getCollection } from 'astro:content'
+
+import ProjectHoverImage from './ProjectHoverImage'
+const posts = await getCollection('projects')
+---
+
+<div class='fixed right-0 top-4'>
+  {
+    posts.length > 0 &&
+      posts.map((post) => {
+        if (post.data.hoverImage) {
+          if (post.data.hoverVideo) {
+            return (
+              <ProjectHoverImage client:only='react' src={post.data.title}>
+                <video
+                  src={post.data.hoverVideo}
+                  autoplay
+                  muted
+                  transition:persist
+                  transition:name={post.data.hoverVideo}
+                />
+              </ProjectHoverImage>
+            )
+          } else {
+            return (
+              <ProjectHoverImage client:only='react' src={post.data.title}>
+                <Picture
+                  formats={['avif', 'webp']}
+                  src={post.data.hoverImage}
+                  class='object-fill'
+                  alt='A description of my image.'
+                  transition:persist
+                  transition:name={post.data.hoverImage.src}
+                />
+              </ProjectHoverImage>
+            )
+          }
+        }
+      })
+  }
+</div>

@@ -76,9 +76,9 @@ export const PublicationTableColumn: ColumnDef<PublicationTableRow>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align='end'>
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            {/* TODO NEED TO FIGURE OUT HOW TO REDIRECT FROM PUBLIC OR TO CLOUDFLARE */}
+
             {publicationRow.pdf_path && (
-              <DropdownMenuItem onClick={() => {}}>
+              <DropdownMenuItem>
                 <a href={publicationRow.pdf_path}>View paper</a>
               </DropdownMenuItem>
             )}
