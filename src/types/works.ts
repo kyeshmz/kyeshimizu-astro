@@ -15,7 +15,8 @@ export const Works = {
   Xenon: 'Xenon',
   WhoElseIfNotYou: 'Who else if not you?',
   AlgorithmicUrbanComposition: 'Algorithmic Urban Composition',
-UrbanRhythmability: 'Urban Rhythmability'
+UrbanRhythmability: 'Urban Rhythmability',
+SyntheticFeather: 'Synthetic Feather'
 } as const
 
 // type SizeType = 'small' | 'medium' | 'large'
