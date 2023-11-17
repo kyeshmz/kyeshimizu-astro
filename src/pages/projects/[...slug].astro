@@ -58,7 +58,7 @@ const { Content } = await entry.render()
       How to stay safe online and prevent phishing with FIDO2, WebAuthn and security keys.
     </h3>
     <time>{entry.data.updatedDate} Oct 21, 2019</time>
-    <div class='flex gap-2'>
+    <div class='flex flex-wrap gap-2'>
       {
         entry.data.tags.map((tag) => {
           const formattedTag = tag.charAt(0).toUpperCase() + tag.slice(1)
