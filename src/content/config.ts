@@ -6,7 +6,7 @@ const projects = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.nativeEnum(Works),
-      // description: z.string(),
+      description: z.string().optional(),
       date: z.string(),
       updatedDate: z
         .string()
@@ -34,6 +34,7 @@ const projects = defineCollection({
         z.object({
           media_name: z.string(),
           reference: z.string(),
+          medium: z.string(),
           year: z.number(),
         }),
       ),

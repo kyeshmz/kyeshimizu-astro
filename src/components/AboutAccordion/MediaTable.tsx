@@ -6,7 +6,7 @@ import {
   type SortingState,
   useReactTable,
 } from '@tanstack/react-table'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, MoreHorizontal } from 'lucide-react'
 import { useState } from 'react'
 
 import { DataTableColumnHeader } from '@/src/components/AboutAccordion/DataTableColumnHeader'
@@ -21,6 +21,7 @@ import {
   TableRow,
 } from '@/src/components/ui/table'
 import { type DataTableProps } from '@/src/types/table'
+import { Button } from '../ui/button'
 
 export type MediaTableRow = {
   media_name: string
@@ -39,13 +40,28 @@ export const MediaTableColumn: ColumnDef<MediaTableRow>[] = [
     header: 'Media Name',
   },
   {
-    accessorKey: 'reference',
-    header: 'Reference',
+    accessorKey: 'medium',
+    header: 'Medium',
   },
+
   {
     accessorKey: 'year',
     // header: 'Year',
     header: ({ column }) => <DataTableColumnHeader column={column} title='Year' />,
+  },
+  {
+    id: 'actions',
+    cell: ({ row }) => {
+      const publicationRow = row.original
+
+      return (
+        <Button variant={'ghost'} asChild>
+          <a href={publicationRow.reference} className='flex gap-2'>
+            <ArrowUpRight className='w-4 h-4'></ArrowUpRight>
+          </a>
+        </Button>
+      )
+    },
   },
 ]
 
@@ -90,34 +106,41 @@ export default function MediaTable<TData, TValue>({
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      <HoverCard key={row.id}>
-                        <HoverCardTrigger key={row.id}>
-                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                        </HoverCardTrigger>
-                        <HoverCardContent className='w-80' key={row.getVisibleCells()[0].id}>
-                          <a
-                            href={
-                              '/projects/' +
-                              String(row.getVisibleCells()[0].getValue())
-                                .toLocaleLowerCase()
-                                .replace(/ /g, '-')
-                            }
-                          >
-                            <div className='flex justify-between items-center'>
-                              <h4 className='text-sm font-semibold'>
-                                {String(row.getVisibleCells()[0].getValue())}
-                              </h4>
-                              <ArrowUpRight className='h-4 w-4' />
-                            </div>
+                  {row.getVisibleCells().map((cell) =>
+                    // TODO: cancel out the hover card for the last cell in the row
+                    cell.column.id != 'actions' ? (
+                      <TableCell key={cell.id}>
+                        <HoverCard key={row.id}>
+                          <HoverCardTrigger key={row.id}>
+                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                          </HoverCardTrigger>
+                          <HoverCardContent className='w-80' key={row.getVisibleCells()[0].id}>
+                            <a
+                              href={
+                                '/projects/' +
+                                String(row.getVisibleCells()[0].getValue())
+                                  .toLocaleLowerCase()
+                                  .replace(/ /g, '-')
+                              }
+                            >
+                              <div className='flex justify-between items-center'>
+                                <h4 className='text-sm font-semibold'>
+                                  {String(row.getVisibleCells()[0].getValue())}
+                                </h4>
+                                <ArrowUpRight className='h-4 w-4' />
+                              </div>
 
-                            <p className='text-sm'>Click to know more about the project</p>
-                          </a>
-                        </HoverCardContent>
-                      </HoverCard>
-                    </TableCell>
-                  ))}
+                              <p className='text-sm'>Click to know more about the project</p>
+                            </a>
+                          </HoverCardContent>
+                        </HoverCard>
+                      </TableCell>
+                    ) : (
+                      <TableCell key={cell.id}>
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      </TableCell>
+                    ),
+                  )}
                 </TableRow>
               ))
             ) : (

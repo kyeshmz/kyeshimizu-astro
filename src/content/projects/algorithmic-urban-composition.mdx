@@ -3,6 +3,8 @@ title: 'Algorithmic Urban Composition'
 
 date: '2019.03.23'
 
+hoverImage: './images/algorithmic-urban-composition/img1.jpg'
+
 youtube: 'https://www.youtube.com/watch?v=4diG4lfNYX4'
 
 tags: ['engineering', 'installation']
@@ -34,4 +36,34 @@ media: []
 talks: []
 ---
 
-This project aims to explore the possibilities of “urban compositions” by means of mashing up urban landscapes through the algorithmic sonication process using object detection software. As the modern city has various elements (e.g. nature, buildings, and human activities), by generating sounds through the eyes of machines, we aim to aurally re-represent alternative cityscapes. Our question is how unique sounds and spaces would be created by applying urban complexity in the field of audiovisual composition.
+import { Picture } from 'astro:assets'
+import TextSection from '../../components/blog/TextSection'
+import { Spacer } from '../../components/layout/Spacer'
+import img1 from './images/algorithmic-urban-composition/img1.jpg'
+import img2 from './images/algorithmic-urban-composition/img2.jpg'
+import img3 from './images/algorithmic-urban-composition/img3.jpg'
+import img4 from './images/algorithmic-urban-composition/img4.jpg'
+import img5 from './images/algorithmic-urban-composition/img5.jpg'
+
+<TextSection>
+  This project aims to explore the possibilities of “urban compositions” by means of mashing up
+  urban landscapes through the algorithmic sonication process using object detection software. As
+  the modern city has various elements (e.g. nature, buildings, and human activities), by generating
+  sounds through the eyes of machines, we aim to aurally re-represent alternative cityscapes. Our
+  question is how unique sounds and spaces would be created by applying urban complexity in the
+  field of audiovisual composition.
+</TextSection>
+<Spacer size={32} />
+<div className="flex flex-col gap-4">
+
+<Picture src={img4} formats={['avif', 'webp']} alt='A person watching a screen of the works' />
+<div className="flex md:flex-row flex-col gap-4">
+<Picture src={img3} formats={['avif', 'webp']} alt='A person watching a screen of the works' />
+
+<Picture src={img5} formats={['avif', 'webp']} alt='A person watching a screen of the works' />
+</div>
+
+</div>
+<TextSection>
+
+</TextSection>

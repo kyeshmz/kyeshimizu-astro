@@ -7,6 +7,10 @@ import Layout from '../../layouts/Layout.astro'
 import { Card } from '../../components/ui/card'
 import { ScrollArea } from '@radix-ui/react-scroll-area'
 import TextSection from '../../components/blog/TextSection'
+import { Spacer } from '../../components/layout/Spacer'
+import { Separator } from '../../components/ui/separator'
+import { Button } from '../../components/ui/button'
+import { AspectRatio } from '../../components/ui/aspect-ratio'
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('projects')
@@ -35,6 +39,7 @@ const { Content } = await entry.render()
   {
     entry.data.hoverImage && (
       <Picture
+        class={'h-[400px] object-cover'}
         formats={['avif', 'webp']}
         src={entry.data.hoverImage}
         transition:persist
@@ -44,41 +49,64 @@ const { Content } = await entry.render()
     )
   }
 
+  <Spacer size={32} />
+  <TextSection className='pb-8 gap-2'>
+    <h1 class='flex text-4xl'>
+      {entry.data.title}
+    </h1>
+    <h3 class='text-lg'>
+      How to stay safe online and prevent phishing with FIDO2, WebAuthn and security keys.
+    </h3>
+    <time>{entry.data.updatedDate} Oct 21, 2019</time>
+    <div class='flex gap-2'>
+      {
+        entry.data.tags.map((tag) => {
+          const formattedTag = tag.charAt(0).toUpperCase() + tag.slice(1)
+          return (
+            <Button variant={'secondary'}>
+              <a href={'/types/' + tag}>{formattedTag}</a>
+            </Button>
+          )
+        })
+      }
+    </div>
+  </TextSection>
+
   <div class='flex justify-center'>
     {entry.data.youtube && <YouTube id={entry.data.youtube!} class={'block w-full'} />}
   </div>
-
-  <!-- <Content /> -->
+  <Spacer size={32} />
+  <Content />
+  <Spacer size={32} />
 
   <TextSection>
-    <p>
-      Morbi venenatis eu lacus quis porttitor. Integer vitae porta leo, tempus volutpat orci.
-      Suspendisse sit amet sem consectetur, egestas enim vel, ullamcorper magna. Aenean in est
-      tincidunt, facilisis ex eu, semper diam. Aenean magna arcu, bibendum et diam ut, tempor
-      pulvinar metus. Cras vitae auctor magna. Donec et venenatis nisl. Sed cursus eu arcu a
-      feugiat. Vestibulum gravida eleifend lacus vitae ultricies. Suspendisse enim dolor, placerat
-      quis erat sit amet, venenatis varius enim. Lorem ipsum dolor sit amet, consectetur adipiscing
-      elit. Nam laoreet, elit id tristique sodales, risus libero placerat velit, ut blandit sapien
-      ipsum id mauris. Vestibulum feugiat lectus sit amet aliquet sollicitudin. Cras venenatis
-      maximus dapibus. Morbi venenatis eu lacus quis porttitor. Integer vitae porta leo, tempus
-      volutpat orci. Suspendisse sit amet sem consectetur, egestas enim vel, ullamcorper magna.
-      Aenean in est tincidunt, facilisis ex eu, semper diam. Aenean magna arcu, bibendum et diam ut,
-      tempor pulvinar metus. Cras vitae auctor magna. Donec et venenatis nisl. Sed cursus eu arcu a
-      feugiat. Vestibulum gravida eleifend lacus vitae ultricies. Suspendisse enim dolor, placerat
-      quis erat sit amet, venenatis varius enim. Lorem ipsum dolor sit amet, consectetur adipiscing
-      elit. Nam laoreet, elit id tristique sodales, risus libero placerat velit, ut blandit sapien
-      ipsum id mauris. Vestibulum feugiat lectus sit amet aliquet sollicitudin. Cras venenatis
-      maximus dapibus.
-    </p>
+    <Separator />
+    <Spacer size={32} />
     <Card className='px-8 py-4 w-full'>
-      <h4 class='mb-4 text-sm font-medium leading-none'>Credits</h4>
-      <div class='flex flex-col gap-1 whitespace-pre'>
-        <p>Kye Shimizu</p>
-        <p>Kye Shimizu</p>
-        <p>Kye Shimizu</p>
-        <p>Kye Shimizu</p>
-        <p>Kye Shimizu</p>
+      <h4 class='mb-4 text-xl font-medium leading-none text-center md:text-left'>Credits</h4>
+      <div class='flex md:flex-row flex-col gap-4 text-center md:text-left'>
+        {
+          entry.data.credits.map((credit) => {
+            return <p>{credit}</p>
+          })
+        }
+      </div>
+    </Card>
+    <Spacer size={32} />
+    <Card className='px-8 py-4 w-full'>
+      <h4 class='mb-4 text-xl font-medium leading-none text-center md:text-left'>Thanks</h4>
+      <div class='flex md:flex-row flex-col gap-4 text-center md:text-left'>
+        {
+          entry.data.thanks.map((credit) => {
+            return <p>{credit}</p>
+          })
+        }
       </div>
     </Card>
   </TextSection>
+  <Spacer size={32} />
+  <TextSection>
+    <Separator />
+  </TextSection>
+  <Spacer size={32} />
 </Layout>
