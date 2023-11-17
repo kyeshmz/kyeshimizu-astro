@@ -57,8 +57,8 @@ import { Toaster } from '../components/ui/toaster'
     <ViewTransitions />
   </head>
   <body>
-    <Navigation transition:persist>
-      <NavigationClock transition:persist client:load client:only='react' />
+    <Navigation>
+      <NavigationClock client:load client:only='react' />
     </Navigation>
     <Sidebar transition:persist />
 
