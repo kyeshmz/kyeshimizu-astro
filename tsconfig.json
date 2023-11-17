@@ -2,17 +2,13 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "verbatimModuleSyntax": true,
-    "types": [
-      "bun-types"
-      
-    ],
+    "types": ["bun-types"],
+    "lib": ["es2016", "dom"],
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "*"
-      ]
+      "@/*": ["*"]
     }
   }
 }

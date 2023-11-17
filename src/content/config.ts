@@ -1,4 +1,5 @@
 import { defineCollection, z } from 'astro:content'
+
 import { Works } from '../types/works'
 
 const projects = defineCollection({

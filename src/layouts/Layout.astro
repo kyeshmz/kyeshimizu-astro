@@ -2,12 +2,14 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <SEO /> component.
 
-import { ViewTransitions } from 'astro:transitions'
-import Navigation from '../components/layout/Navigation.astro'
 import '../styles/globals.css'
-import Sidebar from '../components/layout/SideBar'
+
+import { ViewTransitions } from 'astro:transitions'
+import { SEO } from 'astro-seo'
+
+import Navigation from '../components/layout/Navigation.astro'
 import NavigationClock from '../components/layout/NavigationClock'
-import SEO from '../components/layout/SEO.astro'
+import Sidebar from '../components/layout/SideBar'
 import { Toaster } from '../components/ui/toaster'
 ---
 
@@ -23,32 +25,32 @@ import { Toaster } from '../components/ui/toaster'
     <link rel='icon' href='/favicon.svg' />
 
     <SEO
-      title='Kye Shimizu'
+      title='Kye Shimizu | Portfolio'
       description='A personal portfolio of Kye Shimizu'
       openGraph={{
         basic: {
-          title: 'Kye Shimizu',
+          title: 'Kye Shimizu | Portfolio',
           type: 'A type.',
           image:
             'https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png',
         },
       }}
       twitter={{
-        creator: '@kyeshmz',
+        creator: '@kyeshimzu',
       }}
       extend={{
         // extending the default link tags
         link: [{ rel: 'icon', href: '/favicon.ico' }],
         // extending the default meta tags
-        // meta: [
-        //   {
-        //     name: 'twitter:image',
-        //     content:
-        //       'https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png',
-        //   },
-        //   { name: 'twitter:title', content: 'Tinker Tailor Soldier Spy' },
-        //   { name: 'twitter:description', content: 'Agent' },
-        // ],
+        meta: [
+          {
+            name: 'twitter:image',
+            content:
+              'https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png',
+          },
+          { name: 'twitter:title', content: 'Tinker Tailor Soldier Spy' },
+          { name: 'twitter:description', content: 'Agent' },
+        ],
       }}
     />
 

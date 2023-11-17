@@ -1,26 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro'
 
 import ProjectHoverImages from '../components/ProjectHoverImages.astro'
-import ProjectListItem from '../components/ProjectListItem'
-import { getCollection } from 'astro:content'
-import { Works } from '../types/works'
 import ProjectYearList from '../components/ProjectYearList.astro'
 import WorkInProgress from '../components/WorkInProgress'
-const posts = await getCollection('projects')
-
-// Group posts by year
-const postsByYear = posts.reduce<{ [year: string]: typeof posts }>((acc, post) => {
-  const year = new Date(post.data.date).getFullYear()
-  if (!acc[year]) {
-    acc[year] = []
-  }
-  acc[year].push(post)
-  return acc
-}, {})
-
-// Sort years in descending order
-const sortedYears = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a))
+import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout>

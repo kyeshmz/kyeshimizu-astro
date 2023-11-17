@@ -1,6 +1,20 @@
 {
-  "extends": ["eslint:recommended", "prettier", "plugin:mdx/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "prettier",
+    "plugin:mdx/recommended",
+    "plugin:astro/recommended"
+  ],
   "plugins": ["@typescript-eslint", "unused-imports", "simple-import-sort"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "globals": {
+    "astroHTML": true
+  },
   "settings": {
     "mdx/code-blocks": true
   },
@@ -10,7 +24,6 @@
     "no-console": "warn",
     "no-var": "error",
 
-    "react-hooks/exhaustive-deps": "off",
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
       "warn",
@@ -23,10 +36,11 @@
     ],
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
+
     "react/no-unknown-property": [
       "error",
       {
-        "ignore": ["css"]
+        "ignore": ["*.tsx", "*.astro", "*.tsx", "*.mdx"]
       }
     ]
   },
@@ -45,6 +59,27 @@
       "rules": {
         // override/add rules settings here, such as:
         // "astro/no-set-html-directive": "error"
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "no-undef": "off",
+        "react/no-unknown-property": "off"
+      }
+    },
+    {
+      "files": ["*.mdx"],
+      "rules": {
+        "react/no-unknown-property": "off"
+        // other rules...
+      }
+    },
+    {
+      "files": ["*.astro"],
+      "rules": {
+        "react/no-unknown-property": "off"
+        // other rules...
       }
     }
   ]

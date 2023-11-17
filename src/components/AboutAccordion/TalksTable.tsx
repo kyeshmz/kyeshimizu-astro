@@ -1,25 +1,26 @@
-import { AccordionContent, AccordionItem, AccordionTrigger } from '@/src/components/ui/accordion'
-
 import {
-  Table,
-  TableHeader,
-  TableRow,
-  TableHead,
-  TableBody,
-  TableCell,
-} from '@/src/components/ui/table'
-import {
+  type ColumnDef,
   flexRender,
   getCoreRowModel,
   getSortedRowModel,
-  useReactTable,
-  type ColumnDef,
   type SortingState,
+  useReactTable,
 } from '@tanstack/react-table'
-import { useState } from 'react'
-import { DataTableColumnHeader } from '@/src/components/AboutAccordion/DataTableColumnHeader'
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
 import { ArrowUpRight } from 'lucide-react'
+import { useState } from 'react'
+
+import { DataTableColumnHeader } from '@/src/components/AboutAccordion/DataTableColumnHeader'
+import { AccordionContent, AccordionItem, AccordionTrigger } from '@/src/components/ui/accordion'
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/src/components/ui/table'
+
 import type { DataTableProps } from '../../types/table'
 
 export type TalkTableRow = {

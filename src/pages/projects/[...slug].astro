@@ -1,8 +1,9 @@
 ---
-import { getCollection } from 'astro:content'
-import Layout from '../../layouts/Layout.astro'
-import { Picture } from 'astro:assets'
 import { YouTube } from '@astro-community/astro-embed-youtube'
+import { Picture } from 'astro:assets'
+import { getCollection } from 'astro:content'
+
+import Layout from '../../layouts/Layout.astro'
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('projects')

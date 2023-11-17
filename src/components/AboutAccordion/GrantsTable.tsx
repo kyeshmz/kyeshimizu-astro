@@ -1,26 +1,27 @@
 import {
-  Table,
-  TableHeader,
-  TableRow,
-  TableHead,
-  TableBody,
-  TableCell,
-} from '@/src/components/ui/table'
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
-import { AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion'
-
-import {
-  getCoreRowModel,
-  useReactTable,
   type ColumnDef,
   flexRender,
+  getCoreRowModel,
   getSortedRowModel,
   type SortingState,
+  useReactTable,
 } from '@tanstack/react-table'
 import { ArrowUpRight } from 'lucide-react'
 import { useState } from 'react'
-import { DataTableColumnHeader } from './DataTableColumnHeader'
+
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/src/components/ui/table'
+
 import type { DataTableProps } from '../../types/table'
+import { AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion'
+import { DataTableColumnHeader } from './DataTableColumnHeader'
 
 export type GrantTableRow = {
   work?: string

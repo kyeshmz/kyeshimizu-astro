@@ -1,7 +1,8 @@
 ---
+import {Picture } from 'astro:assets'
 import { getCollection } from 'astro:content'
+
 import ProjectHoverImage from './ProjectHoverImage'
-import { Picture, Image } from 'astro:assets'
 const posts = await getCollection('projects')
 ---
 

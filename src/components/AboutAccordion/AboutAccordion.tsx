@@ -1,17 +1,18 @@
-import { Accordion } from '../ui/accordion'
-import AwardTable, { type AwardTableRow, AwardTableColumn } from './AwardTable'
-import ExhibitionsTable, { type ExhibitionTableRow } from './ExhibitionsTable'
-import MediaTable, { type MediaTableRow, MediaTableColumn } from './MediaTable'
-import PublicationsTable, {
-  type PublicationTableRow,
-  PublicationTableColumn,
-} from './PublicationsTable'
-import TalksTable, { type TalkTableRow, TalksTableColumn } from './TalksTable'
-import TeachingTable, { type TeachingTableRow } from './TeachingTable'
-import { TeachingTableColumn } from '@/src/components/AboutAccordion/TeachingTable'
 import { DataTableColumn } from '@/src/components/AboutAccordion/ExhibitionsTable'
-import GrantsTable, { type GrantTableRow } from './GrantsTable'
 import { GrantsTableColumn } from '@/src/components/AboutAccordion/GrantsTable'
+import { TeachingTableColumn } from '@/src/components/AboutAccordion/TeachingTable'
+
+import { Accordion } from '../ui/accordion'
+import AwardTable, { AwardTableColumn,type AwardTableRow } from './AwardTable'
+import ExhibitionsTable, { type ExhibitionTableRow } from './ExhibitionsTable'
+import GrantsTable, { type GrantTableRow } from './GrantsTable'
+import MediaTable, { MediaTableColumn,type MediaTableRow } from './MediaTable'
+import PublicationsTable, {
+  PublicationTableColumn,
+  type PublicationTableRow,
+} from './PublicationsTable'
+import TalksTable, { TalksTableColumn,type TalkTableRow } from './TalksTable'
+import TeachingTable, { type TeachingTableRow } from './TeachingTable'
 
 export default function AboutAccordion({
   PublicationData,

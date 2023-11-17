@@ -1,26 +1,27 @@
-import { AccordionContent, AccordionItem, AccordionTrigger } from '@/src/components/ui/accordion'
-
 import {
-  Table,
-  TableHeader,
-  TableRow,
-  TableHead,
-  TableBody,
-  TableCell,
-} from '@/src/components/ui/table'
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
-import {
+  type ColumnDef,
   flexRender,
   getCoreRowModel,
   getSortedRowModel,
-  useReactTable,
-  type ColumnDef,
   type SortingState,
+  useReactTable,
 } from '@tanstack/react-table'
 import { ArrowUpRight, MoreHorizontal } from 'lucide-react'
 import { useState } from 'react'
+
+import { AccordionContent, AccordionItem, AccordionTrigger } from '@/src/components/ui/accordion'
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/src/components/ui/table'
+
 import type { DataTableProps } from '../../types/table'
-import { DataTableColumnHeader } from './DataTableColumnHeader'
+import { Button } from '../ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,7 +30,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
-import { Button } from '../ui/button'
+import { DataTableColumnHeader } from './DataTableColumnHeader'
 
 export type PublicationTableRow = {
   work?: string

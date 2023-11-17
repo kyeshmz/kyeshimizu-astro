@@ -1,13 +1,14 @@
 import {
-  GitHubLogoIcon,
-  TwitterLogoIcon,
-  LinkedInLogoIcon,
-  InstagramLogoIcon,
   EnvelopeClosedIcon,
+  GitHubLogoIcon,
+  InstagramLogoIcon,
+  LinkedInLogoIcon,
+  TwitterLogoIcon,
 } from '@radix-ui/react-icons'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+
 import { Button } from './ui/button'
 import { Separator } from './ui/separator'
-import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { useToast } from './ui/use-toast'
 
 export default function SocialButtonRow() {

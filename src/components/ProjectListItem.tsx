@@ -1,7 +1,8 @@
-import { $projectHoverImageAtom } from '../state/ProjectHoverState'
-import ProjectTag from './ProjectTag'
 import { type WorkType } from '@/src/types/works'
+
+import { $projectHoverImageAtom } from '../state/ProjectHoverState'
 import { Spacer } from './layout/Spacer'
+import ProjectTag from './ProjectTag'
 
 export default function ProjectListItem({
   date,

@@ -1,26 +1,26 @@
-import { type WorkType } from '@/src/types/works'
-import { AccordionContent, AccordionItem, AccordionTrigger } from '@/src/components/ui/accordion'
 import {
-  Table,
-  TableHeader,
-  TableRow,
-  TableHead,
-  TableBody,
-  TableCell,
-} from '@/src/components/ui/table'
-import {
+  type ColumnDef,
   flexRender,
   getCoreRowModel,
   getSortedRowModel,
-  useReactTable,
   type SortingState,
-  type ColumnDef,
+  useReactTable,
 } from '@tanstack/react-table'
-import { type DataTableProps } from '@/src/types/table'
-import { useState } from 'react'
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
 import { ArrowUpRight } from 'lucide-react'
+import { useState } from 'react'
+
 import { DataTableColumnHeader } from '@/src/components/AboutAccordion/DataTableColumnHeader'
+import { AccordionContent, AccordionItem, AccordionTrigger } from '@/src/components/ui/accordion'
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/src/components/ui/table'
+import { type DataTableProps } from '@/src/types/table'
 
 export type MediaTableRow = {
   media_name: string

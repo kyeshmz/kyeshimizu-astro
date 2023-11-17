@@ -1,4 +1,5 @@
 import { Moon, Sun } from 'lucide-react'
+import { useEffect,useState } from 'react'
 
 import { Button } from './ui/button'
 import {
@@ -7,7 +8,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu'
-import { useState, useEffect } from 'react'
 
 export function ModeToggle() {
   const [theme, setThemeState] = useState<'theme-light' | 'dark' | 'system'>('theme-light')
