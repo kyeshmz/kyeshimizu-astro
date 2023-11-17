@@ -6,6 +6,7 @@ import { getCollection } from 'astro:content'
 import Layout from '../../layouts/Layout.astro'
 import { Card } from '../../components/ui/card'
 import { ScrollArea } from '@radix-ui/react-scroll-area'
+import TextSection from '../../components/blog/TextSection'
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('projects')
@@ -49,7 +50,7 @@ const { Content } = await entry.render()
 
   <!-- <Content /> -->
 
-  <div class='max-w-2xl w-full flex flex-col justify-center items-center mx-auto'>
+  <TextSection>
     <p>
       Morbi venenatis eu lacus quis porttitor. Integer vitae porta leo, tempus volutpat orci.
       Suspendisse sit amet sem consectetur, egestas enim vel, ullamcorper magna. Aenean in est
@@ -79,5 +80,5 @@ const { Content } = await entry.render()
         <p>Kye Shimizu</p>
       </div>
     </Card>
-  </div>
+  </TextSection>
 </Layout>
