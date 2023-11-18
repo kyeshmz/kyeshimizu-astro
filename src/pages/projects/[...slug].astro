@@ -1,5 +1,4 @@
 ---
-import { YouTube } from '@astro-community/astro-embed-youtube'
 import { Picture } from 'astro:assets'
 import { getCollection } from 'astro:content'
 
@@ -14,6 +13,7 @@ import { AspectRatio } from '../../components/ui/aspect-ratio'
 
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
+import VideoPlayer from '../../components/VideoPlayer'
 
 dayjs.extend(utc)
 
@@ -83,9 +83,9 @@ const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().format('Y
     </div>
   </TextSection>
 
-  <div class='flex justify-center'>
-    {entry.data.youtube && <YouTube id={entry.data.youtube!} class={'block w-full'} />}
-  </div>
+  <!-- <div class='flex justify-center'>
+    {entry.data.youtube && <VideoPlayer url={entry.data.youtube!} client:only='react' />}
+  </div> -->
   <Spacer size={32} />
   <Content />
   <Spacer size={32} />

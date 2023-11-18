@@ -5,7 +5,7 @@ subtitle: 'Exploring the facial boundaries between self and other'
 
 date: '2023.01.02'
 
-youtube: ''
+youtube: 'https://www.youtube.com/watch?v=ahKxwaJ3k_U'
 
 tags: ['engineering', 'research', 'installation', 'academic']
 
@@ -129,7 +129,74 @@ talks:
 import { Picture } from 'astro:assets'
 import TextSection from '../../components/blog/TextSection'
 import { Spacer } from '../../components/layout/Spacer'
+import VideoPlayer from '../../components/VideoPlayer'
+import ginza1 from './images/morphing-identity/SonyPark_2021_0723-1.jpg'
+import ginza2 from './images/morphing-identity/SonyPark_2021_0723-2.jpg'
+import ginza3 from './images/morphing-identity/SonyPark_2021_0723-3.jpg'
+import ginza4 from './images/morphing-identity/SonyPark_2021_0723-4.jpg'
+import chi2023 from './images/morphing-identity/2023chi-presentation.jpg'
+import chi2023demo from './images/morphing-identity/2023chi-interactivity.jpg'
+import ycam1 from './images/morphing-identity/2022-ycam1.jpg'
+import ycam2 from './images/morphing-identity/2022-ycam2.jpg'
 
 <TextSection>
-We explored continuous changes in self-other identity by designing an interpersonal facial morphing experience where the facial images of two users are blended and then swapped over time. Both users’ facial images are displayed side by side, with each user controlling their own morphing facial images, allowing us to create and investigate a multifaceted interpersonal experience. To explore this with diverse social relationships, we conducted qualitative and quantitative investigations through public exhibitions. We found that there is a window of self-identification as well as a variety of interpersonal experiences in the facial morphing process. From these insights, we synthesized a Self-Other Continuum represented by a sense of agency and facial identity. This continuum has implications in terms of the social and subjective aspects of interpersonal communication, which enables further scenario design and could complement findings from research on interactive devices for remote communication.
+  <p>
+    We explored continuous changes in self-other identity by designing an interpersonal facial
+    morphing experience where the facial images of two users are blended and then swapped over time.
+    Both users’ facial images are displayed side by side, with each user controlling their own
+    morphing facial images, allowing us to create and investigate a multifaceted interpersonal
+    experience. To explore this with diverse social relationships, we conducted qualitative and
+    quantitative investigations through public exhibitions. We found that there is a window of
+    self-identification as well as a variety of interpersonal experiences in the facial morphing
+    process. From these insights, we synthesized a Self-Other Continuum represented by a sense of
+    agency and facial identity. This continuum has implications in terms of the social and
+    subjective aspects of interpersonal communication, which enables further scenario design and
+    could complement findings from research on interactive devices for remote communication.
+  </p>
 </TextSection>
+<Spacer size={16} />
+
+<TextSection>
+  <p>
+    Where is the boundary of self? How do we feel and interact with each other? We explored
+    continuous changes in self-other identity by designing an interpersonal facial morphing
+    experience where the facial images of two users are blended and then swapped over time.
+  </p>
+</TextSection>
+<Spacer size={32} />
+<div className="grid grid-cols-2 gap-4 ">
+<Picture src={ginza1} formats={['avif', 'webp']} alt='A person watching a screen of the works' />
+
+<Picture src={ginza2} formats={['avif', 'webp']} alt='A person watching a screen of the works' />
+<Picture src={ginza3} formats={['avif', 'webp']} alt='A person watching a screen of the works' />
+<Picture src={ginza4} formats={['avif', 'webp']} alt='A person watching a screen of the works' />
+</div>
+<Spacer size={32} />
+<TextSection>
+  <p>
+    With Morphing Identity system, two users' facial images are displayed side by side, with each
+    user controlling their own morphing facial images, allowing us to create and investigate a
+    multifaceted interpersonal experience.
+
+    To explore this with diverse social relationships, we conducted qualitative and quantitative investigations through public exhibitions, beyond the lab environment.
+
+  </p>
+</TextSection>
+<Spacer size={32} />
+<VideoPlayer client:only='react'  url={frontmatter.youtube}></VideoPlayer>
+<Spacer size={32} />
+<TextSection>
+  <p>
+   Our findings suggest a window of self-identification and a variety of interpersonal experiences in the facial morphing process.
+   
+   We synthesized a Self-Other Continuum, with implications for interpersonal communication and interactive devices for remote communication.
+
+  </p>
+</TextSection>
+<Spacer size={32} />
+<Picture src={chi2023} formats={['avif', 'webp']} alt='A person watching a screen of the works' />
+<Picture className="w-full" src={chi2023demo} formats={['avif', 'webp']} alt='A person watching a screen of the works' />
+<div className="md:grid md:grid-cols-2 md:grid-rows-1 gap-4 grid-flow-row flex flex-col">
+<Picture src={ycam1} formats={['avif', 'webp']} alt='A person watching a screen of the works'  className="object-cover h-full w-auto" />
+<Picture src={ycam2} formats={['avif', 'webp']} alt='A person watching a screen of the works' className="object-cover h-full w-auto" />
+</div>

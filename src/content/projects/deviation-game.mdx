@@ -1,9 +1,13 @@
 ---
 title: 'Deviation Game'
 
+subtitle: 'A game to explore the co-evolution of AI and humans.'
+
 date: '2023.01.02'
 
-youtube: 'aaa'
+youtube: 'https://vimeo.com/808615172'
+
+hoverImage: './images/deviation-game/deviation_game_mainpic.jpg'
 
 tags: ['research']
 
@@ -27,6 +31,7 @@ grants: [{
 publications: []
 
 awards: []
+
 talks: []
 
 
@@ -106,16 +111,30 @@ media: [
 
 ---
 
+import { Picture } from 'astro:assets'
+import { Spacer } from '../../components/layout/Spacer'
 import TextSection from '../../components/blog/TextSection'
+import img1 from './images/deviation-game/exhibition_main.jpg'
 
 <TextSection>
 <p>
 
-Morbi venenatis eu lacus quis porttitor. Integer vitae porta leo, tempus volutpat orci. Suspendisse sit amet sem consectetur, egestas enim vel, ullamcorper magna. Aenean in est tincidunt, facilisis ex eu, semper diam. Aenean magna arcu, bibendum et diam ut, tempor pulvinar metus. Cras vitae auctor magna. Donec et venenatis nisl. Sed cursus eu arcu a feugiat. Vestibulum gravida eleifend lacus vitae ultricies. Suspendisse enim dolor, placerat quis erat sit amet, venenatis varius enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam laoreet, elit id tristique sodales, risus libero placerat velit, ut blandit sapien ipsum id mauris. Vestibulum feugiat lectus sit amet aliquet sollicitudin. Cras venenatis maximus dapibus.
-
-Morbi venenatis eu lacus quis porttitor. Integer vitae porta leo, tempus volutpat orci. Suspendisse sit amet sem consectetur, egestas enim vel, ullamcorper magna. Aenean in est tincidunt, facilisis ex eu, semper diam. Aenean magna arcu, bibendum et diam ut, tempor pulvinar metus. Cras vitae auctor magna. Donec et venenatis nisl. Sed cursus eu arcu a feugiat. Vestibulum gravida eleifend lacus vitae ultricies. Suspendisse enim dolor, placerat quis erat sit amet, venenatis varius enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam laoreet, elit id tristique sodales, risus libero placerat velit, ut blandit sapien ipsum id mauris. Vestibulum feugiat lectus sit amet aliquet sollicitudin. Cras venenatis maximus dapibus.
-
-Morbi venenatis eu lacus quis porttitor. Integer vitae porta leo, tempus volutpat orci. Suspendisse sit amet sem consectetur, egestas enim vel, ullamcorper magna. Aenean in est tincidunt, facilisis ex eu, semper diam. Aenean magna arcu, bibendum et diam ut, tempor pulvinar metus. Cras vitae auctor magna. Donec et venenatis nisl. Sed cursus eu arcu a feugiat. Vestibulum gravida eleifend lacus vitae ultricies. Suspendisse enim dolor, placerat quis erat sit amet, venenatis varius enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam laoreet, elit id tristique sodales, risus libero placerat velit, ut blandit sapien ipsum id mauris. Vestibulum feugiat lectus sit amet aliquet sollicitudin. Cras venenatis maximus dapibus.
+The rapid advancement in the field of artificial intelligence (AI), has resulted in AI being able to imitate many of the intellectual tasks that were once exclusive to humans, such as generating images and writing. This development has sparked a great deal of excitement but also considerable concern among artists who fear that their jobs may become obsolete.
 
 </p>
 </TextSection>
+<Spacer size={16} />
+<TextSection>
+<p>
+However, just as the rise of the first photographic machine in the early 19th century freed painters from realism and paved the way for the Impressionist movement represented by Monet and Van Gogh, history has shown us that whenever a new technology emerges that can replace human acts of expression, people have found ways to deviate and create unique forms of expression that cannot be replicated by that technology. This pattern of imitation and deviation has been a driving force in the evolution of both technology and expression.
+
+</p>
+</TextSection>
+<Spacer size={16} />
+<TextSection>
+<p>
+Building on the Imitation Game (1950) by Alan Turing, often considered as the father of modern computer science, we propose a new type of game, titled the Deviation Game. Through this project, our aim is to utilise AI not to imitate past expressions, but to identify what has already been expressed, allowing one to deviate from it.
+</p>
+</TextSection>
+<Spacer size={32} />
+<Picture src={img1} formats={['avif', 'webp']} alt='A person watching a screen of the works' />
