@@ -45,6 +45,7 @@ const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().format('Y
   {
     entry.data.hoverImage && (
       <Picture
+        widths={[400, 800, 1200, 1400, 2000]}
         class={'h-[400px] object-cover'}
         formats={['avif', 'webp']}
         src={entry.data.hoverImage}
