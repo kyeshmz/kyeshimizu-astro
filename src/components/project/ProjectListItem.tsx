@@ -19,16 +19,7 @@ export default function ProjectListItem({
 }) {
   return (
     <Suspense fallback={<Loader2 className='h-4 w-4 animate-spin' />}>
-      <li
-        className={'flex flex-col w-6/12 max-w-[160px]  flex-wrap '}
-        onMouseEnter={() => {
-          $projectHoverImageAtom.set(title)
-          console.log('hover set to : ', title)
-        }}
-        onMouseLeave={() => {
-          $projectHoverImageAtom.set(null)
-        }}
-      >
+      <li>
         <a
           href={'/projects/' + title.toLocaleLowerCase().replace(/\s/g, '-')}
           rel={'preload-intent'}

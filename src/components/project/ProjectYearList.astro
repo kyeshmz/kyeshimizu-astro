@@ -4,6 +4,9 @@ import { getCollection } from 'astro:content'
 import { Suspense } from 'react'
 import { Loader2 } from 'lucide-react'
 import ProjectListItem from './ProjectListItem'
+import ProjectListItemWrap from './ProjectListItemWrap'
+import { Spacer } from '../layout/Spacer'
+import ProjectTag from './ProjectTag'
 
 const { tags } = Astro.props
 
@@ -33,13 +36,33 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a
         <span class={' block float-right text-xs leading-4 tracking-wide '}>{year}</span>
         <ul class={'flex w-11/12 gap-x-20 gap-y-11 flex-wrap md:flex-row flex-col'}>
           {postsByYear[year].map((post) => (
-            <ProjectListItem
-              client:only='react'
-              title={post.data.title}
-              date={post.data.date}
-              tags={post.data.tags}
-              selectedTag={tags}
-            />
+            <ProjectListItemWrap client:only='react'>
+              <a
+                href={'/projects/' + post.data.title.toLocaleLowerCase().replace(/\s/g, '-')}
+                rel={'preload-intent'}
+              >
+                {post.data.date}
+              </a>
+              <a
+                href={'/projects/' + post.data.title.toLocaleLowerCase().replace(/\s/g, '-')}
+                rel={'preload-intent'}
+                class={'letter-spacing-2 underline underline-offset-4 leading-2'}
+              >
+                {post.data.title}
+              </a>
+              <Spacer size={8} />
+
+              {post.data.tags.map((tag, i) => {
+                return <ProjectTag title={tag} isSelected={tag === tags} />
+              })}
+            </ProjectListItemWrap>
+            // <ProjectListItem
+            //   client:only='react'
+            //   title={post.data.title}
+            //   date={post.data.date}
+            //   tags={post.data.tags}
+            //   selectedTag={tags}
+            // />
           ))}
         </ul>
       </div>
