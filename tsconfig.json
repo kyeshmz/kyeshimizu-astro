@@ -5,7 +5,7 @@
     "types": ["bun-types"],
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
       "@/*": ["*"]
     },
