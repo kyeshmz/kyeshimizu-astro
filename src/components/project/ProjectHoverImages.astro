@@ -28,7 +28,7 @@ const posts = await getCollection('projects')
               <ProjectHoverImage client:only='react' src={post.data.title}>
                 <Picture
                   formats={['avif', 'webp']}
-                  widths={[400, 800, 1200, 1400, 2000]}
+                  widths={[360, 768, 1024, 1440]}
                   src={post.data.hoverImage}
                   class='object-fill'
                   alt='A description of my image.'
