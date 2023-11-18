@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "cd functions && bun i && cd .. && astro check && tsc --noEmit && astro build",
+    "build": "astro check && tsc --noEmit && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint --ext .astro,.js,.jsx,.ts,.tsx ./src --fix"
