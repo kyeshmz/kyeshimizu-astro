@@ -12,6 +12,11 @@ import { Separator } from '../../components/ui/separator'
 import { Button } from '../../components/ui/button'
 import { AspectRatio } from '../../components/ui/aspect-ratio'
 
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+
+dayjs.extend(utc)
+
 export async function getStaticPaths() {
   const blogEntries = await getCollection('projects')
   return blogEntries.map((entry) => ({
@@ -21,7 +26,8 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props
-const { Content } = await entry.render()
+const { Content, remarkPluginFrontmatter } = await entry.render()
+const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().format('YYYY.MM.DD')
 ---
 
 <Layout>
@@ -55,10 +61,10 @@ const { Content } = await entry.render()
       {entry.data.title}
     </h1>
     <h3 class='text-lg'>
-      How to stay safe online and prevent phishing with FIDO2, WebAuthn and security keys.
+      {entry.data.subtitle}
     </h3>
-    <time>{entry.data.updatedDate} Oct 21, 2019</time>
-    <div class='flex flex-wrap gap-2'>
+
+    <div class='flex flex-wrap gap-3'>
       {
         entry.data.tags.map((tag) => {
           const formattedTag = tag.charAt(0).toUpperCase() + tag.slice(1)
@@ -69,6 +75,11 @@ const { Content } = await entry.render()
           )
         })
       }
+    </div>
+    <Spacer size={4} />
+    <div class='flex gap-2 md:flex-row flex-col'>
+      <time>Created: {entry.data.date}</time>
+      <time>Updated: {lastModified}</time>
     </div>
   </TextSection>
 
@@ -84,7 +95,7 @@ const { Content } = await entry.render()
     <Spacer size={32} />
     <Card className='px-8 py-4 w-full'>
       <h4 class='mb-4 text-xl font-medium leading-none text-center md:text-left'>Credits</h4>
-      <div class='flex md:flex-row flex-col gap-4 text-center md:text-left'>
+      <div class='flex md:flex-row flex-col gap-4 text-center md:text-left flex-wrap'>
         {
           entry.data.credits.map((credit) => {
             return <p class='text-sm'>{credit}</p>
@@ -95,7 +106,7 @@ const { Content } = await entry.render()
     <Spacer size={32} />
     <Card className='px-8 py-4 w-full'>
       <h4 class='mb-4 text-xl font-medium leading-none text-center md:text-left'>Thanks</h4>
-      <div class='flex md:flex-row flex-col gap-4 text-center md:text-left'>
+      <div class='flex md:flex-row flex-col gap-4 text-center md:text-left flex-wrap'>
         {
           entry.data.thanks.map((credit) => {
             return <p class='text-sm'>{credit}</p>

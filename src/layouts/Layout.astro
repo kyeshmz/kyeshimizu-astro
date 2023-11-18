@@ -2,8 +2,6 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <SEO /> component.
 
-import '../styles/globals.css'
-
 import { ViewTransitions } from 'astro:transitions'
 import { SEO } from 'astro-seo'
 
@@ -11,6 +9,7 @@ import Navigation from '../components/layout/Navigation.astro'
 import NavigationClock from '../components/layout/NavigationClock'
 import Sidebar from '../components/layout/SideBar'
 import { Toaster } from '../components/ui/toaster'
+import '../styles/globals.css'
 ---
 
 <!doctype html>
@@ -23,6 +22,7 @@ import { Toaster } from '../components/ui/toaster'
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <link rel='sitemap' href='/sitemap-index.xml' />
     <link rel='icon' href='/favicon.svg' />
+    <link rel='stylesheet' href='/styles/globals.css' />
 
     <SEO
       title='Kye Shimizu | Portfolio'
@@ -56,6 +56,7 @@ import { Toaster } from '../components/ui/toaster'
 
     <ViewTransitions />
   </head>
+
   <body>
     <Navigation>
       <NavigationClock client:load client:only='react' />

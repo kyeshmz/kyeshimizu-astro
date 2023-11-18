@@ -6,12 +6,8 @@ const projects = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.nativeEnum(Works),
-      description: z.string().optional(),
+      subtitle: z.string().optional(),
       date: z.string(),
-      updatedDate: z
-        .string()
-        .optional()
-        .transform((str) => (str ? new Date(str) : undefined)),
       tags: z.array(z.string()).default(['others']),
       client: z.string().optional(),
       youtube: z.string().optional(),

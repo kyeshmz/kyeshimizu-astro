@@ -23,7 +23,7 @@ const allPosts = await getCollection('projects')
 <Layout>
   <div class='flex mt-8 pb-8 md:flex-row flex-col gap-4 w-full'>
     <img
-      class='h-[500px] flex-1 w-auto object-cover md:object-contain'
+      class='h-[500px] transition-all hover:scale-105 flex-1 w-auto object-cover md:object-contain'
       src='https://images.unsplash.com/photo-1698948233567-341329ce43a9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMHx8fGVufDB8fHx8fA%3D%3D'
     />
     <div class='flex flex-col gap-2 min-w-0 flex-1'>
@@ -32,7 +32,7 @@ const allPosts = await getCollection('projects')
       <SocialButtonRow client:only='react' />
     </div>
   </div>
-  <PhotoAccordion />
+  <!-- <PhotoAccordion client:only='react' /> -->
 
   <Separator />
   <AboutAccordion
