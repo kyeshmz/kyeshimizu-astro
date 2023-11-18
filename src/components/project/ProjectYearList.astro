@@ -36,7 +36,7 @@ const sortedYears = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a
         <span class={' block float-right text-xs leading-4 tracking-wide '}>{year}</span>
         <ul class={'flex w-11/12 gap-x-20 gap-y-11 flex-wrap md:flex-row flex-col'}>
           {postsByYear[year].map((post) => (
-            <ProjectListItemWrap client:only='react'>
+            <ProjectListItemWrap client:only='react' title={post.data.title}>
               <a
                 href={'/projects/' + post.data.title.toLocaleLowerCase().replace(/\s/g, '-')}
                 rel={'preload-intent'}
