@@ -1,4 +1,4 @@
-import { type WorkType } from '@/types/works'
+import { type WorkType } from '@/src/types/works'
 
 import { Suspense } from 'react'
 import { Loader2 } from 'lucide-react'

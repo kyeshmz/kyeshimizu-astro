@@ -1,6 +1,6 @@
-import { DataTableColumn } from '@/components/AboutAccordion/ExhibitionsTable'
-import { GrantsTableColumn } from '@/components/AboutAccordion/GrantsTable'
-import { TeachingTableColumn } from '@/components/AboutAccordion/TeachingTable'
+import { DataTableColumn } from '@/src/components/AboutAccordion/ExhibitionsTable'
+import { GrantsTableColumn } from '@/src/components/AboutAccordion/GrantsTable'
+import { TeachingTableColumn } from '@/src/components/AboutAccordion/TeachingTable'
 
 import { Accordion } from '../ui/accordion'
 import AwardTable, { AwardTableColumn, type AwardTableRow } from './AwardTable'

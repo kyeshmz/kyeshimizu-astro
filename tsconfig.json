@@ -5,7 +5,7 @@
     "types": ["bun-types"],
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
       "@/*": ["*"]
     },
@@ -14,5 +14,7 @@
         "name": "@astrojs/ts-plugin"
       }
     ]
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["functions/**/*", "node_modules/**/*", "dist/**/*"]
 }
