@@ -1,17 +1,17 @@
-import { DataTableColumn } from '@/src/components/AboutAccordion/ExhibitionsTable'
-import { GrantsTableColumn } from '@/src/components/AboutAccordion/GrantsTable'
-import { TeachingTableColumn } from '@/src/components/AboutAccordion/TeachingTable'
+import { DataTableColumn } from '@/components/AboutAccordion/ExhibitionsTable'
+import { GrantsTableColumn } from '@/components/AboutAccordion/GrantsTable'
+import { TeachingTableColumn } from '@/components/AboutAccordion/TeachingTable'
 
 import { Accordion } from '../ui/accordion'
-import AwardTable, { AwardTableColumn,type AwardTableRow } from './AwardTable'
+import AwardTable, { AwardTableColumn, type AwardTableRow } from './AwardTable'
 import ExhibitionsTable, { type ExhibitionTableRow } from './ExhibitionsTable'
 import GrantsTable, { type GrantTableRow } from './GrantsTable'
-import MediaTable, { MediaTableColumn,type MediaTableRow } from './MediaTable'
+import MediaTable, { MediaTableColumn, type MediaTableRow } from './MediaTable'
 import PublicationsTable, {
   PublicationTableColumn,
   type PublicationTableRow,
 } from './PublicationsTable'
-import TalksTable, { TalksTableColumn,type TalkTableRow } from './TalksTable'
+import TalksTable, { TalksTableColumn, type TalkTableRow } from './TalksTable'
 import TeachingTable, { type TeachingTableRow } from './TeachingTable'
 
 export default function AboutAccordion({

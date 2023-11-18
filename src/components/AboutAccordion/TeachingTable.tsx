@@ -15,7 +15,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/src/components/ui/table'
+} from '@/components/ui/table'
 
 import type { DataTableProps } from '../../types/table'
 import { AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion'

@@ -9,8 +9,8 @@ import {
 import { ArrowUpRight, MoreHorizontal } from 'lucide-react'
 import { useState } from 'react'
 
-import { AccordionContent, AccordionItem, AccordionTrigger } from '@/src/components/ui/accordion'
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
+import { AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
 import {
   Table,
   TableBody,
@@ -18,7 +18,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/src/components/ui/table'
+} from '@/components/ui/table'
 
 import type { DataTableProps } from '../../types/table'
 import { Button } from '../ui/button'

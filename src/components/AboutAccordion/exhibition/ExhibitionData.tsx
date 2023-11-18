@@ -1,5 +1,5 @@
 // import type { ExhibitionTableRow } from './ExhibitionsTable'
-// import { Works } from '@/src/types/works'
+// import { Works } from '@/types/works'
 
 // export const ExhibitionData: ExhibitionTableRow[] = [
 //   {
