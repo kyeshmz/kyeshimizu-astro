@@ -14,6 +14,7 @@ import { AspectRatio } from '../../components/ui/aspect-ratio'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import VideoPlayer from '../../components/VideoPlayer'
+import GrantCard from '../../components/project/GrantCard.astro'
 
 dayjs.extend(utc)
 
@@ -105,17 +106,21 @@ const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().format('Y
         }
       </div>
     </Card>
+    {entry.data.thanks.length > 0 && <Spacer size={32} />}
+    {
+      entry.data.thanks.length > 0 && (
+        <Card className='px-8 py-4 w-full'>
+          <h4 class='mb-4 text-xl font-medium leading-none text-center md:text-left'>Thanks</h4>
+          <div class='flex md:flex-row flex-col gap-4 text-center md:text-left flex-wrap'>
+            {entry.data.thanks.map((credit) => {
+              return <p class='text-sm'>{credit}</p>
+            })}
+          </div>
+        </Card>
+      )
+    }
     <Spacer size={32} />
-    <Card className='px-8 py-4 w-full'>
-      <h4 class='mb-4 text-xl font-medium leading-none text-center md:text-left'>Thanks</h4>
-      <div class='flex md:flex-row flex-col gap-4 text-center md:text-left flex-wrap'>
-        {
-          entry.data.thanks.map((credit) => {
-            return <p class='text-sm'>{credit}</p>
-          })
-        }
-      </div>
-    </Card>
+    {entry.data.grants.length > 0 && <GrantCard grants={entry.data.grants} />}
   </TextSection>
   <Spacer size={32} />
   <TextSection>
