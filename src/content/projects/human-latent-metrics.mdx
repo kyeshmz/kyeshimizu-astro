@@ -1,7 +1,11 @@
 ---
 title: 'Human Latent Metrics'
 
-date: '2023.01.02'
+subtitle: 'Perceptual and Cognitive Response Correlates to Distance in GAN Latent Space for Facial Images'
+
+date: '2022.09.22'
+
+hoverImage: './images/human-latent-metrics/human-main.webp'
 
 youtube: ''
 
@@ -20,7 +24,13 @@ credits:
 
 thanks: []
 
-grants: []
+grants: [
+   {
+      grant_name: 'JST Moonshot R&D Program JPMJMS2013',
+      year: 2021,
+      reference: 'https://www.jst.go.jp/moonshot/en/program/goal1/index.html',
+    },
+]
 
 awards: []
 
@@ -52,6 +62,25 @@ talks:
   ]
 ---
 
-adfadsfasd
+import { Picture } from 'astro:assets'
+import { Spacer } from '../../components/layout/Spacer'
+import TextSection from '../../components/blog/TextSection'
 
-https://github.com/SuperceptionLab/HumanLatentMetrics
+<TextSection className='flex flex-col gap-1'>
+<p>
+Generative adversarial networks (GANs) generate high-dimensional vector spaces (latent spaces) that can interchangeably represent vectors as images. Advancements have extended their ability to computationally generate images indistinguishable from real images such as faces, and more importantly, to manipulate images using their inherit vector values in the latent space. 
+</p>
+<p>
+This interchangeability of latent vectors has the potential to calculate not only the distance in the latent space, but also the human perceptual and cognitive distance toward images, that is, how humans perceive and recognize images. However, it is still unclear how the distance in the latent space correlates with human perception and cognition. Our studies investigated the relationship between latent vectors and human perception or cognition through psycho-visual experiments that manipulates the latent vectors of face images. 
+</p>
+
+<p>
+In the perception study, a change perception task was used to examine whether participants could perceive visual changes in face images before and after moving an arbitrary distance in the latent space. 
+</p>
+<p>
+In the cognition study, a face recognition task was utilized to examine whether participants could recognize a face as the same, even after moving an arbitrary distance in the latent space.
+</p>
+<p>
+ Our experiments show that the distance between face images in the latent space correlates with human perception and cognition for visual changes in face imagery, which can be modeled with a logistic function. By utilizing our methodology, it will be possible to interchangeably convert between the distance in the latent space and the metric of human perception and cognition, potentially leading to image processing that better reflects human perception and cognition.
+</p>
+</TextSection>

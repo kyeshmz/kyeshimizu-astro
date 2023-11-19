@@ -1,0 +1,29 @@
+---
+import { ArrowUpRight } from 'lucide-react'
+import type { GrantTableRow } from '../AboutAccordion/GrantsTable'
+import { Card } from '../ui/card'
+
+interface Props {
+  grants: GrantTableRow[]
+}
+
+const { grants } = Astro.props
+---
+
+<Card className='px-8 py-4 w-full'>
+  <h4 class='mb-4 text-xl font-medium leading-none text-center md:text-left'>Grants</h4>
+  <div class='flex md:flex-row flex-col gap-4 text-center md:text-left flex-wrap'>
+    {
+      grants.map((grant) => {
+        return (
+          <a
+            class='text-sm hover:underline  gap-1 text-center flex flex-wrap md:text-left justify-center'
+            href={grant.reference}
+          >
+            {grant.grant_name} <ArrowUpRight className='w-4 h-4 ' />
+          </a>
+        )
+      })
+    }
+  </div>
+</Card>

@@ -11,7 +11,11 @@ export default function ProjectListItemWrap({
 }) {
   return (
     <Suspense
-      fallback={<li className={'flex flex-col w-6/12 max-w-[160px]  flex-wrap '}>{children}</li>}
+      fallback={
+        <li className={'flex flex-col h-full bg-slate-400 w-6/12 max-w-[160px]  flex-wrap '}>
+          {children}
+        </li>
+      }
     >
       <li
         className={'flex flex-col w-6/12 max-w-[160px]  flex-wrap '}

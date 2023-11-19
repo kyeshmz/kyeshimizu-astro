@@ -16,7 +16,7 @@ export default function ProjectHoverImage({
   return (
     <div
       className={clsx(
-        'float-right h-auto w-100 max-w-lg ',
+        'float-right h-auto w-100 max-w-lg z-50',
         // 'visible',
         hoverImage === src ? 'visible' : 'hidden',
       )}

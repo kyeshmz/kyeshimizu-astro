@@ -1,9 +1,11 @@
 ---
 title: 'Double Horizon'
 
-date: '2023.01.02'
+date: '2020.07.11'
 
 youtube: ''
+
+# hoverImage: './images/double-horizon/exhibition_main.jpg'
 
 tags: ['engineering', 'architecture', 'installation']
 
@@ -15,7 +17,7 @@ credits:
     'Saito Tatsuya (Abacus)',
     'Yuki Anezaki (N sketch inc.)',
     'Shinichi Suda (Twoth)',
-    'Marie Nagasue (Abacus)',
+    'Marie Nagasue',
   ]
 
 thanks: ['Moto Ise Shrine STAFF', 'Alternative Kyoto STAFF']
@@ -46,7 +48,19 @@ media: []
 
 talks: []
 ---
+import { Picture } from 'astro:assets'
+import { Spacer } from '../../components/layout/Spacer'
+import TextSection from '../../components/blog/TextSection'
+import img1 from './images/double-horizon/exhibition_main.jpg'
 
-adfadsfasd
+<TextSection>
+<p>
 
-https://github.com/SuperceptionLab/HumanLatentMetrics
+The interactive art director and media artist, Tatsuya Saito presents artwork Double Horizon which intends to describe the original meaning of Amanohashidate. In Japanese language, both the sea and the sky are called “Ama.” Why are these two different elements expressed with the same sound? Saito’s installation work suggests a space that —derived from the origin of Amanohashidate—looks beyond the horizon. The work was exhibited at the approach to Motoise Kono Shrine, a sacred place that inherently occupies a liminal margin between two worlds. Saito made use of looming fog and projections to give us the illusion of a three-dimensional sea surface, or flowing clouds.
+</p>
+</TextSection>
+
+<Picture widths={[360, 768, 1024, 1440]} src={img1} formats={['avif', 'webp']} alt='A person watching a screen of the works'  sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'} />
+
+この作品《Double Horizon》で、インタラクティブアートディレクターの齋藤達也は、天橋立という場所が本来持つ意味を表現することを試みた。
+空のことを「天 (アマ)」といい、またその下に広がる海のことも「アマ」と呼ぶ。なぜ空と海が共通の音で言い表されるのか。水平線のかなたに見える、その境界を望む天橋立の成り立ちにも由来した、二つの世界に挟まれる境界を表現するようなこのインスタレーション作品を、齋藤は天橋立の聖地である元伊勢籠神社参道に展示した。海の水面あるいは、流れていく雲のようにも見える、プロジェクションと霧の装置によって立体的に表現された空間を、鑑賞者が身体的に体験できる空間を創り上げた。
