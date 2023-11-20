@@ -13,10 +13,10 @@ export const Works = {
   HumanLatentMetrics: 'Human Latent Metrics',
   Nanco: 'Nanco',
   Xenon: 'Xenon',
-  WhoElseIfNotYou: 'Who else if not you?',
+  WhoElseIfNotYou: 'Who else if not you',
   AlgorithmicUrbanComposition: 'Algorithmic Urban Composition',
-UrbanRhythmability: 'Urban Rhythmability',
-SyntheticFeather: 'Synthetic Feather'
+  UrbanRhythmability: 'Urban Rhythmability',
+  SyntheticFeather: 'Synthetic Feather',
 } as const
 
 // type SizeType = 'small' | 'medium' | 'large'
