@@ -44,7 +44,7 @@ export type PublicationTableRow = {
 export const PublicationTableColumn: ColumnDef<PublicationTableRow>[] = [
   {
     accessorKey: 'work',
-    header: 'Work',
+    header: ({ column }) => <DataTableColumnHeader column={column} title='Work' />,
   },
   {
     accessorKey: 'conference_name',

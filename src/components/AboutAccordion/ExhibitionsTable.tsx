@@ -34,11 +34,13 @@ export type ExhibitionTableRow = {
 export const DataTableColumn: ColumnDef<ExhibitionTableRow>[] = [
   {
     accessorKey: 'work',
-    header: 'Work',
+
+    header: ({ column }) => <DataTableColumnHeader column={column} title='Work' />,
   },
   {
     accessorKey: 'exhibition_name',
-    header: 'Exhibition Name',
+    // header: 'Exhibition Name',
+    header: ({ column }) => <DataTableColumnHeader column={column} title='Exhibition Name' />,
   },
   {
     accessorKey: 'city',

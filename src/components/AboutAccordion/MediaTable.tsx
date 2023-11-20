@@ -33,7 +33,7 @@ export type MediaTableRow = {
 export const MediaTableColumn: ColumnDef<MediaTableRow>[] = [
   {
     accessorKey: 'work',
-    header: 'Work',
+    header: ({ column }) => <DataTableColumnHeader column={column} title='Work' />,
   },
   {
     accessorKey: 'media_name',

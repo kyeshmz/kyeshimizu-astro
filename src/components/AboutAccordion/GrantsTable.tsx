@@ -34,7 +34,7 @@ export type GrantTableRow = {
 export const GrantsTableColumn: ColumnDef<GrantTableRow>[] = [
   {
     accessorKey: 'work',
-    header: 'Work',
+    header: ({ column }) => <DataTableColumnHeader column={column} title='Work' />,
   },
   {
     accessorKey: 'grant_name',

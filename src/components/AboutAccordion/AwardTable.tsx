@@ -32,7 +32,7 @@ export type AwardTableRow = {
 export const AwardTableColumn: ColumnDef<AwardTableRow>[] = [
   {
     accessorKey: 'work',
-    header: 'Work',
+    header: ({ column }) => <DataTableColumnHeader column={column} title='Work' />,
   },
   {
     accessorKey: 'award_name',

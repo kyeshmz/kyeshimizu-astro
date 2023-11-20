@@ -43,7 +43,7 @@ export type TalkTableRow = {
 export const TalksTableColumn: ColumnDef<TalkTableRow>[] = [
   {
     accessorKey: 'work',
-    header: 'Work',
+    header: ({ column }) => <DataTableColumnHeader column={column} title='Work' />,
   },
   {
     accessorKey: 'talk_name',
