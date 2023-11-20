@@ -45,16 +45,18 @@ const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().format('Y
   }
   {
     entry.data.hoverImage && (
-      <Picture
-        widths={[360, 768, 1024, 1440]}
-        class={'h-[400px] object-cover'}
-        formats={['avif', 'webp']}
-        src={entry.data.hoverImage}
-        transition:persist
-        alt='A description of my image.'
-        transition:name={entry.data.hoverImage.src}
-        sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
-      />
+      <div class='flex justify-center align-center text-center'>
+        <Picture
+          widths={[360, 768, 1024, 1440]}
+          class={'h-[400px] object-cover '}
+          formats={['avif', 'webp']}
+          src={entry.data.hoverImage}
+          transition:persist
+          alt='A description of my image.'
+          transition:name={entry.data.hoverImage.src}
+          sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
+        />
+      </div>
     )
   }
 
@@ -69,7 +71,7 @@ const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().format('Y
 
     <div class='flex flex-wrap gap-3'>
       {
-        entry.data.tags.map((tag) => {
+        entry.data.tags.map((tag: string) => {
           const formattedTag = tag.charAt(0).toUpperCase() + tag.slice(1)
           return (
             <Button variant={'secondary'}>

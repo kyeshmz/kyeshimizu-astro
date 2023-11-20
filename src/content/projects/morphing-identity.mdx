@@ -5,6 +5,8 @@ subtitle: 'Exploring the facial boundaries between self and other'
 
 date: '2021.05.12'
 
+hoverImage: './images/morphing-identity/main.webp'
+
 youtube: 'https://www.youtube.com/watch?v=ahKxwaJ3k_U'
 
 tags: ['engineering', 'research', 'installation', 'academic']
@@ -131,6 +133,7 @@ import { Picture } from 'astro:assets'
 import TextSection from '../../components/blog/TextSection'
 import { Spacer } from '../../components/layout/Spacer'
 import VideoPlayer from '../../components/VideoPlayer'
+import DoubleColumnPicture from '../../components/layout/DoubleColumnPicture'
 import ginza1 from './images/morphing-identity/SonyPark_2021_0723-1.jpg'
 import ginza2 from './images/morphing-identity/SonyPark_2021_0723-2.jpg'
 import ginza3 from './images/morphing-identity/SonyPark_2021_0723-3.jpg'
@@ -195,9 +198,10 @@ import ycam2 from './images/morphing-identity/2022-ycam2.jpg'
   </p>
 </TextSection>
 <Spacer size={32} />
-<Picture widths={[360, 768, 1024, 1440]} src={chi2023} formats={['avif', 'webp']} alt='A person watching a screen of the works' />
-<Picture widths={[360, 768, 1024, 1440]}className="w-full" src={chi2023demo} formats={['avif', 'webp']} alt='A person watching a screen of the works' />
-<div className="md:grid md:grid-cols-2 md:grid-rows-1 gap-4 grid-flow-row flex flex-col">
+<DoubleColumnPicture>
+<Picture widths={[360, 768, 1024, 1440]} src={chi2023} formats={['avif', 'webp']} className="object-cover h-full w-auto" alt='A person watching a screen of the works' />
+<Picture widths={[360, 768, 1024, 1440]} className="object-cover h-full w-auto" src={chi2023demo} formats={['avif', 'webp']} alt='A person watching a screen of the works' />
+
 <Picture widths={[360, 768, 1024, 1440]} src={ycam1} formats={['avif', 'webp']} alt='A person watching a screen of the works'  className="object-cover h-full w-auto" />
 <Picture widths={[360, 768, 1024, 1440]} src={ycam2} formats={['avif', 'webp']} alt='A person watching a screen of the works' className="object-cover h-full w-auto" />
-</div>
+</DoubleColumnPicture>

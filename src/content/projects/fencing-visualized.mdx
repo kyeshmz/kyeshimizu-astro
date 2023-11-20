@@ -5,6 +5,8 @@ subtitle: 'Enable detection for real-time AR synthesis in fencing'
 
 date: '2020.01.02'
 
+hoverImage: './images/fencing-visualized/fencing_01.jpg'
+
 youtube: 'https://youtu.be/D6DTYeLW3C0'
 
 tags: ['engineering', 'research']
@@ -26,7 +28,7 @@ credits:
     'Fumiya Funatsu (annolab)',
   ]
 
-thanks: ['']
+thanks: []
 
 grants: []
 
@@ -66,15 +68,73 @@ talks: []
 import { Picture } from 'astro:assets'
 import { Spacer } from '../../components/layout/Spacer'
 import TextSection from '../../components/blog/TextSection'
+import VideoPlayer from '../../components/VideoPlayer'
+import img2 from './images/fencing-visualized/fencing_02.jpg'
 
-Rhizomatiks' Fencing Tracking and Visualization system uses AR technology to visualize the tips of swords in motion. Building on various development processes since 2012, the system has been updated to utilize deep learning to visualize sword tips without markers. The system enables detection of sword tips, which human eyes cannot follow, and real-time AR synthesis to instantly visualize the trajectory.
+
+<TextSection>
+  <p>
+    Rhizomatiks' Fencing Tracking and Visualization system uses AR technology to visualize the tips
+    of swords in motion. Building on various development processes since 2012, the system has been
+    updated to utilize deep learning to visualize sword tips without markers. The system enables
+    detection of sword tips, which human eyes cannot follow, and real-time AR synthesis to instantly
+    visualize the trajectory.
+  </p>
+</TextSection>
+<Spacer size={32} />
+<TextSection>
+  <p>
+    We developed the "Fencing tracking and visualization system." It detects the tips of sabers
+    (fencing swords) to visualize the trajectory of the sabers in real time, which doesn't require
+    any markers but works only with the input of the images from cameras. This is the only fencing
+    visualization technology that has been used in actual international fencing matches, such as the
+    H.I.H. Prince Takamado Trophy JAL Presents Fencing World Cup 2019.
+  </p>
+
+</TextSection>
+<Spacer size={16} />
+  <Picture widths={[360, 768, 1024, 1440]} src={img2} formats={['avif', 'webp']} alt='A person watching a screen of the works'  sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'} />
+<Spacer size={32} />
+<TextSection>
+  <p>
+    Fencing sabre, especially its tip, moves quite fast, and its flexibility results in a large
+    distortion in its shape. Additionally the tip is the size of only a few pixels when captured
+    even by a 4K camera so that it is too small to detect with image recognition techniques. We
+    developed a multi-stage deep learning network for general object detection based on YOLO v3
+    [Redmon and Farhadi 2017, 2018], starting from the hardware selection of a camera for analysis.
+    Since a single camera can only cover about 8 meters, we eventually installed 24 4K cameras on
+    the both sides of the piste to cover the entire match area and improved the robustness of the
+    sabre tip detection. We also developed a system to estimate the 3D position of the tips from the
+    detection results of multiple cameras.
+  </p>
+</TextSection>
+<Spacer size={32} />
+<VideoPlayer url={'https://www.youtube.com/watch?v=D6DTYeLW3C0'} client:only='react' />
+<Spacer size={32} />
+<TextSection>
+  <p className='whitespace-pre'>
+
+    (Rhizomatiks) Planning, Creative Direction : Daito Manabe
+    <br /> <br />
+    (Rhizomatiks) Planning, Technical Direction, Hardware Engineering : Motoi Ishibashi
+    <br /> <br />
+    (Rhizomatiks) Software Engineering : Kyle Mc-Donald (IYOIYO), anno lab (Kisaku Tanaka, Sadam Fujioka,
+    Nariaki Iwatani, Fumiya Funatsu), Kye Shimizu
+    <br /> <br />
+    Dataset System Engineering: Tatsuya Ishii (Rhizomatiks), ZIKU Technologies, Inc. (Yoshihisa Hashimoto,
+    Hideyuki Kasuga, Seiji Nanase, Daisetsu Ido) <br /> <br />
+    Dataset System Engineering : Ignis Imageworks Corp. (Tetsuya Kobayashi, Katsunori Kiuchi, Kanako
+    Saito, Hayato Abe, Ryosuke Akazawa, Yuya Nagura, Shigeru Ohata, Ayano Takimoto, Kanami Kawamura,
+    Yoko Konno) <br /> <br />
+    Visual Programming : Satoshi Horii, Futa Kera (Rhizomatiks) <br /> <br />
+    Videographer : Muryo Homma (Rhizomatiks) Hardware Engineering & Videographer Support : Toshitaka{' '}
+    <br /> <br />
+    Mochizuki (Rhizomatiks) Hardware Engineering : Yuta Asai, Kyohei Mouri, Saki Ishikawa <br /> <br />
+    (Rhizomatiks) Technical Support : Shintaro Kamijyo (Rhizomatiks) Project Management : Kahori{' '}
+    <br /> <br />
+    Takemura (Rhizomatiks) Project Management, Produce : Takao Inoue (Rhizomatiks) <br /> <br />
+    This work was conducted with assistance from Dentsu Lab Tokyo
+  </p>
+</TextSection>
 
 
-
-We developed the "Fencing tracking and visualization system." It detects the tips of sabers (fencing swords) to visualize the trajectory of the sabers in real time, which doesn't require any markers but works only with the input of the images from cameras. This is the only fencing visualization technology that has been used in actual international fencing matches, such as the H.I.H. Prince Takamado Trophy JAL Presents Fencing World Cup 2019.
-
-Fencing sabre, especially its tip, moves quite fast, and its flexibility results in a large distortion in its shape. Additionally the tip is the size of only a few pixels when captured even by a 4K camera so that it is too small to detect with image recognition techniques. We developed a multi-stage deep learning network for general object detection based on YOLO v3 [Redmon and Farhadi 2017, 2018], starting from the hardware selection of a camera for analysis. Since a single camera can only cover about 8 meters, we eventually installed 24 4K cameras on the both sides of the piste to cover the entire match area and improved the robustness of the sabre tip detection. We also developed a system to estimate the 3D position of the tips from the detection results of multiple cameras. 
-
-(Rhizomatiks) Planning, Creative Direction : Daito Manabe (Rhizomatiks) Planning, Technical Direction, Hardware Engineering : Motoi Ishibashi (Rhizomatiks) Software Engineering : Kyle Mc-Donald (IYOIYO), anno lab (Kisaku Tanaka, Sadam Fujioka, Nariaki Iwatani, Fumiya Funatsu), Kye Shimizu Dataset System Engineering: Tatsuya Ishii (Rhizomatiks), ZIKU Technologies, Inc. (Yoshihisa Hashimoto, Hideyuki Kasuga, Seiji Nanase, Daisetsu Ido) Dataset System Engineering : Ignis Imageworks Corp. (Tetsuya Kobayashi, Katsunori Kiuchi, Kanako Saito, Hayato Abe, Ryosuke Akazawa, Yuya Nagura, Shigeru Ohata, Ayano Takimoto, Kanami Kawamura, Yoko Konno) Visual Programming : Satoshi Horii, Futa Kera (Rhizomatiks) Videographer : Muryo Homma (Rhizomatiks) Hardware Engineering & Videographer Support : Toshitaka Mochizuki (Rhizomatiks) Hardware Engineering : Yuta Asai, Kyohei Mouri, Saki Ishikawa (Rhizomatiks) Technical Support : Shintaro Kamijyo (Rhizomatiks) Project Management : Kahori Takemura (Rhizomatiks) Project Management, Produce : Takao Inoue (Rhizomatiks) This work was conducted with assistance from Dentsu Lab Tokyo
-
-https://www.youtube.com/watch?v=_UJNoijtang
