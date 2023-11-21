@@ -1,3 +1,4 @@
+import million from 'million/compiler'
 import { defineConfig } from 'astro/config'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
@@ -24,5 +25,8 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkModifiedTime, remarkReadingTime],
   },
-  vite: { optimizeDeps: { exclude: ['@resvg/resvg-js'] } },
+  vite: {
+    optimizeDeps: { exclude: ['@resvg/resvg-js'] },
+    plugins: [million.vite({ mode: 'react', server: true, auto: true })],
+  },
 })

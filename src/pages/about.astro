@@ -1,6 +1,4 @@
 ---
-import '../styles/globals.css'
-
 import { getCollection } from 'astro:content'
 
 import AboutAccordion from '../components/AboutAccordion/AboutAccordion'
@@ -15,7 +13,6 @@ import SocialButtonRow from '../components/SocialButtonRow'
 import { Separator } from '../components/ui/separator'
 import { Content as AboutContent } from '../content/about/about.mdx'
 import Layout from '../layouts/Layout.astro'
-import PhotoAccordion from '../components/about/PhotoAccordion'
 
 const allPosts = await getCollection('projects')
 ---
