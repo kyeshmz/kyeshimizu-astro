@@ -5,26 +5,21 @@ import { getOgImage } from '../../utils/createOGPImage'
 export async function getStaticPaths() {
   const posts = await getCollection('projects')
 
-  return [
-    {
-      params: {
-        slug: 'index',
-      },
+  return posts.map((post) => ({
+    params: {
+      project: post.slug,
     },
-    {
-      params: {
-        slug: 'about',
-      },
-    },
-  ]
+  }))
 }
 
 export async function GET({ params }: APIContext) {
-  const { slug } = params
-  if (!slug) return { status: 404 }
-  const formattedSlug = slug.charAt(0).toUpperCase() + slug.slice(1)
+  const { project } = params
+  if (!project) return { status: 404 }
 
-  const body = await getOgImage(formattedSlug ?? 'No title')
+  const post = (await getCollection('projects')).find((post) => post.slug === project)
+  if (!post) return { status: 404 }
+
+  const body = await getOgImage(post.data.title ?? 'No title')
 
   return new Response(body, {
     headers: {

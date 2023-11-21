@@ -2,85 +2,80 @@ import { Resvg } from '@resvg/resvg-js'
 import satori from 'satori'
 
 const SITE_TITLE = 'Kye Shimizu'
-const siteDomainName = 'blog.lacolaco.net'
-const fontFamily = 'Zen Kaku Gothic New'
+const siteDomainName = 'kyeshimizu.com'
+const fontFamily = 'Inter'
 
 export async function getOgImage(text: string) {
-  const fontNormal = await fetchFont(SITE_TITLE + siteDomainName, fontFamily, 400)
+  const fontNormal = await fetchFont(SITE_TITLE + siteDomainName, fontFamily, 600)
   const fontBold = await fetchFont(SITE_TITLE + text, fontFamily, 700)
 
   const svg = await satori(
     <div
       style={{
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
         height: '100%',
         width: '100%',
-        backgroundColor: '#fff',
-        padding: '24px',
-        fontFamily: `"${fontFamily}", sans-serif`,
+        alignItems: 'center',
+        justifyContent: 'center',
+        letterSpacing: '-.02em',
+        fontWeight: 700,
+        background: 'white',
       }}
     >
       <div
         style={{
+          left: 42,
+          top: 42,
+          position: 'absolute',
           display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-start',
-          justifyContent: 'center',
-          rowGap: '24px',
-          height: '100%',
-          width: '100%',
-          border: '2px solid #1e1e1e',
-          borderRadius: '8px',
-          color: '#333',
-          padding: '24px 24px',
+          alignItems: 'center',
         }}
       >
-        <div
+        <span
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-            width: '100%',
-            fontSize: '16px',
+            width: 24,
+            height: 24,
+            background: 'black',
+          }}
+        />
+        <span
+          style={{
+            marginLeft: 8,
+            fontSize: 20,
+            fontWeight: 600,
           }}
         >
-          <span>{SITE_TITLE}</span>
-        </div>
-        <div
-          style={{
-            flexGrow: '1',
-            textOverflow: 'ellipsis',
-            fontSize: '48px',
-            fontWeight: 700,
-            wordBreak: 'keep-all',
-          }}
-        >
-          {text}
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-            width: '100%',
-            fontSize: '24px',
-          }}
-        >
-          <span>{siteDomainName}</span>
-        </div>
+          kyeshimizu.com
+        </span>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          padding: '20px 50px',
+          margin: '0 42px',
+          fontSize: 40,
+          width: 'auto',
+          maxWidth: 550,
+          textAlign: 'center',
+          backgroundColor: 'black',
+          color: 'white',
+          lineHeight: 1.4,
+        }}
+      >
+        {text}
       </div>
     </div>,
     {
       width: 800,
       height: 400,
+      embedFont: true,
       fonts: [
         {
           name: fontFamily,
           data: fontNormal,
-          weight: 400,
+          weight: 600,
           style: 'normal',
         },
         {

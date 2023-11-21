@@ -10,6 +10,24 @@ import NavigationClock from '../components/layout/NavigationClock'
 import Sidebar from '../components/layout/SideBar'
 import { Toaster } from '../components/ui/toaster'
 import '../styles/globals.css'
+import { type CollectionEntry, getCollection } from 'astro:content'
+
+interface Props {
+  post: CollectionEntry<'projects'>
+}
+
+export async function getStaticPaths() {
+  const posts = await getCollection('projects')
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: {
+      post,
+    },
+  }))
+}
+
+const { post } = Astro.props
+const { Content } = await post.render()
 ---
 
 <!doctype html>
@@ -31,9 +49,7 @@ import '../styles/globals.css'
         basic: {
           title: 'Kye Shimizu | Portfolio',
           type: 'A type.',
-
-          image:
-            'https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png',
+          image: new URL(`/og/${post.slug}.png`, Astro.url.origin).toString(),
         },
       }}
       twitter={{
@@ -47,7 +63,7 @@ import '../styles/globals.css'
           {
             name: 'twitter:image',
             content:
-              'https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png',
+            new URL(`/og/${post.slug}.png`, Astro.url.origin).toString(),
           },
           { name: 'twitter:title', content: 'Tinker Tailor Soldier Spy' },
           { name: 'twitter:description', content: 'Agent' },

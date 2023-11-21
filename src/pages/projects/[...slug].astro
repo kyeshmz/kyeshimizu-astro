@@ -15,6 +15,7 @@ import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import VideoPlayer from '../../components/VideoPlayer'
 import GrantCard from '../../components/project/GrantCard.astro'
+import ProjectLayout from '../../layouts/ProjectLayout.astro'
 
 dayjs.extend(utc)
 
@@ -31,7 +32,7 @@ const { Content, remarkPluginFrontmatter } = await entry.render()
 const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().format('YYYY.MM.DD')
 ---
 
-<Layout>
+<ProjectLayout post={entry}>
   {
     entry.data.hoverVideo && (
       <video
@@ -129,4 +130,4 @@ const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().format('Y
     <Separator />
   </TextSection>
   <Spacer size={32} />
-</Layout>
+</ProjectLayout>
