@@ -6,7 +6,6 @@ import { ViewTransitions } from 'astro:transitions'
 import { SEO } from 'astro-seo'
 
 import Navigation from '../components/layout/Navigation.astro'
-import NavigationClock from '../components/layout/NavigationClock'
 import Sidebar from '../components/layout/SideBar'
 import { Toaster } from '../components/ui/toaster'
 import '../styles/globals.css'
@@ -62,8 +61,7 @@ const { Content } = await post.render()
         meta: [
           {
             name: 'twitter:image',
-            content:
-            new URL(`/og/${post.slug}.png`, Astro.url.origin).toString(),
+            content: new URL(`/og/${post.slug}.png`, Astro.url.origin).toString(),
           },
           { name: 'twitter:title', content: 'Tinker Tailor Soldier Spy' },
           { name: 'twitter:description', content: 'Agent' },
@@ -75,9 +73,7 @@ const { Content } = await post.render()
   </head>
 
   <body>
-    <Navigation>
-      <NavigationClock client:load client:only='react' />
-    </Navigation>
+    <Navigation />
     <Sidebar transition:persist />
 
     <Toaster client:idle client:only='react' />

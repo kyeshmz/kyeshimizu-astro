@@ -6,7 +6,6 @@ import { ViewTransitions } from 'astro:transitions'
 import { SEO } from 'astro-seo'
 
 import Navigation from '../components/layout/Navigation.astro'
-import NavigationClock from '../components/layout/NavigationClock'
 import Sidebar from '../components/layout/SideBar'
 import { Toaster } from '../components/ui/toaster'
 import '../styles/globals.css'
@@ -59,9 +58,7 @@ import '../styles/globals.css'
   </head>
 
   <body>
-    <Navigation>
-      <NavigationClock client:load client:only='react' />
-    </Navigation>
+    <Navigation />
     <Sidebar transition:persist />
 
     <Toaster client:idle client:only='react' />
