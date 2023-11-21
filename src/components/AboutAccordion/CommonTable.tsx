@@ -6,11 +6,9 @@ import {
   type SortingState,
   useReactTable,
 } from '@tanstack/react-table'
-import { ArrowUpRight, MoreHorizontal } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { useState } from 'react'
 
-import { DataTableColumnHeader } from '@/src/components/AboutAccordion/DataTableColumnHeader'
-import { AccordionContent, AccordionItem, AccordionTrigger } from '@/src/components/ui/accordion'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/src/components/ui/hover-card'
 import {
   Table,
@@ -20,73 +18,18 @@ import {
   TableHeader,
   TableRow,
 } from '@/src/components/ui/table'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '../ui/dropdown-menu'
+
 import type { DataTableProps } from '../../types/table'
-import { Button } from '../ui/button'
+import { AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion'
+import { DataTableColumnHeader } from './DataTableColumnHeader'
 import { AlphabeticalColumnHeader } from './AlphabeticalColumnHeader'
 
-export type TalkTableRow = {
-  talk_name: string
-  reference: string
-  city: string
-  place: string
-  year: number
-  event_name: string
-}
-
-export const TalksTableColumn: ColumnDef<TalkTableRow>[] = [
-  {
-    accessorKey: 'work',
-    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Work' />,
-  },
-  {
-    accessorKey: 'talk_name',
-
-    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Talk' />,
-  },
-  {
-    accessorKey: 'place',
-
-    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Place' />,
-  },
-  {
-    accessorKey: 'city',
-
-    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='City' />,
-  },
-
-  {
-    accessorKey: 'year',
-    // header: 'Year',
-    header: ({ column }) => <DataTableColumnHeader column={column} title='Year' />,
-  },
-  {
-    id: 'actions',
-    cell: ({ row }) => {
-      const publicationRow = row.original
-
-      return (
-        <Button variant={'ghost'} asChild>
-          <a href={publicationRow.reference} className='flex gap-2'>
-            <ArrowUpRight className='w-4 h-4'></ArrowUpRight>
-          </a>
-        </Button>
-      )
-    },
-  },
-]
-
-export default function TalksTable<TData, TValue>({
+export default function CommonTable<TData, TValue>({
+  itemValue,
+  tableName,
   columns,
   data,
-}: DataTableProps<TData, TValue>) {
+}: { itemValue: string; tableName: string } & DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([])
 
   const table = useReactTable({
@@ -101,8 +44,8 @@ export default function TalksTable<TData, TValue>({
   })
 
   return (
-    <AccordionItem value='item-4'>
-      <AccordionTrigger>Talks</AccordionTrigger>
+    <AccordionItem value={itemValue}>
+      <AccordionTrigger>{tableName}</AccordionTrigger>
       <AccordionContent>
         <Table>
           <TableHeader>

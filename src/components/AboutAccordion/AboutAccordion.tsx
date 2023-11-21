@@ -1,18 +1,21 @@
-import { DataTableColumn } from '@/src/components/AboutAccordion/ExhibitionsTable'
-import { GrantsTableColumn } from '@/src/components/AboutAccordion/GrantsTable'
-import { TeachingTableColumn } from '@/src/components/AboutAccordion/TeachingTable'
-
-import { Accordion } from '../ui/accordion'
-import AwardTable, { AwardTableColumn, type AwardTableRow } from './AwardTable'
-import ExhibitionsTable, { type ExhibitionTableRow } from './ExhibitionsTable'
-import GrantsTable, { type GrantTableRow } from './GrantsTable'
-import MediaTable, { MediaTableColumn, type MediaTableRow } from './MediaTable'
-import PublicationsTable, {
-  PublicationTableColumn,
+import { Accordion } from '@/src/components/ui/accordion'
+import CommonTable from './CommonTable'
+import {
   type PublicationTableRow,
-} from './PublicationsTable'
-import TalksTable, { TalksTableColumn, type TalkTableRow } from './TalksTable'
-import TeachingTable, { type TeachingTableRow } from './TeachingTable'
+  type MediaTableRow,
+  type ExhibitionTableRow,
+  type TalkTableRow,
+  type AwardTableRow,
+  type TeachingTableRow,
+  type GrantTableRow,
+  AwardTableColumn,
+  DataTableColumn,
+  PublicationTableColumn,
+  TalksTableColumn,
+  MediaTableColumn,
+  TeachingTableColumn,
+  GrantsTableColumn,
+} from './TableData'
 
 export default function AboutAccordion({
   PublicationData,
@@ -37,19 +40,52 @@ export default function AboutAccordion({
       type='single'
       collapsible
       className='w-full animate-in  duration-700 fade-in fade-out'
-      defaultValue='item-1'
+      defaultValue='i1'
     >
-      <AwardTable columns={AwardTableColumn} data={AwardData}></AwardTable>
-      <ExhibitionsTable columns={DataTableColumn} data={ExhibitionData}></ExhibitionsTable>
-      <PublicationsTable
+      <CommonTable
+        itemValue='i1'
+        tableName='Awards'
+        columns={AwardTableColumn}
+        data={AwardData}
+      ></CommonTable>
+
+      <CommonTable
+        itemValue='i2'
+        tableName='Exhibitions'
+        columns={DataTableColumn}
+        data={ExhibitionData}
+      ></CommonTable>
+      <CommonTable
+        itemValue='i3'
+        tableName='Publications / Conferences'
         columns={PublicationTableColumn}
         data={PublicationData}
-      ></PublicationsTable>
+      ></CommonTable>
 
-      <TalksTable columns={TalksTableColumn} data={TalkData}></TalksTable>
-      <MediaTable columns={MediaTableColumn} data={MediaData}></MediaTable>
-      <TeachingTable columns={TeachingTableColumn} data={TeachingData}></TeachingTable>
-      <GrantsTable columns={GrantsTableColumn} data={GrantData}></GrantsTable>
+      <CommonTable
+        itemValue='i4'
+        tableName='Talks'
+        columns={TalksTableColumn}
+        data={TalkData}
+      ></CommonTable>
+      <CommonTable
+        itemValue='i5'
+        tableName='Media'
+        columns={MediaTableColumn}
+        data={MediaData}
+      ></CommonTable>
+      <CommonTable
+        itemValue='i6'
+        tableName='Teaching Experience'
+        columns={TeachingTableColumn}
+        data={TeachingData}
+      ></CommonTable>
+      <CommonTable
+        itemValue='i7'
+        tableName='Participating Grants'
+        columns={GrantsTableColumn}
+        data={GrantData}
+      ></CommonTable>
     </Accordion>
   )
 }
