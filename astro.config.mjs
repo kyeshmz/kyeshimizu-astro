@@ -5,6 +5,7 @@ import mdx from '@astrojs/mdx'
 import { remarkModifiedTime } from './remark-modified-time.mjs'
 import { remarkReadingTime } from './remark-reading-time.mjs'
 import react from '@astrojs/react'
+import robotsTxt from 'astro-robots-txt'
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,6 +18,7 @@ export default defineConfig({
     }),
     mdx(),
     react(),
+    robotsTxt(),
   ],
   prefetch: true,
   markdown: {
