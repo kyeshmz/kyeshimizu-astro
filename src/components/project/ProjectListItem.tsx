@@ -2,7 +2,7 @@ import { type WorkType } from '@/src/types/works'
 
 import { Suspense } from 'react'
 import { Loader2 } from 'lucide-react'
-import { $projectHoverImageAtom } from '../../state/ProjectHoverState'
+
 import { Spacer } from '../layout/Spacer'
 import ProjectTag from './ProjectTag'
 
