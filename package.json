@@ -58,8 +58,7 @@
     "@types/react-dom": "^18.2.15",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
-    "bun-types": "^1.0.13",
-    "cloudflare": "^2.9.1",
+    "bun-types": "^1.0.12",
     "clsx": "^2.0.0",
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
@@ -75,6 +74,6 @@
     "prettier-plugin-astro": "^0.12.2",
     "reading-time": "^1.5.0",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "^5.3.2"
+    "typescript": "^5.2.2"
   }
 }
