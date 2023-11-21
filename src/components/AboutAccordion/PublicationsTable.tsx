@@ -49,7 +49,7 @@ export const PublicationTableColumn: ColumnDef<PublicationTableRow>[] = [
   },
   {
     accessorKey: 'conference_name',
-    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Conference Name' />,
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Conference' />,
   },
   {
     accessorKey: 'reference',
