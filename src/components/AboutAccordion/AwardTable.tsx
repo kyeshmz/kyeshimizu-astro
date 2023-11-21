@@ -22,6 +22,7 @@ import {
 import type { DataTableProps } from '../../types/table'
 import { AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion'
 import { DataTableColumnHeader } from './DataTableColumnHeader'
+import { AlphabeticalColumnHeader } from './AlphabeticalColumnHeader'
 
 export type AwardTableRow = {
   work: string
@@ -32,11 +33,12 @@ export type AwardTableRow = {
 export const AwardTableColumn: ColumnDef<AwardTableRow>[] = [
   {
     accessorKey: 'work',
-    header: ({ column }) => <DataTableColumnHeader column={column} title='Work' />,
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Work' />,
   },
   {
     accessorKey: 'award_name',
-    header: 'Award Name',
+    // header: 'Award Name',
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Award Name' />,
   },
   {
     accessorKey: 'year',

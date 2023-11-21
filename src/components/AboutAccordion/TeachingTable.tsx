@@ -20,6 +20,7 @@ import {
 import type { DataTableProps } from '../../types/table'
 import { AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion'
 import { DataTableColumnHeader } from './DataTableColumnHeader'
+import { AlphabeticalColumnHeader } from './AlphabeticalColumnHeader'
 
 export type TeachingTableRow = {
   work?: string
@@ -31,11 +32,12 @@ export type TeachingTableRow = {
 export const TeachingTableColumn: ColumnDef<TeachingTableRow>[] = [
   {
     accessorKey: 'workshop_name',
-    header: 'Workshop Name',
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Workshop Name' />,
   },
   {
     accessorKey: 'place',
-    header: 'Place',
+
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Place' />,
   },
   {
     accessorKey: 'date',

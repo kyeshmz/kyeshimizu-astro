@@ -30,6 +30,7 @@ import {
 } from '../ui/dropdown-menu'
 import type { DataTableProps } from '../../types/table'
 import { Button } from '../ui/button'
+import { AlphabeticalColumnHeader } from './AlphabeticalColumnHeader'
 
 export type TalkTableRow = {
   talk_name: string
@@ -43,19 +44,22 @@ export type TalkTableRow = {
 export const TalksTableColumn: ColumnDef<TalkTableRow>[] = [
   {
     accessorKey: 'work',
-    header: ({ column }) => <DataTableColumnHeader column={column} title='Work' />,
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Work' />,
   },
   {
     accessorKey: 'talk_name',
-    header: 'Talk',
+
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Talk' />,
   },
   {
     accessorKey: 'place',
-    header: 'Place',
+
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Place' />,
   },
   {
     accessorKey: 'city',
-    header: 'City',
+
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='City' />,
   },
 
   {

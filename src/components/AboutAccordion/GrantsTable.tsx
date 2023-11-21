@@ -23,6 +23,7 @@ import type { DataTableProps } from '../../types/table'
 import { AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion'
 import { DataTableColumnHeader } from './DataTableColumnHeader'
 import { Button } from '../ui/button'
+import { AlphabeticalColumnHeader } from './AlphabeticalColumnHeader'
 
 export type GrantTableRow = {
   work?: string
@@ -34,11 +35,12 @@ export type GrantTableRow = {
 export const GrantsTableColumn: ColumnDef<GrantTableRow>[] = [
   {
     accessorKey: 'work',
-    header: ({ column }) => <DataTableColumnHeader column={column} title='Work' />,
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Work' />,
   },
   {
     accessorKey: 'grant_name',
-    header: 'Grant Name',
+
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Grant Name' />,
   },
 
   {

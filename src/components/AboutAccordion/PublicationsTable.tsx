@@ -31,6 +31,7 @@ import {
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
 import { DataTableColumnHeader } from './DataTableColumnHeader'
+import { AlphabeticalColumnHeader } from './AlphabeticalColumnHeader'
 
 export type PublicationTableRow = {
   work?: string
@@ -48,17 +49,16 @@ export const PublicationTableColumn: ColumnDef<PublicationTableRow>[] = [
   },
   {
     accessorKey: 'conference_name',
-    header: 'Conference Name',
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Conference Name' />,
   },
   {
     accessorKey: 'reference',
-    header: 'Reference',
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Reference' />,
   },
   {
     accessorKey: 'year',
     // header: 'Year',
     header: ({ column }) => <DataTableColumnHeader column={column} title='Year' />,
-    // header: ({ column }) => <DownloadColumnHeader column={column} title='Year' />,
   },
 
   {

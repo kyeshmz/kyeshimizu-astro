@@ -1,5 +1,17 @@
 ---
 import NavigationItem from './NavigationItem'
+
+const options: Intl.DateTimeFormatOptions = {
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  timeZoneName: 'short',
+  day: 'numeric',
+  month: '2-digit',
+  year: 'numeric',
+  hour12: false,
+  timeZone: 'Asia/Tokyo',
+}
 ---
 
 <header class='fixed left-0 top-0 w-full z-10 bg-[hsl(var(--background))]'>
@@ -27,9 +39,31 @@ import NavigationItem from './NavigationItem'
           <NavigationItem title='Store' /> */
         }
       </ul>
-      <div class='float-right m-0 p-0 hidden md:inline'>
-        <slot />
+      <div class='float-right m-0 p-0 hidden md:inline' id='clock'>
+        TYO: {new Intl.DateTimeFormat('en-US', options).format(Date.now())}
       </div>
     </nav>
   </div>
 </header>
+
+<script>
+  // Client-side JavaScript
+  const clockElement = document.getElementById('clock') as HTMLDivElement
+  const options: Intl.DateTimeFormatOptions = {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    timeZoneName: 'shortOffset',
+    day: 'numeric',
+    month: '2-digit',
+    year: 'numeric',
+    hour12: false,
+    timeZone: 'Asia/Tokyo',
+  }
+  setInterval(() => {
+    const now = new Date()
+    const formatter = new Intl.DateTimeFormat('en-US', options)
+
+    clockElement.textContent = 'TYO - ' + formatter.format(now)
+  }, 1000)
+</script>

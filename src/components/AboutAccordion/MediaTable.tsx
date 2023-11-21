@@ -22,6 +22,7 @@ import {
 } from '@/src/components/ui/table'
 import { type DataTableProps } from '@/src/types/table'
 import { Button } from '../ui/button'
+import { AlphabeticalColumnHeader } from './AlphabeticalColumnHeader'
 
 export type MediaTableRow = {
   media_name: string
@@ -33,15 +34,17 @@ export type MediaTableRow = {
 export const MediaTableColumn: ColumnDef<MediaTableRow>[] = [
   {
     accessorKey: 'work',
-    header: ({ column }) => <DataTableColumnHeader column={column} title='Work' />,
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Work' />,
   },
   {
     accessorKey: 'media_name',
-    header: 'Media Name',
+
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Media Name' />,
   },
   {
     accessorKey: 'medium',
-    header: 'Medium',
+
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Medium' />,
   },
 
   {
