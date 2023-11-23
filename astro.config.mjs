@@ -21,14 +21,10 @@ export default defineConfig({
     mdx(),
     react(),
     robotsTxt(),
-sentryAstro({
-      dsn: "
-
-https://examplePublicKey@o0.ingest.sentry.io/0",
+sentry({
+      dsn: "https://740dd5065bf6f581619af5cb14f71e94@o4505485115719680.ingest.sentry.io/4506272625065984",
       sourceMapsUploadOptions: {
-        project: "
-
-example-project",
+        project: "kyeshimizu-web",
         authToken: process.env.SENTRY_AUTH_TOKEN,
       },
     }),
