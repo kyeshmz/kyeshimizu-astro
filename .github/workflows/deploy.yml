@@ -1,0 +1,45 @@
+name: Deploy to GitHub Pages
+
+on:
+  # `main` ブランチにプッシュするたびにワークフローを実行します
+  # 異なるブランチ名を使用する場合は、`main` をブランチ名に置き換えてください
+  push:
+    branches: [ main ]
+  # このワークフローを GitHub の Actions タブから手動で実行できるようにします。
+  workflow_dispatch:
+
+# このジョブがリポジトリをクローンし、ページデプロイメントを作成することを許可します。
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+      - name: Install dependencies
+        run: bun install
+      - name: Checkout your repository using git
+        uses: actions/checkout@v3
+      - name: Install, build, and upload your site
+        uses: withastro/action@v1
+        # with:
+          # path: . # リポジトリ内のAstroプロジェクトのルートロケーション。(オプション)
+          # node-version: 18 # サイト構築に使用するNodeのバージョン。デフォルトは18です。（オプション）
+          # package-manager: pnpm@latest # 依存関係のインストールとサイトのビルドに使用する Node パッケージマネージャ。ロックファイルに基づいて自動的に検出されます。(オプション)
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@1
+        with:
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          projectName: <ここにプロジェクト名（今回は "cloudflare-pages-with-github-actions-prac" ）>
+          directory: < ここは ./dist など >
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
