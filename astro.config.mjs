@@ -7,7 +7,7 @@ import { remarkModifiedTime } from './remark-modified-time.mjs'
 import { remarkReadingTime } from './remark-reading-time.mjs'
 import react from '@astrojs/react'
 import robotsTxt from 'astro-robots-txt'
-import sentryAstro from "@sentry/astro"
+import sentry from "@sentry/astro"
 
 // https://astro.build/config
 export default defineConfig({
