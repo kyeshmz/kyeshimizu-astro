@@ -7,6 +7,7 @@ import { remarkModifiedTime } from './remark-modified-time.mjs'
 import { remarkReadingTime } from './remark-reading-time.mjs'
 import react from '@astrojs/react'
 import robotsTxt from 'astro-robots-txt'
+import sentryAstro from "@sentry/astro"
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,6 +21,17 @@ export default defineConfig({
     mdx(),
     react(),
     robotsTxt(),
+sentryAstro({
+      dsn: "
+
+https://examplePublicKey@o0.ingest.sentry.io/0",
+      sourceMapsUploadOptions: {
+        project: "
+
+example-project",
+        authToken: process.env.SENTRY_AUTH_TOKEN,
+      },
+    }),
   ],
   prefetch: true,
   markdown: {
