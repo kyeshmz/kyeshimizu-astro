@@ -6,7 +6,7 @@ import { ViewTransitions } from 'astro:transitions'
 import { SEO } from 'astro-seo'
 
 import Navigation from '../components/layout/Navigation.astro'
-import Sidebar from '../components/layout/SideBar'
+import Sidebar from '../components/layout/SideBar.astro'
 import { Toaster } from '../components/ui/toaster'
 import '../styles/globals.css'
 import { type CollectionEntry, getCollection } from 'astro:content'
@@ -72,7 +72,7 @@ const { Content } = await post.render()
   </head>
 
   <body>
-    <Navigation />
+    <Navigation transition:persist />
     <Sidebar transition:persist />
 
     <Toaster client:idle client:only='react' />
