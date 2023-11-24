@@ -29,9 +29,4 @@ jobs:
           projectName: kyeshimizu-com
           directory: ./dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
      
