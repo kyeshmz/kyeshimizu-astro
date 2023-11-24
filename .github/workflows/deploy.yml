@@ -26,6 +26,16 @@ jobs:
           # path: . # リポジトリ内のAstroプロジェクトのルートロケーション。(オプション)
           # node-version: 18 # サイト構築に使用するNodeのバージョン。デフォルトは18です。（オプション）
           package-manager: bun@latest # 依存関係のインストールとサイトのビルドに使用する Node パッケージマネージャ。ロックファイルに基づいて自動的に検出されます。(オプション)
+      - name: List Image Files
+        run: |
+          images=$(find _astro/ -type f -name "*.jpg" -o -name "*.png" -o -name "*.webp" -o -name "*.avif")
+          echo "::set-output name=images::$images"
+      - name: Cache Astro Images
+        uses: actions/cache@v2
+        with:
+          path: |
+            ${{ steps.List_Image_Files.outputs.images }}
+          key: astro-images-${{ hashFiles('**/**') }}
 
   deploy:
     needs: build
@@ -36,6 +46,6 @@ jobs:
         with:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          projectName: <ここにプロジェクト名（今回は "cloudflare-pages-with-github-actions-prac" ）>
-          directory: < ここは ./dist など >
+          projectName: kyeshimizu.com
+          directory: ./dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
