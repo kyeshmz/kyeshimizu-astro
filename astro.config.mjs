@@ -9,6 +9,8 @@ import react from '@astrojs/react'
 import robotsTxt from 'astro-robots-txt'
 import sentry from '@sentry/astro'
 
+import compress from 'astro-compress'
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://kyeshimizu.com',
@@ -29,13 +31,22 @@ export default defineConfig({
         authToken: process.env.SENTRY_AUTH_TOKEN,
       },
     }),
+    compress(),
   ],
   prefetch: true,
   markdown: {
     remarkPlugins: [remarkModifiedTime, remarkReadingTime],
   },
   vite: {
-    optimizeDeps: { exclude: ['@resvg/resvg-js'] },
-    plugins: [million.vite({ mode: 'react', server: true, auto: true })],
+    optimizeDeps: {
+      exclude: ['@resvg/resvg-js'],
+    },
+    plugins: [
+      million.vite({
+        mode: 'react',
+        server: true,
+        auto: true,
+      }),
+    ],
   },
 })

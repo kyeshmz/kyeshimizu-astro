@@ -16,7 +16,7 @@ export default function SocialButtonRow() {
   const notify = () => toast({ title: 'Copied successfully!' })
 
   return (
-    <div className='flex flex-col gap-2'>
+    <div className='flex flex-col gap-2 animate-in  duration-700 fade-in fade-out'>
       <p>Socials</p>
       <Separator />
       <div className='flex md:flex-row flex-col min-w-0 flex-wrap gap-4'>

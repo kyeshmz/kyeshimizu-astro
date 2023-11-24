@@ -1,4 +1,5 @@
 ---
+import Intro from '../components/Intro.astro'
 import ProjectHoverImages from '../components/project/ProjectHoverImages.astro'
 import ProjectYearList from '../components/project/ProjectYearList.astro'
 import WorkInProgress from '../components/WorkInProgress'
@@ -8,6 +9,7 @@ import Layout from '../layouts/Layout.astro'
 <Layout>
   <WorkInProgress />
   <section class='pt-3 w-full'>
+    <!-- <Intro /> -->
     <ProjectYearList transition:persist />
     <ProjectHoverImages />
   </section>

@@ -13,12 +13,23 @@ export default function ProjectYearRow({
   tags: string
 }) {
   return sortedYears.map((year: string) => (
-    <div className='pb-16' key={year}>
+    <div className='pb-16 animate-in  duration-700 fade-in fade-out' key={year}>
       <span className={'block float-right text-xs leading-4 tracking-wide '}>{year}</span>
 
-      <ul className={'flex w-11/12 gap-x-20 gap-y-11 flex-wrap md:flex-row flex-col'}>
+      <ul
+        className={
+          'flex w-11/12 gap-x-20 gap-y-11 flex-wrap md:flex-row flex-col animate-in  duration-700 fade-in fade-out'
+        }
+      >
         {postsByYear[Number.parseInt(year)].map((post: any) => (
-          <ProjectListItemWrap title={post.data.title} key={post.data.title}>
+          <ProjectListItemWrap
+            animate-in
+            duration-700
+            fade-in
+            fade-outmWrap
+            title={post.data.title}
+            key={post.data.title}
+          >
             <a
               href={'/projects/' + post.data.title.toLocaleLowerCase().replace(/\s/g, '-')}
               rel={'preload-intent'}

@@ -1,4 +1,5 @@
-/** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   darkMode: ['class'],
   content: ['./src/**/*.{ts,astro,md,mdx,tsx}'],
@@ -11,6 +12,11 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        serif: ['Jost', ...defaultTheme.fontFamily.serif],
+      },
+
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -53,11 +59,13 @@ module.exports = {
       },
       keyframes: {
         'accordion-down': {
+          //@ts-ignore
           from: { height: 0 },
           to: { height: 'var(--radix-accordion-content-height)' },
         },
         'accordion-up': {
           from: { height: 'var(--radix-accordion-content-height)' },
+          //@ts-ignore
           to: { height: 0 },
         },
       },
@@ -67,5 +75,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
 }
