@@ -22,8 +22,8 @@ export default defineConfig({
     react(),
     robotsTxt(),
     sentry({
-      dsn: 'https://740dd5065bf6f581619af5cb14f71e94@o4505485115719680.ingest.sentry.io/4506272625065984',
-      replaysSessionSampleRate: 0.2, // defaults to 0.1
+      // this needs to be there, cause this cannot be customized through client config.js
+      // per https://docs.sentry.io/platforms/javascript/guides/astro/manual-setup/?original_referrer=https%3A%2F%2Fwww.google.com%2F
       sourceMapsUploadOptions: {
         project: 'kyeshimizu-web',
         authToken: process.env.SENTRY_AUTH_TOKEN,
