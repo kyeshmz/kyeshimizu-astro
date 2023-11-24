@@ -9,3 +9,5 @@ https://github.com/YadaYuki/like-a-bear/blob/e57af9cb0921deabd7a39ee8445a09a0725
 https://gist.github.com/IsaiahByDayah/3c3e07532a966e3188e457f9fd957ea8
 
 https://blog.polyhaven.com/how-we-handle-80tb-and-5m-page-views-a-month-for-under-400/
+
+https://shunyahagiwara.com/2021/who-else-if-not-you/
