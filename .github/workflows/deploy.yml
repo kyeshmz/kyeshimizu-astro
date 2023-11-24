@@ -31,7 +31,7 @@ jobs:
           images=$(find _astro/ -type f -name "*.jpg" -o -name "*.png" -o -name "*.webp" -o -name "*.avif")
           echo "::set-output name=images::$images"
       - name: Cache Astro Images
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             ${{ steps.List_Image_Files.outputs.images }}
