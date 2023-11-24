@@ -14,6 +14,7 @@
     "sharp"
   ],
   "dependencies": {
+"@sentry/astro":"^7.81.1",
     "@astrojs/check": "^0.3.1",
     "@astrojs/mdx": "^1.1.5",
     "@astrojs/react": "^3.0.5",
