@@ -21,16 +21,17 @@ jobs:
           # path: . # リポジトリ内のAstroプロジェクトのルートロケーション。(オプション)
           node-version: 20 # サイト構築に使用するNodeのバージョン。デフォルトは18です。（オプション）
           package-manager: bun@latest # 依存関係のインストールとサイトのビルドに使用する Node パッケージマネージャ。ロックファイルに基づいて自動的に検出されます。(オプション)
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@1
         with:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           projectName: kyeshimizu-com
-          directory: ../dist
+          directory: ./dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+     
