@@ -7,7 +7,7 @@ import { remarkModifiedTime } from './remark-modified-time.mjs'
 import { remarkReadingTime } from './remark-reading-time.mjs'
 import react from '@astrojs/react'
 import robotsTxt from 'astro-robots-txt'
-import sentry from "@sentry/astro"
+import sentry from '@sentry/astro'
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,10 +21,11 @@ export default defineConfig({
     mdx(),
     react(),
     robotsTxt(),
-sentry({
-      dsn: "https://740dd5065bf6f581619af5cb14f71e94@o4505485115719680.ingest.sentry.io/4506272625065984",
+    sentry({
+      dsn: 'https://740dd5065bf6f581619af5cb14f71e94@o4505485115719680.ingest.sentry.io/4506272625065984',
+      replaysSessionSampleRate: 0.2, // defaults to 0.1
       sourceMapsUploadOptions: {
-        project: "kyeshimizu-web",
+        project: 'kyeshimizu-web',
         authToken: process.env.SENTRY_AUTH_TOKEN,
       },
     }),
