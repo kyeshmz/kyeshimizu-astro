@@ -36,5 +36,5 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           projectName: kyeshimizu-com
-          directory: ./dist
+          directory: ${{ github.workspace }}/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
