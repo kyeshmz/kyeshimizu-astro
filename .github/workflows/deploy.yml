@@ -8,11 +8,6 @@ on:
   # このワークフローを GitHub の Actions タブから手動で実行できるようにします。
   workflow_dispatch:
 
-# このジョブがリポジトリをクローンし、ページデプロイメントを作成することを許可します。
-permissions:
-  contents: read
-  pages: write
-  id-token: write
 
 jobs:
   build:
