@@ -25,7 +25,7 @@ export default defineConfig({
       project: 'kyeshimizu-web',
       authToken: process.env.SENTRY_AUTH_TOKEN
     }
-  }), compress(), critters()],
+  }), critters(), compress()],
   prefetch: true,
   markdown: {
     remarkPlugins: [remarkModifiedTime, remarkReadingTime]
