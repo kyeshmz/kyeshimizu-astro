@@ -31,7 +31,7 @@ export default defineConfig({
         authToken: process.env.SENTRY_AUTH_TOKEN,
       },
     }),
-    compress(),
+    //compress(),
   ],
   prefetch: true,
   markdown: {
