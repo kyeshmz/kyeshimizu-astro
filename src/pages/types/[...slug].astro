@@ -18,6 +18,6 @@ const { slug } = Astro.params
 <Layout>
   <section class='pt-3 w-full'>
     <ProjectYearList tags={slug} transition:persist />
-    <ProjectHoverImages />
+    <ProjectHoverImages client:media="(min-width: 600px)" />
   </section>
 </Layout>
