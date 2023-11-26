@@ -1,3 +1,7 @@
+addEventListener('fetch', (event) => {
+  event.respondWith(handleRequest(event.request))
+})
+
 async function handleRequest(request: Request): Promise<Response> {
   let response: Response = await fetch(request)
 
