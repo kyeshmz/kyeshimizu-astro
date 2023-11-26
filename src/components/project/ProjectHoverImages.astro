@@ -13,11 +13,7 @@ const posts = await getCollection('projects')
         if (post.data.hoverImage) {
           if (post.data.hoverVideo) {
             return (
-              <ProjectHoverImage
-                client:media='(min-width: 600px)'
-                client:only='react'
-                src={post.data.title}
-              >
+              <ProjectHoverImage client:only='react' src={post.data.title}>
                 <video
                   src={post.data.hoverVideo}
                   autoplay
