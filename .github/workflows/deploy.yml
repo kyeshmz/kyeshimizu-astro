@@ -9,11 +9,48 @@ on:
   workflow_dispatch:
 
 jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v4
+
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.bun/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+
+      - name: Upload node_modules
+        uses: actions/upload-artifact@v3
+        with:
+          name: node_modules
+          path: node_modules
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+      - name: Download node_modules
+        uses: actions/download-artifact@v2
+        with:
+          name: node_modules
+          path: node_modules
+
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
       - name: Install, build, and upload your site
         uses: withastro/action@v1
         with:
@@ -28,11 +65,8 @@ jobs:
           projectName: kyeshimizu-com
           directory: ./dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-      - name: Publish Functions to Cloudflare Pages
-        uses: cloudflare/pages-action@1
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
         with:
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          projectName: kyeshimizu-com
-          directory: ./functions
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          workingDirectory: ./functions
