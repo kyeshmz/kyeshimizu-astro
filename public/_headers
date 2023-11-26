@@ -1,2 +1,3 @@
 /*
-  Content-Security-Policy: default-src 'self';
+  Content-Security-Policy: script-src 'self' ajax.cloudflare.com; script-src static.cloudflareinsights.com; connect-src cloudflareinsights.com; worker-src 'self' blob:; child-src 'self' blob:;
+
