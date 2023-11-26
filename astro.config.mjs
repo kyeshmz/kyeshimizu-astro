@@ -8,8 +8,9 @@ import { remarkReadingTime } from './remark-reading-time.mjs'
 import react from '@astrojs/react'
 import robotsTxt from 'astro-robots-txt'
 import sentry from '@sentry/astro'
-
 import compress from 'astro-compress'
+
+import critters from 'astro-critters'
 
 // https://astro.build/config
 export default defineConfig({
@@ -31,7 +32,10 @@ export default defineConfig({
         authToken: process.env.SENTRY_AUTH_TOKEN,
       },
     }),
-    //compress(),
+    critters(),
+    compress({
+      Image: false,
+    }),
   ],
   prefetch: true,
   markdown: {
