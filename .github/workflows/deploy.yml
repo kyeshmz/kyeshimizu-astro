@@ -37,12 +37,13 @@ jobs:
           name: node_modules
           path: node_modules
   build:
+    needs: install
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
       - name: Download node_modules
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: node_modules
           path: node_modules
