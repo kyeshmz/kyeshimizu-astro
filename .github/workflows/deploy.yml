@@ -4,10 +4,9 @@ on:
   # `main` ブランチにプッシュするたびにワークフローを実行します
   # 異なるブランチ名を使用する場合は、`main` をブランチ名に置き換えてください
   push:
-    branches: [ release ]
+    branches: [release]
   # このワークフローを GitHub の Actions タブから手動で実行できるようにします。
   workflow_dispatch:
-
 
 jobs:
   build:
@@ -29,4 +28,11 @@ jobs:
           projectName: kyeshimizu-com
           directory: ./dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-     
+      - name: Publish Functions to Cloudflare Pages
+        uses: cloudflare/pages-action@1
+        with:
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          projectName: kyeshimizu-com
+          directory: ./functions
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
