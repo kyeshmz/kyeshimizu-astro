@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "NODE_OPTIONS=' --max-old-space-size=16384' && astro check && tsc --noEmit && astro build && cp -r ./functions/ ./dist/",
-"postbuild":"cp -r ./functions ./dist",
+    "postbuild": "cp -r ./functions ./dist",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint --ext .astro,.js,.jsx,.ts,.tsx ./src --fix"
@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "@astrojs/check": "^0.3.1",
+    "@astrojs/cloudflare": "^7.7.1",
     "@astrojs/mdx": "^1.1.5",
     "@astrojs/react": "^3.0.6",
     "@astrojs/rss": "^3.0.0",
