@@ -1,0 +1,139 @@
+---
+import { Picture } from 'astro:assets'
+import { getCollection } from 'astro:content'
+
+import { Card } from '../../components/ui/card'
+import TextSection from '../../components/blog/TextSection'
+import { Spacer } from '../../components/layout/Spacer'
+import { Separator } from '../../components/ui/separator'
+import { Button } from '../../components/ui/button'
+import { AspectRatio } from '../../components/ui/aspect-ratio'
+
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import GrantCard from '../../components/project/GrantCard.astro'
+import type { GetStaticPathsOptions } from 'astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import PaginateButton from '../../components/PaginateButton'
+
+dayjs.extend(utc)
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const blogEntries = await getCollection('projects')
+
+  return blogEntries.flatMap((entry) =>
+    paginate(blogEntries, {
+      params: { slug: entry.slug },
+      props: { entry },
+    }),
+  )
+}
+
+const { page } = Astro.props
+const params = Astro.params
+
+const { Content, remarkPluginFrontmatter } = await page.data[page.currentPage].props.entry.render()
+const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().format('YYYY.MM.DD')
+const entry = page.data[page.currentPage].props.entry
+---
+
+<BaseLayout isProject posts={entry}>
+  {
+    entry.data.hoverVideo && (
+      <video
+        src={page.data[page.currentPage].props.entry.data.hoverVideo}
+        autoplay
+        muted
+        transition:persist
+        transition:name={page.data[page.currentPage].props.entry.data.hoverVideo}
+      />
+    )
+  }
+  {
+    entry.data.hoverImage && (
+      <div class='flex justify-center align-center text-center'>
+        <Picture
+          widths={[360, 768, 1024, 1440]}
+          class={'h-[600px] object-cover '}
+          formats={['avif', 'webp']}
+          src={page.data[page.currentPage].props.entry.data.hoverImage!}
+          transition:animate='fade'
+          alt=''
+          transition:name={page.data[page.currentPage].props.entry.data.hoverImage!.src}
+          sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
+        />
+      </div>
+    )
+  }
+
+  <Spacer size={32} />
+  <TextSection className='pb-8 gap-2'>
+    <h1 class='flex text-4xl'>
+      {entry.data.title}
+    </h1>
+    <h3 class='text-lg'>
+      {entry.data.subtitle}
+    </h3>
+
+    <div class='flex flex-wrap gap-3'>
+      {
+        entry.data.tags.map((tag: string) => {
+          const formattedTag = tag.charAt(0).toUpperCase() + tag.slice(1)
+          return (
+            <Button variant={'secondary'}>
+              <a href={'/types/' + tag}>{formattedTag}</a>
+            </Button>
+          )
+        })
+      }
+    </div>
+    <Spacer size={4} />
+    <div class='flex gap-2 md:flex-row flex-col'>
+      <time>Created: {entry.data.date}</time>
+      <time>Updated: {lastModified}</time>
+    </div>
+  </TextSection>
+
+  <!-- <div class='flex justify-center'>
+    {entry.data.youtube && <VideoPlayer url={entry.data.youtube!} client:only='react' />}
+  </div> -->
+  <Spacer size={32} />
+  <Content />
+  <Spacer size={32} />
+
+  <TextSection>
+    <Separator />
+    <Spacer size={32} />
+    <Card className='px-8 py-4 w-full'>
+      <h4 class='mb-4 text-xl font-medium leading-none text-center md:text-left'>Credits</h4>
+      <div class='flex flex-col gap-4 text-center md:text-left flex-wrap'>
+        {
+          entry.data.credits.map((credit) => {
+            return <p class='text-sm'>{credit}</p>
+          })
+        }
+      </div>
+    </Card>
+    {entry.data.thanks.length > 0 && <Spacer size={32} />}
+    {
+      entry.data.thanks.length > 0 && (
+        <Card className='px-8 py-4 w-full'>
+          <h4 class='mb-4 text-xl font-medium leading-none text-center md:text-left'>Thanks</h4>
+          <div class='flex flex-col gap-4 text-center md:text-left flex-wrap'>
+            {entry.data.thanks.map((credit) => {
+              return <p class='text-sm'>{credit}</p>
+            })}
+          </div>
+        </Card>
+      )
+    }
+    <Spacer size={32} />
+    {entry.data.grants.length > 0 && <GrantCard grants={entry.data.grants} />}
+  </TextSection>
+  <Spacer size={32} />
+  <TextSection>
+    <Separator />
+  </TextSection>
+  <Spacer size={32} />
+  {page.url.next && <PaginateButton url={page.url.next} />}
+</BaseLayout>
