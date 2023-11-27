@@ -7,7 +7,6 @@ import { Spacer } from '../components/layout/Spacer'
 import SocialButtonRow from '../components/SocialButtonRow'
 import { Separator } from '../components/ui/separator'
 import { Content as AboutContent } from '../content/about/about.mdx'
-import Layout from '../layouts/Layout.astro'
 import type {
   PublicationTableRow,
   MediaTableRow,
@@ -16,11 +15,12 @@ import type {
   TalkTableRow,
   GrantTableRow,
 } from '../components/AboutAccordion/TableData'
+import BaseLayout from '../layouts/BaseLayout.astro'
 
 const allPosts = await getCollection('projects')
 ---
 
-<Layout>
+<BaseLayout>
   <div class='flex mt-8 pb-8 md:flex-row flex-col gap-4 w-full'>
     <img
       class='h-[500px] transition-all hover:scale-105 flex-1 w-auto object-cover md:object-contain'
@@ -111,4 +111,4 @@ const allPosts = await getCollection('projects')
       )
       .sort((a, b) => b.year - a.year)}
   />
-</Layout>
+</BaseLayout>

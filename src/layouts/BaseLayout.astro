@@ -1,0 +1,146 @@
+---
+// Import the global.css file here so that it is included on
+// all pages through the use of the <SEO /> component.
+
+import { ViewTransitions } from 'astro:transitions'
+import { SEO } from 'astro-seo'
+
+import Navigation from '../components/layout/Navigation.astro'
+import Sidebar from '../components/layout/SideBar.astro'
+import { Toaster } from '../components/ui/toaster'
+import '../styles/globals.css'
+import '@fontsource/six-caps'
+import '@fontsource/jost'
+import '@fontsource/syne'
+import '@fontsource/inter'
+import '@fontsource/rosarivo'
+import { getCollection, type CollectionEntry } from 'astro:content'
+
+interface ProjectProps {
+  isProject: true
+  posts: CollectionEntry<'projects'>
+}
+
+interface NonProjectProps {
+  isProject?: false
+  posts?: CollectionEntry<'projects'>
+}
+
+type Props = ProjectProps | NonProjectProps
+
+export async function getStaticPaths() {
+  if (!isProject) return
+  const posts = await getCollection('projects')
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: {
+      posts,
+    },
+  }))
+}
+
+const { isProject, posts } = Astro.props
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <!-- Global Metadata -->
+
+    <meta charset='utf-8' />
+    <meta http-equiv='X-UA-Compatible' content='ie=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta
+      http-equiv='content-security-policy'
+      content="
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' ajax.cloudflare.com static.cloudflareinsights.com;
+      connect-src ws://localhost:4321/* http://localhost:4321/ cloudflareinsights.com;
+      worker-src 'self' blob:; child-src 'self' blob:;"
+    />
+    <link rel='sitemap' href='/sitemap-index.xml' />
+    <link rel='icon' href='/favicon.svg' />
+    <SEO
+      title='Kye Shimizu | Portfolio'
+      description='A personal portfolio of Kye Shimizu'
+      openGraph={{
+        basic: {
+          title:
+            isProject === true
+              ? `Kye Shimizu | Portfolio | ${posts.data.title}`
+              : 'Kye Shimizu | Portfolio',
+          type: 'A type.',
+
+          image:
+            isProject === true
+              ? new URL(`/og/${posts.slug}.png`, Astro.url.origin).toString()
+              : new URL(`/og/${Astro.request.url}.png`, Astro.url.origin).toString(),
+        },
+        optional: {
+          locale: 'en',
+          siteName: 'kyeshimizu.com',
+          description:
+            isProject === true
+              ? `Kye Shimizu | ${posts.data.subtitle}`
+              : 'Kye Shimizu personal portfolio',
+        },
+      }}
+      twitter={{
+        creator: '@kyeshimzu',
+        card: 'summary',
+        title:
+          isProject === true
+            ? `Kye Shimizu | Portfolio | ${posts.data.title}`
+            : 'Kye Shimizu | Portfolio',
+        description:
+          isProject === true
+            ? `Kye Shimizu | ${posts.data.subtitle}`
+            : 'Kye Shimizu personal portfolio',
+        image:
+          isProject === true
+            ? new URL(`/og/${posts.slug}.png`, Astro.url.origin).toString()
+            : new URL(`/og/${Astro.request.url}.png`, Astro.url.origin).toString(),
+      }}
+      extend={{
+        // extending the default link tags
+        link: [{ rel: 'icon', href: '/favicon.ico' }],
+        // extending the default meta tags
+        meta: [
+          {
+            name: 'twitter:image',
+            content:
+              isProject === true
+                ? new URL(`/og/${posts.slug}.png`, Astro.url.origin).toString()
+                : new URL(`/og/${Astro.request.url}.png`, Astro.url.origin).toString(),
+          },
+          {
+            name: 'twitter:title',
+            content:
+              isProject === true
+                ? `Kye Shimizu | Portfolio | ${posts.data.title}`
+                : 'Kye Shimizu | Portfolio',
+          },
+          {
+            name: 'twitter:description',
+            content:
+              isProject === true
+                ? `Kye Shimizu | ${posts.data.subtitle}`
+                : 'Kye Shimizu personal portfolio',
+          },
+        ],
+      }}
+    />
+
+    <ViewTransitions />
+  </head>
+
+  <body>
+    <Navigation />
+    <Sidebar transition:persist />
+
+    <Toaster client:idle client:only='react' />
+
+    <main class='py-6 w-15 mx-6 md:mx-28 my-0 pt-[72px] relative'>
+      <slot />
+    </main>
+  </body>
+</html>
