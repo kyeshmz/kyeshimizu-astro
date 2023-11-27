@@ -115,6 +115,7 @@ import { Picture } from 'astro:assets'
 import { Spacer } from '../../components/layout/Spacer'
 import TextSection from '../../components/blog/TextSection'
 import img1 from './images/deviation-game/exhibition_main.jpg'
+import VideoPlayer from '../../components/VideoPlayer'
 
 <TextSection>
 <p>
@@ -130,6 +131,8 @@ However, just as the rise of the first photographic machine in the early 19th ce
 
 </p>
 </TextSection>
+<Spacer size={16} />
+<VideoPlayer url={'https://vimeo.com/808615172'} client:only='react'/>
 <Spacer size={16} />
 <TextSection>
 <p>
