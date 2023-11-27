@@ -12,8 +12,8 @@ import { AspectRatio } from '../../components/ui/aspect-ratio'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import GrantCard from '../../components/project/GrantCard.astro'
-import ProjectLayout from '../../layouts/ProjectLayout.astro'
 import type { GetStaticPathsOptions } from 'astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
 
 dayjs.extend(utc)
 
@@ -30,7 +30,7 @@ const { Content, remarkPluginFrontmatter } = await entry.render()
 const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().format('YYYY.MM.DD')
 ---
 
-<ProjectLayout post={entry}>
+<BaseLayout isProject posts={entry}>
   {
     entry.data.hoverVideo && (
       <video
@@ -128,4 +128,4 @@ const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().format('Y
     <Separator />
   </TextSection>
   <Spacer size={32} />
-</ProjectLayout>
+</BaseLayout>

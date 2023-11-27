@@ -48,15 +48,11 @@ jobs:
           # path: . # リポジトリ内のAstroプロジェクトのルートロケーション。(オプション)
           node-version: 20 # サイト構築に使用するNodeのバージョン。デフォルトは18です。（オプション）
           package-manager: bun@latest # 依存関係のインストールとサイトのビルドに使用する Node パッケージマネージャ。ロックファイルに基づいて自動的に検出されます。(オプション)
-      - name: Deploy
-        uses: cloudflare/wrangler-action@v3
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@1
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy ./dist --project-name=kyeshimizu-com 
-      - name: Deploy
-        uses: cloudflare/wrangler-action@v3
-        with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages publish --project-name=kyeshimizu-com
+          projectName: kyeshimizu-com
+          directory: ./dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

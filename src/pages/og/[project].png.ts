@@ -19,7 +19,7 @@ export async function GET({ params }: APIContext) {
   const post = (await getCollection('projects')).find((post) => post.slug === project)
   if (!post) return { status: 404 }
 
-  const body = await getOgImage(post.data.title ?? 'No title')
+  const body = await getOgImage(post.data.title ?? 'Kye Shimizu Portfolio')
 
   return new Response(body, {
     headers: {
