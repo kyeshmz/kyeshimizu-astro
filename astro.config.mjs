@@ -43,6 +43,6 @@ export default defineConfig({
       auto: true
     })]
   },
-  output: "hybrid",
-  adapter: cloudflare({ mode: 'directory' })
+  output: "static",
+//  adapter: cloudflare({ mode: 'directory' })
 });
