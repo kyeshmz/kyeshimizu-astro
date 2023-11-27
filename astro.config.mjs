@@ -20,7 +20,7 @@ export default defineConfig({
       applyBaseStyles: false,
       configFile: './tailwind.config.cjs',
     }),
-    mdx(),
+    mdx({ remarkPlugins: [remarkModifiedTime, remarkReadingTime] }),
     react(),
     robotsTxt(),
     sentry({
@@ -37,9 +37,6 @@ export default defineConfig({
     }),
   ],
   prefetch: true,
-  markdown: {
-    remarkPlugins: [remarkModifiedTime, remarkReadingTime],
-  },
   vite: {
     optimizeDeps: {
       exclude: ['@resvg/resvg-js'],

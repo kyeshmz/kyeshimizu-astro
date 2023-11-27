@@ -80,7 +80,8 @@ media:
       reference: 'https://www.designindaba.com/articles/conference-talks/kye-shimizu-coding-fix-wasteful-fashion-industry',
       year: 2019,
       medium: 'Online',
-    }, {
+    },
+    {
       media_name: 'NHK',
       reference: 'https://www3.nhk.or.jp/nhkworld/en/news/ataglance/707/',
       year: 2020,
@@ -117,9 +118,9 @@ talks:
   ]
 ---
 
-import { Picture } from 'astro:assets'
-import { Spacer } from '../../components/layout/Spacer'
 import TextSection from '../../components/blog/TextSection'
+import VideoPlayer from '../../components/VideoPlayer'
+import { Spacer } from '../../components/layout/Spacer'
 
 <TextSection>
   <p>
@@ -135,5 +136,7 @@ import TextSection from '../../components/blog/TextSection'
     through the use of parameters over designs that would be generated from their body data.
   </p>
 </TextSection>
-
+<Spacer size={32} />
+<VideoPlayer client:only='react' url={'https://www.youtube.com/watch?v=ryW_8j2fgrY'} />
+<Spacer size={32} />
 https://www.google.com/url?q=https://www3.nhk.or.jp/nhkworld/en/news/ataglance/707/&sa=U&ved=2ahUKEwiPmbmCuseCAxVWdPUHHRbrALMQFnoECAMQAg&usg=AOvVaw3ZOPxA_mEcPxGSN9nA6uCA
