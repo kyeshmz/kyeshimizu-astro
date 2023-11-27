@@ -50,12 +50,15 @@ const { isProject, posts } = Astro.props
     <meta charset='utf-8' />
     <meta http-equiv='X-UA-Compatible' content='ie=edge' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
     <meta
       http-equiv='content-security-policy'
       content="
-      script-src 'self' 'unsafe-inline' 'unsafe-eval' ajax.cloudflare.com static.cloudflareinsights.com;
-      connect-src ws://localhost:4321/* http://localhost:4321/ cloudflareinsights.com;
-      worker-src 'self' blob:; child-src 'self' blob:;"
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' ajax.cloudflare.com static.cloudflareinsights.com www.youtube.com;
+      connect-src ws://localhost:4321/ localhost:4321 cloudflareinsights.com static.cloudflareinsights.com *.ingest.sentry.io sentry.io;
+      worker-src 'self' blob:; 
+      child-src 'self' static.cloudflareinsights.com www.youtube.com blob:;
+      media-src 'self' data:;"
     />
     <link rel='sitemap' href='/sitemap-index.xml' />
     <link rel='icon' href='/favicon.svg' />
