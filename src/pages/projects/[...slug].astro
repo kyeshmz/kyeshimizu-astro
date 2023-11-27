@@ -54,6 +54,9 @@ const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().format('Y
           alt=''
           transition:name={entry.data.hoverImage.src}
           sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
+          pictureAttributes={{
+            style: 'display: flex; justify-content: center; align-items: center;',
+          }}
         />
       </div>
     )
