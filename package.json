@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "NODE_OPTIONS=' --max-old-space-size=16384' && astro check && tsc --noEmit && astro build && cp -r ./functions/ ./dist/",
+    "build": "NODE_OPTIONS=' --max-old-space-size=16384' && astro check && tsc --noEmit && astro build",
     "postbuild": "cp -r ./functions ./dist",
     "preview": "astro preview",
     "astro": "astro",
