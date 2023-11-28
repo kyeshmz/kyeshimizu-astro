@@ -32,13 +32,13 @@ export default function ProjectYearRow({
           >
             <a
               href={'/projects/' + post.data.title.toLocaleLowerCase().replace(/\s/g, '-')}
-              rel={'preload-intent'}
+              data-astro-prefetch
             >
               {post.data.date}
             </a>
             <a
               href={'/projects/' + post.data.title.toLocaleLowerCase().replace(/\s/g, '-')}
-              rel={'preload-intent'}
+              data-astro-prefetch
               className={'letter-spacing-2 underline underline-offset-4 leading-2'}
             >
               {post.data.title}

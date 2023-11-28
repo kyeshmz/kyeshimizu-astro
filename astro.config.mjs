@@ -33,7 +33,7 @@ export default defineConfig({
     }),
     critters(),
     compress({
-      Image: false,
+      // Image: false,
     }),
   ],
   prefetch: true,
