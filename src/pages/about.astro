@@ -2,19 +2,18 @@
 import { getCollection } from 'astro:content'
 
 import AboutAccordion from '../components/AboutAccordion/AboutAccordion'
-
+import type {
+  AwardTableRow,
+  ExhibitionTableRow,
+  GrantTableRow,
+  MediaTableRow,
+  PublicationTableRow,
+  TalkTableRow,
+} from '../components/AboutAccordion/TableData'
 import { Spacer } from '../components/layout/Spacer'
 import SocialButtonRow from '../components/SocialButtonRow'
 import { Separator } from '../components/ui/separator'
 import { Content as AboutContent } from '../content/about/about.mdx'
-import type {
-  PublicationTableRow,
-  MediaTableRow,
-  ExhibitionTableRow,
-  AwardTableRow,
-  TalkTableRow,
-  GrantTableRow,
-} from '../components/AboutAccordion/TableData'
 import BaseLayout from '../layouts/BaseLayout.astro'
 
 const allPosts = await getCollection('projects')
