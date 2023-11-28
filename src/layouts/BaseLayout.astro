@@ -2,17 +2,17 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <SEO /> component.
 
+import '../styles/globals.css'
+import '@fontsource/inter'
+import '@fontsource/rosarivo'
+
+import { type CollectionEntry,getCollection } from 'astro:content'
 import { ViewTransitions } from 'astro:transitions'
 import { SEO } from 'astro-seo'
 
 import Navigation from '../components/layout/Navigation.astro'
 import Sidebar from '../components/layout/SideBar.astro'
 import { Toaster } from '../components/ui/toaster'
-import '../styles/globals.css'
-
-import '@fontsource/inter'
-import '@fontsource/rosarivo'
-import { getCollection, type CollectionEntry } from 'astro:content'
 
 interface ProjectProps {
   isProject: true

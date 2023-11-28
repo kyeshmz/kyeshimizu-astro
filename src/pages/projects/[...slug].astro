@@ -1,18 +1,16 @@
 ---
+import type { GetStaticPathsOptions } from 'astro'
 import { Picture } from 'astro:assets'
 import { getCollection } from 'astro:content'
-
-import { Card } from '../../components/ui/card'
-import TextSection from '../../components/blog/TextSection'
-import { Spacer } from '../../components/layout/Spacer'
-import { Separator } from '../../components/ui/separator'
-import { Button } from '../../components/ui/button'
-import { AspectRatio } from '../../components/ui/aspect-ratio'
-
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
+
+import TextSection from '../../components/blog/TextSection'
+import { Spacer } from '../../components/layout/Spacer'
 import GrantCard from '../../components/project/GrantCard.astro'
-import type { GetStaticPathsOptions } from 'astro'
+import { Button } from '../../components/ui/button'
+import { Card } from '../../components/ui/card'
+import { Separator } from '../../components/ui/separator'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 
 dayjs.extend(utc)
