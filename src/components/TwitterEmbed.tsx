@@ -4,6 +4,7 @@ export default function TwitterEmbed({ children }: { children: React.ReactNode }
   const containerRef = useRef<HTMLDivElement>(null) // コンポーネントのルートとなる要素を取得
 
   useEffect(() => {
+    //@ts-ignore
     twttr.widgets.load(containerRef.current) // ツイートの埋め込みを実行
   }, [])
 
