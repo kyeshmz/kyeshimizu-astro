@@ -1,5 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
+  "skipLibChecks": true,
+
   "compilerOptions": {
     "verbatimModuleSyntax": true,
     "moduleResolution": "node",

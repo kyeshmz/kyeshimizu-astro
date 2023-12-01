@@ -2,13 +2,24 @@ import { defineCollection, z } from 'astro:content'
 
 import { Works } from '../types/works'
 
+const blog = defineCollection({
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      subtitle: z.string().optional(),
+      description: z.string(),
+      date: z.string(),
+      tags: z.array(z.string()),
+    }),
+})
+
 const projects = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.nativeEnum(Works),
       subtitle: z.string().optional(),
       date: z.string(),
-      tags: z.array(z.string()).default(['others']),
+      tags: z.array(z.string()),
       client: z.string().optional(),
       youtube: z.string().optional(),
       hoverImage: image()
@@ -70,4 +81,4 @@ const projects = defineCollection({
     }),
 })
 
-export const collections = { projects }
+export const collections = { blog, projects }

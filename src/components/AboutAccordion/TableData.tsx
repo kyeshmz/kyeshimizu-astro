@@ -239,7 +239,7 @@ export type ExhibitionTableRow = {
   date: string
 }
 
-export const DataTableColumn: ColumnDef<ExhibitionTableRow>[] = [
+export const ExhibitionTableColumn: ColumnDef<ExhibitionTableRow>[] = [
   {
     accessorKey: 'work',
 

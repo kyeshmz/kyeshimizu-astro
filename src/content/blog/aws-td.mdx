@@ -1,0 +1,321 @@
+---
+title: 'AWS on TouchDesigner'
+
+tags: ['Japanese', 'TouchDesigner', 'AWS']
+
+description: 'Aaaaa'
+
+date: '2023.12.01'
+---
+
+import { Picture } from 'astro:assets'
+import { Spacer } from '../../components/layout/Spacer'
+import TextSection from '../../components/blog/TextSection'
+import DoubleColumnPicture from '../../components/layout/DoubleColumnPicture'
+import VideoPlayer from '../../components/VideoPlayer'
+import select_ami from './images/aws-td/select_ami.png'
+import ami from './images/aws-td/ami.png'
+import storage from './images/aws-td/storage.png'
+import quota_1 from './images/aws-td/quota_1.png'
+import quota_2 from './images/aws-td/quota_2.png'
+import keypair from './images/aws-td/keypair.png'
+import security from './images/aws-td/security.png'
+import rdp from './images/aws-td/rdp.png'
+import noconnect from './images/aws-td/noconnect.png'
+import network from './images/aws-td/network.png'
+import connect from './images/aws-td/connect.png'
+import ondemand from './images/aws-td/ondemand.png'
+
+## はじめに
+
+冬になって、GPUで暖を取りたい人もいると思いますが、自分の手前のPCだけだとスペックが足りない、オンライン環境でもTD使いたい人がいると思います
+
+24GBVRAMGPU とか CPU 8 コアのみとかだと、そりゃ足りないですよね
+
+[The Interactive & Immersive HQ](https://www.youtube.com/watch?v=IzTCVPOgz_4)の[Paperspace](https://www.paperspace.com/)使う方法もありますが、今回はAWSを使います
+
+AWSでGPUインスタンスを立てて、TDを使う方法を紹介します
+
+## 何が美味しいの？
+
+### とりあえず殴ろう
+
+もうなんて言っても、とにかくお金で色々殴れるっていうところではないでしょうか
+
+え？遅延？じゃあ、もっと近いリージョンに立てよう
+
+え？スペックが足りない？PC足りない？ん？
+
+とにかく、お金で解決できるのが一番美味しいです
+
+<div style='width:100%;height:0;padding-bottom:56%;position:relative;'>
+  <iframe
+    src='https://giphy.com/embed/uFtywzELtkFzi'
+    width='100%'
+    height='100%'
+    style='position:absolute'
+    frameBorder='0'
+    class='giphy-embed'
+    allowFullScreen
+  ></iframe>
+</div>
+
+### 構成を真面目に考える
+
+例えば、[UE on AWS から引用した構成図](https://aws.amazon.com/jp/blogs/news/jpmne-virtual-production-reference-architecture-with-epic-games-unreal-engine/)みたいなものも実はTDで作ることもできるのではないでしょうか
+
+WebRTC Comp も出てきたし、Web Client Comp もあるし
+
+単純なウェブサーバーとかだったら、AWSの無料枠でできるので、そういうのと連携して、TDのオンライン化で面白いことはできるのではないでしょうか
+
+<Picture
+  widths={[360, 768, 1024, 1440]}
+  src={
+    'https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2022/03/14/HPA_blog1.jpg'
+  }
+  formats={['avif', 'webp']}
+  width='1920'
+  height='1080'
+  alt=''
+  sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
+  pictureAttributes={{ style: 'display: flex; justify-content: center; align-items: center;' }}
+/>
+
+## インストールする前のトラップ
+
+### Quotaがない場合は申請する必要があります (営業日1日ぐらい)
+
+AWSのアカウントを作成して、やろうと思うと、デフォではGPUのインスタンスが作成できません
+いわゆるCrypto系なのか、悪いアクターからの排除ですかね
+
+今回は**G4DN**というNvidiaのGPUが搭載されたインスタンスを使います
+
+**G4AN**というAMDのGPUが搭載されたインスタンスもありますが、**Nvidiaのドライバーが入っていないので**、注意してください!!
+
+申請画面では適切なリージョンを選択して、**G4DN**のためのインスタンスを選択をします
+
+[一覧はこちらです](https://aws.amazon.com/ec2/instance-types/g4/#Product_Details)
+
+### Quota 申請
+
+こちらでは onDemand と Spot の両方の Quota を申請しています
+
+違いについては、割愛しますが、すごいざっくり言うと
+
+Spot の方が安いですが、突然消える可能性がある
+onDemand は高い分、インスタンスは消えない
+
+みたいな感じなので、実験的に両方申請した方がいいと思います
+
+安く方法も年単位で契約したり、ベンダー通したりなど色々あると思うので、ここら辺は構成との工夫が必要です
+
+<Picture
+  widths={[360, 768, 1024, 1440]}
+  src={quota_1}
+  formats={['avif', 'webp']}
+  alt=''
+  sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
+  pictureAttributes={{ style: 'display: flex; justify-content: center; align-items: center;' }}
+/>
+
+<Picture
+  widths={[360, 768, 1024, 1440]}
+  src={ondemand}
+  formats={['avif', 'webp']}
+  alt=''
+  sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
+  pictureAttributes={{ style: 'display: flex; justify-content: center; align-items: center;' }}
+/>
+
+選択をすると、**インスタンスの数ではなく、vCPUの数**でQuotaが決まります
+G4DNの場合は、最低でも**4vCPU**が必要なので、**4vCPU**以上のQuotaが必要になります
+
+<Picture
+  widths={[360, 768, 1024, 1440]}
+  src={quota_2}
+  formats={['avif', 'webp']}
+  alt=''
+  sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
+  pictureAttributes={{ style: 'display: flex; justify-content: center; align-items: center;' }}
+/>
+
+アカウントが他のサービス使ってない経験がない場合だと、１営業日ぐらいかかります
+
+## AWSのインスタンスを作成する
+
+### AMI を選択する
+
+AMIについては、AWSのマーケットプレイスから、Nvidia のドライバーがすでに入っているものを選択してます
+
+まずは、 Browse More AMIs を選択します
+
+<Picture
+  widths={[360, 768, 1024, 1440]}
+  src={select_ami}
+  formats={['avif', 'webp']}
+  alt=''
+  sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
+  pictureAttributes={{ style: 'display: flex; justify-content: center; align-items: center;' }}
+/>
+
+今回は **Nvidia Gaming** で検索をし、**Nvidia Gaming Windows Server 2019** のAMIを選択します
+
+<Picture
+  widths={[360, 768, 1024, 1440]}
+  src={ami}
+  formats={['avif', 'webp']}
+  alt=''
+  sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
+  pictureAttributes={{ style: 'display: flex; justify-content: center; align-items: center;' }}
+/>
+
+### キーペア
+
+キーペアは、インスタンスにログインするためのものです
+
+キーペアに名前をつけた後、**.pem**ファイルをダウンロードします
+こちらはログインするために必要になるので、捨てないでください
+
+<Picture
+  widths={[360, 768, 1024, 1440]}
+  src={keypair}
+  formats={['avif', 'webp']}
+  alt=''
+  sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
+  pictureAttributes={{ style: 'display: flex; justify-content: center; align-items: center;' }}
+/>
+
+### セキュリティー設定
+
+セキュリティー設定は、**RDP**というリモートデスクトップのためのポートを開ける必要があります
+
+まずは、Network Settings Edit ボタンを選択します
+
+<Picture
+  widths={[360, 768, 1024, 1440]}
+  src={network}
+  formats={['avif', 'webp']}
+  alt=''
+  sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
+  pictureAttributes={{ style: 'display: flex; justify-content: center; align-items: center;' }}
+/>
+
+RDPは、Windowsのリモートデスクトップのためのポートです、いわゆる純正のAnydesk / Parsec / Teamviewer / VLC 的なやつです
+
+今は**0.0.0.0**に設定してますが、誰もがログインできる状態になっていて、セキュリティー的にはあまりよくないので、限定したIPにすることをおすすめします
+
+<Picture
+  widths={[360, 768, 1024, 1440]}
+  src={security}
+  formats={['avif', 'webp']}
+  alt=''
+  sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
+  pictureAttributes={{ style: 'display: flex; justify-content: center; align-items: center;' }}
+/>
+
+### Storage
+
+ドライブの容量が意外と少ないので、デフォの**30GB**から少し足すことをおすすめします
+
+リージョンが東京になっているので、リージョンが違うところで作業する場合は確認してください
+
+<Picture
+  widths={[360, 768, 1024, 1440]}
+  src={storage}
+  formats={['avif', 'webp']}
+  alt=''
+  sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
+  pictureAttributes={{ style: 'display: flex; justify-content: center; align-items: center;' }}
+/>
+
+### 接続する
+
+インスタンスが作成されたら、接続をしてみましょう
+
+インスタンスを選択して、**Connect** を選択します
+そうすると、こちらの画面が出てきて、RDP Client タブを選択します
+
+こちらでRDPのためのファイルをダウンロードできます
+Parsec / Anydesk / VLC みたいにパスワードが必要になるのですが、AWSの場合は、キーペアを使ってログインします
+
+Get Password を選択すると、キーペアを選択する画面が出てきます
+
+<Picture
+  widths={[360, 768, 1024, 1440]}
+  src={connect}
+  formats={['avif', 'webp']}
+  alt=''
+  sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
+  pictureAttributes={{ style: 'display: flex; justify-content: center; align-items: center;' }}
+/>
+
+このパスワードの発行がマシーンが起動してから、数分かかるので、しばらく待ちます
+なんかやたら長いなって思ったら、インスタンスを再起動するのも手です
+
+そうしないと、こういう画面が出てきます
+
+<Picture
+  widths={[360, 768, 1024, 1440]}
+  src={noconnect}
+  formats={['avif', 'webp']}
+  alt=''
+  sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
+  pictureAttributes={{ style: 'display: flex; justify-content: center; align-items: center;' }}
+/>
+
+待ってる間、[Microsoft Desktop Remote App Store](https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12)
+から、からダウンロードします
+
+Windowsの場合は、すでに入っていると思います？どうだろう
+
+### RDP で接続
+
+.RDP ファイルをダウンロードして、数分待って、パスワードも入れてたら、ログインできます
+
+ダウンロードしたら、rdp をドラッグして、Microsoft Remote Desktop にドロップします
+
+ここで出てくるパスワードはキーペアで発行したパスワードです
+
+<Picture
+  widths={[360, 768, 1024, 1440]}
+  src={rdp}
+  formats={['avif', 'webp']}
+  alt=''
+  sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
+  pictureAttributes={{ style: 'display: flex; justify-content: center; align-items: center;' }}
+/>
+
+そうすれば、もう完成！！！🥳🥳🥳
+それでは良いTDライフを!
+
+## 他のTips
+
+### Vsync
+
+Vsync 忘れずに切りましょう！
+
+#### Vsync がある場合のFPS
+
+<VideoPlayer
+  client:only='react'
+  url={'https://files.kyeshimizu.com/awstd-vsync.webm'}
+
+/>
+
+#### Vsync がない場合のFPS
+
+<VideoPlayer client:only='react' url={'https://files.kyeshimizu.com/awstd-novsync.webm'} />
+
+### Terraform
+
+Terraform という IaaC (Infrastructure as a Code) というものがあります
+これを使うと、AWSのインスタンスをコードで管理することができます
+これで必要なプログラムを自動インストール設定したりすることができます
+
+まだ全然未完成ですが、[こちら](https://github.com/kyeshmz/TDonAWS)
+で展開しています
+一緒に開発してくれる仲間探してます
+
+[badjware](https://github.com/badjware)さんのゲームのためのterraform [レポ](https://github.com/badjware/aws-cloud-gaming)を参照しています
+
+<Spacer size={32} />

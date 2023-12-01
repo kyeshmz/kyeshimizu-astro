@@ -21,8 +21,6 @@ import {
 
 import type { DataTableProps } from '../../types/table'
 import { AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion'
-import { DataTableColumnHeader } from './DataTableColumnHeader'
-import { AlphabeticalColumnHeader } from './AlphabeticalColumnHeader'
 
 export default function CommonTable<TData, TValue>({
   itemValue,
