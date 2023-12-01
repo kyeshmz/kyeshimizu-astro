@@ -10,17 +10,25 @@ import robotsTxt from 'astro-robots-txt'
 import sentry from '@sentry/astro'
 import compress from 'astro-compress'
 import critters from 'astro-critters'
+import { rehypeHeadingIds } from '@astrojs/markdown-remark'
 
+import rehypeSlug from 'rehype-slug'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+
+import rehypeToc from 'rehype-toc'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://kyeshimizu.com',
   integrations: [
-    sitemap(),
     tailwind({
       applyBaseStyles: false,
       configFile: './tailwind.config.cjs',
     }),
-    mdx({ remarkPlugins: [remarkModifiedTime, remarkReadingTime] }),
+
+    mdx({
+      remarkPlugins: [remarkModifiedTime, remarkReadingTime],
+    }),
+    sitemap(),
     react(),
     robotsTxt(),
     sentry({
@@ -48,6 +56,17 @@ export default defineConfig({
         auto: true,
       }),
     ],
+  },
+  markdown: {
+    rehypePlugins: [
+      rehypeHeadingIds,
+      rehypeSlug,
+      rehypeToc,
+      [rehypeAutolinkHeadings, { behavior: 'append' }],
+    ],
+    shikiConfig: {
+      wrap: true,
+    },
   },
   output: 'static',
 })

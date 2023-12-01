@@ -21,7 +21,6 @@ export default function ProjectListItemWrap({
         className={'flex flex-col w-6/12 max-w-[160px]  flex-wrap '}
         onMouseEnter={() => {
           $projectHoverImageAtom.set(title)
-          console.log('hover set to : ', title)
         }}
         onMouseLeave={() => {
           $projectHoverImageAtom.set(null)

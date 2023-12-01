@@ -9,7 +9,7 @@ import {
   type TeachingTableRow,
   type GrantTableRow,
   AwardTableColumn,
-  DataTableColumn,
+  ExhibitionTableColumn,
   PublicationTableColumn,
   TalksTableColumn,
   MediaTableColumn,
@@ -52,7 +52,7 @@ export default function AboutAccordion({
       <CommonTable
         itemValue='i2'
         tableName='Exhibitions'
-        columns={DataTableColumn}
+        columns={ExhibitionTableColumn}
         data={ExhibitionData}
       ></CommonTable>
       <CommonTable

@@ -19,12 +19,17 @@ interface ProjectProps {
   posts: CollectionEntry<'projects'>
 }
 
+interface BlogProps {
+  isProject?: false
+  posts?: CollectionEntry<'blog'>
+}
+
 interface NonProjectProps {
   isProject?: false
   posts?: CollectionEntry<'projects'>
 }
 
-type Props = ProjectProps | NonProjectProps
+type Props = ProjectProps | NonProjectProps | BlogProps
 
 export async function getStaticPaths() {
   if (!isProject) return
@@ -53,11 +58,11 @@ const { isProject, posts } = Astro.props
       http-equiv='content-security-policy'
       content="
     upgrade-insecure-requests;
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' ajax.cloudflare.com static.cloudflareinsights.com www.youtube.com;
-    connect-src wss://localhost:4321/ localhost:4321 https://cloudflareinsights.com static.cloudflareinsights.com *.ingest.sentry.io sentry.io;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' ajax.cloudflare.com static.cloudflareinsights.com www.youtube.com player.vimeo.com vimeo.com;
+    connect-src wss://localhost:4321/ ws://localhost:4321/ vimeo.com localhost:4321 https://cloudflareinsights.com static.cloudflareinsights.com *.ingest.sentry.io sentry.io;
     worker-src 'self' blob:; 
-    child-src 'self' static.cloudflareinsights.com www.youtube.com blob:;
-    media-src 'self' data:;
+    child-src 'self' giphy.com player.vimeo.com vimeo.com static.cloudflareinsights.com www.youtube.com blob:;
+    media-src 'self' *.kyeshimizu.com *.cloudfront.net data:;
   "
     />
     <link rel='sitemap' href='/sitemap-index.xml' />
