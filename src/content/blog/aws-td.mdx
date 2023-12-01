@@ -10,6 +10,7 @@ date: '2023.12.01'
 
 import { Picture } from 'astro:assets'
 import { Spacer } from '../../components/layout/Spacer'
+import TwitterEmbed from '../../components/TwitterEmbed'
 import TextSection from '../../components/blog/TextSection'
 import DoubleColumnPicture from '../../components/layout/DoubleColumnPicture'
 import VideoPlayer from '../../components/VideoPlayer'
@@ -62,11 +63,7 @@ AWSでGPUインスタンスを立てて、TDを使う方法を紹介します
 
 ### 構成を真面目に考える
 
-例えば、[UE on AWS から引用した構成図](https://aws.amazon.com/jp/blogs/news/jpmne-virtual-production-reference-architecture-with-epic-games-unreal-engine/)みたいなものも実はTDで作ることもできるのではないでしょうか
-
-WebRTC Comp も出てきたし、Web Client Comp もあるし
-
-単純なウェブサーバーとかだったら、AWSの無料枠でできるので、そういうのと連携して、TDのオンライン化で面白いことはできるのではないでしょうか
+例えば、[UE on AWS から引用した構成図](https://aws.amazon.com/jp/blogs/news/jpmne-virtual-production-reference-architecture-with-epic-games-unreal-engine/)みたいなものも実はTDで作ることもできるそう
 
 <Picture
   widths={[360, 768, 1024, 1440]}
@@ -80,6 +77,19 @@ WebRTC Comp も出てきたし、Web Client Comp もあるし
   sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
   pictureAttributes={{ style: 'display: flex; justify-content: center; align-items: center;' }}
 />
+
+WebRTC Comp も出てきたし、Web Client Comp もあるし
+
+単純なウェブサーバーとかだったら、AWSの無料枠でできるので、そういうのと連携して、TDのオンライン化で面白いことはできるのではないでしょうか
+
+<TwitterEmbed>
+<p lang='ja' dir='ltr'>
+    エラー吐いてるけど、 TD on AWSで WebRTC テスト!{' '}
+    <a href='https://t.co/0ltQ4iRUxI'>pic.twitter.com/0ltQ4iRUxI</a>
+  </p>
+  &mdash; かいくん / kye shimizu (@kyeshimizu) <a href='https://twitter.com/kyeshimizu/status/1730423060023620074?ref_src=twsrc%5Etfw'>December 1, 2023</a>
+
+</TwitterEmbed>
 
 ## インストールする前のトラップ
 
