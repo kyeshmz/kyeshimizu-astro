@@ -21,9 +21,9 @@ const allPosts = await getCollection('projects')
 ---
 
 <BaseLayout>
-  <div class='flex mt-8 pb-8 md:flex-row flex-col gap-4 flex-1 w-auto'>
+  <div class='flex mt-8 pb-8 xl:flex-row flex-col gap-4 flex-1 w-auto'>
     <Picture
-      class={'transition-all hover:scale-105 md:object-contain object-fit h-[500px] w-auto'}
+      class={'transition-all hover:scale-95 object-contain md:h-[500px] w-auto'}
       widths={[360, 768, 1024, 1440]}
       src={aboutImage}
       formats={['avif', 'webp']}

@@ -1,0 +1,66 @@
+---
+import type { GetStaticPathsOptions } from 'astro'
+import { Picture } from 'astro:assets'
+import { getCollection } from 'astro:content'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+
+import TextSection from '../../components/blog/TextSection'
+import { Spacer } from '../../components/layout/Spacer'
+import GrantCard from '../../components/project/GrantCard.astro'
+import { Button } from '../../components/ui/button'
+import { Card } from '../../components/ui/card'
+import { Separator } from '../../components/ui/separator'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+dayjs.extend(utc)
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const blogEntries = await getCollection('blogs')
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }))
+}
+
+const { entry } = Astro.props
+const { Content, remarkPluginFrontmatter } = await entry.render()
+const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().format('YYYY.MM.DD')
+---
+
+<BaseLayout isBlog posts={entry} />
+
+<TextSection className='pb-8 gap-2'>
+  <h1 class='flex text-4xl'>
+    {entry.data.title}
+  </h1>
+  <h3 class='text-lg'>
+    {entry.data.subtitle}
+  </h3>
+
+  <!-- <div class='flex flex-wrap gap-3'>
+    {
+      entry.data.tags.map((tag: string) => {
+        const formattedTag = tag.charAt(0).toUpperCase() + tag.slice(1)
+        return (
+          <Button variant={'secondary'}>
+            <a href={'/types/' + tag}>{formattedTag}</a>
+          </Button>
+        )
+      })
+    }
+  </div> -->
+  <Spacer size={4} />
+  <div class='flex gap-2 md:flex-row flex-col'>
+    <time>Created: {entry.data.date}</time>
+    <time>Updated: {lastModified}</time>
+  </div>
+</TextSection>
+<TextSection>
+  <Spacer size={32} />
+  <div class='prose'>
+    <Content />
+  </div>
+
+  <Spacer size={32} />
+</TextSection>
