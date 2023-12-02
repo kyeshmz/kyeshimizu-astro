@@ -23,7 +23,7 @@ interface ProjectProps {
 interface BlogProps {
   isProject?: false
   isBlog: true
-  posts?: CollectionEntry<'blog'>
+  posts: CollectionEntry<'blogs'>
 }
 
 interface NonProjectProps {
@@ -43,17 +43,15 @@ export async function getStaticPaths() {
         posts,
       },
     }))
-  }
-  if (isBlog) {
-    const posts = await getCollection('blog')
+  } else if (isBlog) {
+    const posts = await getCollection('blogs')
     return posts.map((post) => ({
       params: { slug: post.slug },
       props: {
         posts,
       },
     }))
-  }
-  return
+  } else return
 }
 
 const { isProject, isBlog, posts } = Astro.props
@@ -91,13 +89,10 @@ const { isProject, isBlog, posts } = Astro.props
               ? `Kye Shimizu | Portfolio | ${posts.data.title}`
               : 'Kye Shimizu | Portfolio',
           type: 'A type.',
-
           image:
             isProject === true
               ? new URL(`/og/projects/${posts.slug}.png`, Astro.url.origin).toString()
-              : isBlog === true
-                ? new URL(`/og/blog/${posts!.slug}.png`, Astro.url.origin).toString()
-                : new URL(`/og/${Astro.request.url}.png`, Astro.url.origin).toString(),
+              : new URL('/ogp.png', Astro.url.origin).toString(),
         },
         optional: {
           locale: 'en',
@@ -119,12 +114,11 @@ const { isProject, isBlog, posts } = Astro.props
           isProject === true
             ? `Kye Shimizu | ${posts.data.subtitle}`
             : 'Kye Shimizu personal portfolio',
+
         image:
           isProject === true
             ? new URL(`/og/projects/${posts.slug}.png`, Astro.url.origin).toString()
-            : isBlog === true
-              ? new URL(`/og/blog/${posts!.slug}.png`, Astro.url.origin).toString()
-              : new URL(`/og/${Astro.request.url}.png`, Astro.url.origin).toString(),
+            : new URL('/ogp.png', Astro.url.origin).toString(),
       }}
       extend={{
         // extending the default link tags
