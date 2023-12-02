@@ -1,6 +1,6 @@
 import type { APIContext } from 'astro'
 import { getCollection } from 'astro:content'
-import { getOgImage } from '../../utils/createOGPImage'
+import { getOgImage } from '../../../utils/createOGPImage'
 
 export async function getStaticPaths() {
   const posts = await getCollection('projects')

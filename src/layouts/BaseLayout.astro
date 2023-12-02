@@ -16,33 +16,47 @@ import { Toaster } from '../components/ui/toaster'
 
 interface ProjectProps {
   isProject: true
+  isBlog?: false
   posts: CollectionEntry<'projects'>
 }
 
 interface BlogProps {
   isProject?: false
+  isBlog: true
   posts?: CollectionEntry<'blog'>
 }
 
 interface NonProjectProps {
   isProject?: false
+  isBlog?: false
   posts?: CollectionEntry<'projects'>
 }
 
 type Props = ProjectProps | NonProjectProps | BlogProps
 
 export async function getStaticPaths() {
-  if (!isProject) return
-  const posts = await getCollection('projects')
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: {
-      posts,
-    },
-  }))
+  if (isProject) {
+    const posts = await getCollection('projects')
+    return posts.map((post) => ({
+      params: { slug: post.slug },
+      props: {
+        posts,
+      },
+    }))
+  }
+  if (isBlog) {
+    const posts = await getCollection('blog')
+    return posts.map((post) => ({
+      params: { slug: post.slug },
+      props: {
+        posts,
+      },
+    }))
+  }
+  return
 }
 
-const { isProject, posts } = Astro.props
+const { isProject, isBlog, posts } = Astro.props
 ---
 
 <!doctype html>
@@ -80,8 +94,10 @@ const { isProject, posts } = Astro.props
 
           image:
             isProject === true
-              ? new URL(`/og/${posts.slug}.png`, Astro.url.origin).toString()
-              : new URL(`/og/${Astro.request.url}.png`, Astro.url.origin).toString(),
+              ? new URL(`/og/projects/${posts.slug}.png`, Astro.url.origin).toString()
+              : isBlog === true
+                ? new URL(`/og/blog/${posts!.slug}.png`, Astro.url.origin).toString()
+                : new URL(`/og/${Astro.request.url}.png`, Astro.url.origin).toString(),
         },
         optional: {
           locale: 'en',
@@ -105,21 +121,16 @@ const { isProject, posts } = Astro.props
             : 'Kye Shimizu personal portfolio',
         image:
           isProject === true
-            ? new URL(`/og/${posts.slug}.png`, Astro.url.origin).toString()
-            : new URL(`/og/${Astro.request.url}.png`, Astro.url.origin).toString(),
+            ? new URL(`/og/projects/${posts.slug}.png`, Astro.url.origin).toString()
+            : isBlog === true
+              ? new URL(`/og/blog/${posts!.slug}.png`, Astro.url.origin).toString()
+              : new URL(`/og/${Astro.request.url}.png`, Astro.url.origin).toString(),
       }}
       extend={{
         // extending the default link tags
         link: [{ rel: 'icon', href: '/favicon.ico' }],
         // extending the default meta tags
         meta: [
-          {
-            name: 'twitter:image',
-            content:
-              isProject === true
-                ? new URL(`/og/${posts.slug}.png`, Astro.url.origin).toString()
-                : new URL(`/og/${Astro.request.url}.png`, Astro.url.origin).toString(),
-          },
           {
             name: 'twitter:title',
             content:
