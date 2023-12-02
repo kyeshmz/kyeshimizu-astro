@@ -73,7 +73,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Upload sourcemaps to Sentry
-        uses: getsentry/action-upload-sourcemaps@v2
+        uses: getsentry/action-release@v1.4.1
         env:
           sentry_org: ${{ secrets.SENTRY_ORG }}
           sentry_project: ${{ secrets.SENTRY_PROJECT }}
