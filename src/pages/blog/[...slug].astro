@@ -28,7 +28,7 @@ const { Content, remarkPluginFrontmatter } = await entry.render()
 const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().format('YYYY.MM.DD')
 ---
 
-<BaseLayout posts={entry} />
+<BaseLayout isBlog posts={entry} />
 
 <TextSection className='pb-8 gap-2'>
   <h1 class='flex text-4xl'>

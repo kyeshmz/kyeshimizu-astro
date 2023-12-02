@@ -15,16 +15,25 @@ import SocialButtonRow from '../components/SocialButtonRow'
 import { Separator } from '../components/ui/separator'
 import { Content as AboutContent } from '../content/about/about.mdx'
 import BaseLayout from '../layouts/BaseLayout.astro'
-
+import aboutImage from '../content/about/images/profile.jpg'
+import { Picture } from 'astro:assets'
 const allPosts = await getCollection('projects')
 ---
 
 <BaseLayout>
-  <div class='flex mt-8 pb-8 md:flex-row flex-col gap-4 w-full'>
-    <img
-      class='h-[500px] transition-all hover:scale-105 flex-1 w-auto object-cover md:object-contain'
-      src='https://images.unsplash.com/photo-1698948233567-341329ce43a9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMHx8fGVufDB8fHx8fA%3D%3D'
+  <div class='flex mt-8 pb-8 md:flex-row flex-col gap-4 flex-1 w-auto'>
+    <Picture
+      class={'transition-all hover:scale-105 md:object-contain object-fit h-[500px] w-auto'}
+      widths={[360, 768, 1024, 1440]}
+      src={aboutImage}
+      formats={['avif', 'webp']}
+      alt=''
+      sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
+      pictureAttributes={{
+        style: 'display: flex; justify-content: center; align-items: center; ',
+      }}
     />
+
     <div class='flex flex-col gap-2 min-w-0 flex-1'>
       <AboutContent />
       <Spacer size={10} />
