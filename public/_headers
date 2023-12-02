@@ -1,2 +1,4 @@
 https://kyeshimizu.com/*
     Access-Control-Allow-Headers: sentry-trace, baggage
+/*
+    Access-Control-Allow-Headers: sentry-trace, baggage
