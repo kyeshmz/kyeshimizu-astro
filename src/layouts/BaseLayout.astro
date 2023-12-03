@@ -13,6 +13,7 @@ import { SEO } from 'astro-seo'
 import Navigation from '../components/layout/Navigation.astro'
 import Sidebar from '../components/layout/SideBar.astro'
 import { Toaster } from '../components/ui/toaster'
+import Footer from '../components/layout/Footer.astro'
 
 interface ProjectProps {
   isProject: true
@@ -70,15 +71,17 @@ const { isProject, isBlog, posts } = Astro.props
       http-equiv='content-security-policy'
       content="
     upgrade-insecure-requests;
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' ajax.cloudflare.com platform.twitter.com static.cloudflareinsights.com www.youtube.com player.vimeo.com vimeo.com;
-    connect-src wss://localhost:4321/ ws://localhost:4321/ vimeo.com localhost:4321 https://cloudflareinsights.com static.cloudflareinsights.com *.ingest.sentry.io sentry.io;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' ajax.cloudflare.com  static.cloudflareinsights.com www.youtube.com player.vimeo.com vimeo.com;
+    connect-src react-tweet.vercel.app wss://localhost:4321/ ws://localhost:4321/ vimeo.com localhost:4321 https://cloudflareinsights.com static.cloudflareinsights.com *.ingest.sentry.io sentry.io kyeshimizu.com/cdn-cgi/rum; 
     worker-src 'self' blob:; 
-    child-src 'self' platform.twitter.com giphy.com player.vimeo.com vimeo.com static.cloudflareinsights.com www.youtube.com blob:;
-    media-src 'self' *.kyeshimizu.com *.cloudfront.net data:;
+    child-src 'self' giphy.com player.vimeo.com vimeo.com static.cloudflareinsights.com www.youtube.com blob:;
+    media-src 'self' video.twimg.com *.kyeshimizu.com *.cloudfront.net data:;
   "
     />
     <link rel='sitemap' href='/sitemap-index.xml' />
     <link rel='icon' href='/favicon.svg' />
+    <link rel='preconnect' href='https://o4505485115719680.ingest.sentry.io' />
+
     <SEO
       title='Kye Shimizu | Portfolio'
       description='A personal portfolio of Kye Shimizu'
@@ -155,28 +158,6 @@ const { isProject, isBlog, posts } = Astro.props
     <main class='py-6 w-15 mx-6 md:mx-28 my-0 pt-[72px] relative'>
       <slot />
     </main>
-
-    <script>
-      window.twttr = (function (d, s, id) {
-        var js,
-          fjs = d.getElementsByTagName(s)[0],
-          //@ts-ignore
-          t = window.twttr || {}
-        if (d.getElementById(id)) return t
-        js = d.createElement(s)
-        js.id = id
-        //@ts-ignore
-        js.src = 'https://platform.twitter.com/widgets.js'
-        //@ts-ignore
-        fjs.parentNode.insertBefore(js, fjs)
-
-        t._e = []
-        t.ready = function (f: any) {
-          t._e.push(f)
-        }
-
-        return t
-      })(document, 'script', 'twitter-wjs')
-    </script>
+    <Footer />
   </body>
 </html>

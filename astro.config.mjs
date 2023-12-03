@@ -30,7 +30,7 @@ export default defineConfig({
     }),
     sitemap(),
     react(),
-    robotsTxt(),
+    robotsTxt({}),
     sentry({
       // this needs to be there, cause this cannot be customized through client config.js
       // per https://docs.sentry.io/platforms/javascript/guides/astro/manual-setup/?original_referrer=https%3A%2F%2Fwww.google.com%2F
@@ -46,6 +46,9 @@ export default defineConfig({
   ],
   prefetch: true,
   vite: {
+    ssr: {
+      noExternal: ['react-tweet'],
+    },
     optimizeDeps: {
       exclude: ['@resvg/resvg-js'],
     },
