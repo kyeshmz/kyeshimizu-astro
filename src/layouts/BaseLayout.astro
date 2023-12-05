@@ -14,6 +14,7 @@ import Navigation from '../components/layout/Navigation.astro'
 import Sidebar from '../components/layout/SideBar.astro'
 import { Toaster } from '../components/ui/toaster'
 import Footer from '../components/layout/Footer.astro'
+import { Spacer } from '../components/layout/Spacer'
 
 interface ProjectProps {
   isProject: true
@@ -158,6 +159,7 @@ const { isProject, isBlog, posts } = Astro.props
     <main class='py-6 w-15 mx-6 md:mx-28 my-0 pt-[72px] relative'>
       <slot />
     </main>
+    <Spacer size={32} />
     <Footer />
   </body>
 </html>

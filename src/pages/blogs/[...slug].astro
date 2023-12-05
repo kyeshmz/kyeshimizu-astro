@@ -12,6 +12,7 @@ import { Button } from '../../components/ui/button'
 import { Card } from '../../components/ui/card'
 import { Separator } from '../../components/ui/separator'
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import PageViewCounter from '../../components/PageViewCounter'
 
 dayjs.extend(utc)
 
@@ -28,17 +29,16 @@ const { Content, remarkPluginFrontmatter } = await entry.render()
 const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().format('YYYY.MM.DD')
 ---
 
-<BaseLayout isBlog posts={entry} />
+<BaseLayout isBlog posts={entry}>
+  <TextSection className='pb-8 gap-2'>
+    <h1 class='flex text-4xl mx-4'>
+      {entry.data.title}
+    </h1>
+    <h3 class='text-lg mx-4'>
+      {entry.data.subtitle}
+    </h3>
 
-<TextSection className='pb-8 gap-2'>
-  <h1 class='flex text-4xl mx-4'>
-    {entry.data.title}
-  </h1>
-  <h3 class='text-lg mx-4'>
-    {entry.data.subtitle}
-  </h3>
-
-  <!-- <div class='flex flex-wrap gap-3'>
+    <!-- <div class='flex flex-wrap gap-3'>
     {
       entry.data.tags.map((tag: string) => {
         const formattedTag = tag.charAt(0).toUpperCase() + tag.slice(1)
@@ -50,17 +50,18 @@ const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().format('Y
       })
     }
   </div> -->
-  <Spacer size={4} />
-  <div class='flex gap-2 md:flex-row flex-col mx-4'>
-    <time>Created: {entry.data.date}</time>
-    <time>Updated: {lastModified}</time>
-  </div>
-</TextSection>
-<TextSection>
-  <Spacer size={32} />
-  <div class='prose mx-4'>
-    <Content />
-  </div>
+    <Spacer size={4} />
+    <div class='flex gap-2 md:flex-row flex-col mx-4'>
+      <time>Created: {entry.data.date}</time>
+      <time>Updated: {lastModified}</time>
+    </div>
+  </TextSection>
+  <TextSection>
+    <Spacer size={32} />
+    <div class='prose mx-4'>
+      <Content />
+    </div>
 
-  <Spacer size={32} />
-</TextSection>
+    <Spacer size={32} />
+  </TextSection>
+</BaseLayout>

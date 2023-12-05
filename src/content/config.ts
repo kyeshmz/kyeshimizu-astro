@@ -78,6 +78,7 @@ const projects = defineCollection({
           event_name: z.string(),
         }),
       ),
+      other: z.array(z.string()).optional(),
     }),
 })
 

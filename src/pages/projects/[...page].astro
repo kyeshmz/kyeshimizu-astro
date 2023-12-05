@@ -1,0 +1,31 @@
+---
+import type { GetStaticPathsOptions } from 'astro'
+import { getCollection } from 'astro:content'
+import ProjectHoverImages from '../../components/project/ProjectHoverImages.astro'
+import ProjectYearList from '../../components/project/ProjectYearList.astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const blogEntries = await getCollection('projects')
+
+  const slugs = blogEntries.map((entry) => entry.slug)
+
+  return slugs.flatMap((slug) => {
+    return paginate(blogEntries, {
+      params: { slug },
+      props: { slug },
+    })
+  })
+}
+const { page } = Astro.props
+const entry = page.data[page.currentPage]
+
+const { Content, remarkPluginFrontmatter } = await entry.render()
+---
+
+<BaseLayout>
+  <section class='pt-3 w-full'>
+    <ProjectYearList page={page} transition:persist />
+    <ProjectHoverImages />
+  </section>
+</BaseLayout>
