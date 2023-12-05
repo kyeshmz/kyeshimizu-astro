@@ -17,8 +17,7 @@ export const Works = {
   AlgorithmicUrbanComposition: 'Algorithmic Urban Composition',
   UrbanRhythmability: 'Urban Rhythmability',
   SyntheticFeather: 'Synthetic Feather',
-  SlushAsia2015: 'Slush Asia 2015',
-  SlushAsia2016: 'Slush Asia 2016',
+  SlushAsia: 'Slush Asia',
 } as const
 
 // type SizeType = 'small' | 'medium' | 'large'

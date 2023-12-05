@@ -1,5 +1,25 @@
 ---
-
+import CopyToClipboard from 'react-copy-to-clipboard'
+import { Spacer } from './Spacer'
+import CopyClipboardText from '../CopyClipboardText'
 ---
 
-<footer class='grid grid-cols-3'></footer>
+<footer class='flex flex-col mx-6 md:mx-28 pb-8 relative'>
+  <div class='px-4 w-full bg-[#333333] h-[1px] my-2'></div>
+  <Spacer size={8} />
+  <div class='flex justify-between'>
+    <div class='flex flex-col'>
+      <span class='text-xl'>Contact</span>
+      <CopyClipboardText title='hello@kyeshimizu.com' client:only='react' />
+    </div>
+  </div>
+
+  <!-- <hr class='w-11/12 text-black bg-black h-[1px] my-auto mx-auto' /> -->
+  <!-- <footer class='mx-auto'>
+    <div></div>
+    <div class='flex'>
+      © 2021 Ben Eli. Lovingly designed through Wix Playground Academy. Set in Neue Montreal and
+      Migra by PangramPangram.
+    </div>
+  </footer> -->
+</footer>

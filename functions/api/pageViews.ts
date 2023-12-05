@@ -1,9 +1,7 @@
-// inside: functions/api/pageViews.ts
-
 import { PagesFunction, KVNamespace } from '@cloudflare/workers-types'
 
 // PUT /api/pageViews
-export const onRequestPut: PagesFunction<{ PAGE_VIEWS: KVNamespace }> = async (context) => {
+export const onRequest: PagesFunction<{ PAGE_VIEWS: KVNamespace }> = async (context) => {
   const {
     request,
     env: { PAGE_VIEWS },
