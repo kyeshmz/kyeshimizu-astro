@@ -8,6 +8,7 @@ export const onRequest: PagesFunction<{ PAGE_VIEWS: KVNamespace }> = async (cont
   } = context
 
   // CF way to access the body of the put request
+  //@ts-ignore
   const { path } = await request.json()
 
   let currentCount = Number(await PAGE_VIEWS.get(path))
