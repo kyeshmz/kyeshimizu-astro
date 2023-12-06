@@ -14,3 +14,5 @@ https://shunyahagiwara.com/2021/who-else-if-not-you/
 https://docs.google.com/spreadsheets/d/1qWCmafgtAJ7376ojOBZhznks0vhn_gjdDiRhCIgzRww/htmlview
 https://web.archive.org/web/20211127181711/https://www.beneli.studio/
 https://www.creativelivesinprogress.com/article/a-guide-to-creating-your-pdf-portfolio
+
+https://ccbt.rekibun.or.jp/research-notes/camp2_setup

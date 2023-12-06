@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "lib": ["esnext"],
+    "skipLibCheck": true,
+    "baseUrl": "./",
+    "types": ["@cloudflare/workers-types", "bun-types"]
+  },
+  "include": ["api/**/*.ts", "src/**/*.ts"],
+  "exclude": ["functions/**/*", "node_modules/**/*", "dist/**/*"]
+}

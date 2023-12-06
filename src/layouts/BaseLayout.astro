@@ -14,6 +14,7 @@ import Navigation from '../components/layout/Navigation.astro'
 import Sidebar from '../components/layout/SideBar.astro'
 import { Toaster } from '../components/ui/toaster'
 import Footer from '../components/layout/Footer.astro'
+import { Spacer } from '../components/layout/Spacer'
 
 interface ProjectProps {
   isProject: true
@@ -71,10 +72,10 @@ const { isProject, isBlog, posts } = Astro.props
       http-equiv='content-security-policy'
       content="
     upgrade-insecure-requests;
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' ajax.cloudflare.com  static.cloudflareinsights.com www.youtube.com player.vimeo.com vimeo.com;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' ajax.cloudflare.com  static.cloudflareinsights.com www.youtube.com player.vimeo.com vimeo.com platform.twitter.com;
     connect-src react-tweet.vercel.app wss://localhost:4321/ ws://localhost:4321/ vimeo.com localhost:4321 https://cloudflareinsights.com static.cloudflareinsights.com *.ingest.sentry.io sentry.io kyeshimizu.com/cdn-cgi/rum; 
     worker-src 'self' blob:; 
-    child-src 'self' giphy.com player.vimeo.com vimeo.com static.cloudflareinsights.com www.youtube.com blob:;
+    child-src 'self' giphy.com player.vimeo.com vimeo.com static.cloudflareinsights.com www.youtube.com platform.twitter.com blob:;
     media-src 'self' video.twimg.com *.kyeshimizu.com *.cloudfront.net data:;
   "
     />
@@ -158,6 +159,7 @@ const { isProject, isBlog, posts } = Astro.props
     <main class='py-6 w-15 mx-6 md:mx-28 my-0 pt-[72px] relative'>
       <slot />
     </main>
+    <Spacer size={32} />
     <Footer />
   </body>
 </html>
