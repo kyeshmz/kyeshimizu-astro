@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "NODE_OPTIONS=' --max-old-space-size=16384' && astro check && tsc --noEmit && astro build && npm run build-func",
+    "build": "NODE_OPTIONS=' --max-old-space-size=16384' && astro check && tsc --noEmit && astro build ",
     "build-func": "cd functions && pnpm run build && cd .. && mv functions/api/_worker.js dist/_worker.js",
     "preview": "astro preview",
     "astro": "astro",
