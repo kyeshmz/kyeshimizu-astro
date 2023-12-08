@@ -1,0 +1,97 @@
+---
+import 'photoswipe/style.css'
+
+import { Image } from 'astro:assets'
+import Picture from 'astro/components/Picture.astro'
+
+export interface Props {
+  id: string
+  images: ImageMetadata[]
+}
+
+const { id, images } = Astro.props
+
+// TODO: in the future if we need something with exif or captions, we can look at the exif
+//https://github.com/kyeshmz/hello-astro
+---
+
+<div id={id} class='not-prose [&_img]:rounded'>
+  <lightbox-inner data-id={id}>
+    {
+      images.map((image, i) => (
+        <figure
+          itemscope
+          itemtype='http://schema.org/ImageObject'
+          class=' inline-block rounded bg-gray-50 text-center text-sm italic text-gray-800 shadow-lg  dark:shadow-black '
+        >
+          <a
+            href={image.src}
+            itemprop='contentUrl'
+            data-pswp-width={image.width}
+            data-pswp-height={image.height}
+          >
+            <Picture
+              widths={[360, 768, 1024, 1440]}
+              src={image}
+              formats={['avif', 'webp']}
+              alt=''
+              sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
+              pictureAttributes={{
+                style: 'display: flex; justify-content: center; align-items: center;',
+              }}
+            />
+          </a>
+        </figure>
+      ))
+    }
+  </lightbox-inner>
+</div>
+<script>
+  import PhotoSwipeLightbox from 'photoswipe/lightbox'
+
+  class LightboxInner extends HTMLElement {
+    constructor() {
+      super()
+
+      const id = this.dataset.id
+      let isOpen = false
+
+      const lightbox = new PhotoSwipeLightbox({
+        gallerySelector: '#' + id,
+        childSelector: 'a',
+        pswpModule: () => import('photoswipe'),
+        paddingFn: () => {
+          return {
+            top: 50,
+            bottom: 50,
+            left: 50,
+            right: 50,
+          }
+        },
+        zoom: false,
+        counter: false,
+      })
+
+      lightbox.init()
+      isOpen = true
+      lightbox.on('close', () => {
+        isOpen = false
+      })
+
+      lightbox.on('openingAnimationEnd', () => {
+        isOpen = true
+      })
+
+      let initialScrollPos = window.pageYOffset
+      document.addEventListener('scroll', () => {
+        let currentScrollPos = window.pageYOffset
+        if (Math.abs(initialScrollPos - currentScrollPos) > 20 && isOpen) {
+          // Change 100 to your desired scroll threshold
+          lightbox?.pswp?.close()
+        }
+      })
+    }
+  }
+
+  customElements.define('lightbox-inner', LightboxInner)
+</script>

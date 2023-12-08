@@ -10,9 +10,10 @@ date: '2023.12.01'
 
 import { Picture } from 'astro:assets'
 import { Spacer } from '../../components/layout/Spacer'
-import TwitterEmbed from '../../components/TwitterEmbed'
 import TextSection from '../../components/blog/TextSection'
 import DoubleColumnPicture from '../../components/layout/DoubleColumnPicture'
+
+import Lightbox from '../../components/Lightbox.astro'
 import VideoPlayer from '../../components/VideoPlayer'
 import select_ami from './images/aws-td/select_ami.png'
 import ami from './images/aws-td/ami.png'
@@ -123,6 +124,8 @@ onDemand は高い分、インスタンスは消えない
   sizes={'(min-width: 360px) (min-width: 768px) (min-width:1024px)  (min-width:1440px)'}
   pictureAttributes={{ style: 'display: flex; justify-content: center; align-items: center;' }}
 />
+
+{/* <Lightbox id={'gallery-test'} images={[quota_1, ondemand]} /> */}
 
 <Picture
   widths={[360, 768, 1024, 1440]}

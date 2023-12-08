@@ -14,6 +14,7 @@ import { rehypeHeadingIds } from '@astrojs/markdown-remark'
 
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import lighthouse from 'astro-lighthouse'
 
 import rehypeToc from 'rehype-toc'
 // https://astro.build/config
@@ -30,6 +31,7 @@ export default defineConfig({
     }),
     sitemap(),
     react(),
+    lighthouse(),
     robotsTxt({}),
     sentry({
       // this needs to be there, cause this cannot be customized through client config.js

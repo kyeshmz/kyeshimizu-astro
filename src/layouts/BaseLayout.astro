@@ -82,6 +82,7 @@ const { isProject, isBlog, posts } = Astro.props
     <link rel='sitemap' href='/sitemap-index.xml' />
     <link rel='icon' href='/favicon.svg' />
     <link rel='preconnect' href='https://o4505485115719680.ingest.sentry.io' />
+    <script async src="https://us.umami.is/script.js" data-website-id="29671fc6-7b8b-4353-b2fe-e08de86601ae"></script>
 
     <SEO
       title='Kye Shimizu | Portfolio'
@@ -109,7 +110,7 @@ const { isProject, isBlog, posts } = Astro.props
       }}
       twitter={{
         creator: '@kyeshimzu',
-        card: 'summary_large_image',
+        card: 'summary',
         title:
           isProject === true
             ? `Kye Shimizu | Portfolio | ${posts.data.title}`
