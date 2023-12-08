@@ -10,7 +10,8 @@
     "jsxImportSource": "react",
     "baseUrl": "./",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["*"],
+      "photoswipe/lightbox": ["./node_modules/photoswipe/dist/types/lightbox/lightbox.d.ts"]
     },
     "plugins": [
       {
