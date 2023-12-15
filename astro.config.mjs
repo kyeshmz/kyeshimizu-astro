@@ -32,14 +32,14 @@ export default defineConfig({
     react(),
     lighthouse(),
     robotsTxt({}),
-    sentry({
-      // this needs to be there, cause this cannot be customized through client config.js
-      // per https://docs.sentry.io/platforms/javascript/guides/astro/manual-setup/?original_referrer=https%3A%2F%2Fwww.google.com%2F
-      sourceMapsUploadOptions: {
-        project: 'kyeshimizu-web',
-        authToken: process.env.SENTRY_AUTH_TOKEN,
-      },
-    }),
+    // sentry({
+    //   // this needs to be there, cause this cannot be customized through client config.js
+    //   // per https://docs.sentry.io/platforms/javascript/guides/astro/manual-setup/?original_referrer=https%3A%2F%2Fwww.google.com%2F
+    //   sourceMapsUploadOptions: {
+    //     project: 'kyeshimizu-web',
+    //     authToken: process.env.SENTRY_AUTH_TOKEN,
+    //   },
+    // }),
     critters(),
     compress({
       // Image: false,
