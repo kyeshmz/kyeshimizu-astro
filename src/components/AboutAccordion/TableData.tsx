@@ -1,16 +1,16 @@
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-} from '@radix-ui/react-dropdown-menu'
 import type { ColumnDef } from '@tanstack/react-table'
 import { ArrowUpRight, MoreHorizontal } from 'lucide-react'
 import { Button } from '../ui/button'
 import { AlphabeticalColumnHeader } from './AlphabeticalColumnHeader'
 import { DataTableColumnHeader } from './DataTableColumnHeader'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '../ui/dropdown-menu'
 
 export type TalkTableRow = {
   talk_name: string
@@ -55,7 +55,7 @@ export const TalksTableColumn: ColumnDef<TalkTableRow>[] = [
       return (
         <Button variant={'ghost'} asChild>
           <a href={publicationRow.reference} className='flex gap-2'>
-            <ArrowUpRight className='w-4 h-4'></ArrowUpRight>
+            <ArrowUpRight className='w-4 h-4' />
           </a>
         </Button>
       )
@@ -185,7 +185,7 @@ export const MediaTableColumn: ColumnDef<MediaTableRow>[] = [
       return (
         <Button variant={'ghost'} asChild>
           <a href={publicationRow.reference} className='flex gap-2'>
-            <ArrowUpRight className='w-4 h-4'></ArrowUpRight>
+            <ArrowUpRight className='w-4 h-4' />
           </a>
         </Button>
       )
@@ -223,7 +223,7 @@ export const GrantsTableColumn: ColumnDef<GrantTableRow>[] = [
       return (
         <Button variant={'ghost'} asChild>
           <a href={publicationRow.reference} className='flex gap-2'>
-            <ArrowUpRight className='w-4 h-4'></ArrowUpRight>
+            <ArrowUpRight className='w-4 h-4' />
           </a>
         </Button>
       )
