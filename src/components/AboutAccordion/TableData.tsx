@@ -32,6 +32,11 @@ export const TalksTableColumn: ColumnDef<TalkTableRow>[] = [
     header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Talk' />,
   },
   {
+    accessorKey: 'event_name',
+
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Event Name' />,
+  },
+  {
     accessorKey: 'place',
 
     header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Place' />,
