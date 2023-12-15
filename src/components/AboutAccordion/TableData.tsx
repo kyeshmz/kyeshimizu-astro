@@ -290,3 +290,25 @@ export const AwardTableColumn: ColumnDef<AwardTableRow>[] = [
     header: ({ column }) => <DataTableColumnHeader column={column} title='Year' />,
   },
 ]
+
+// Keio Research Institute at SFC
+export type EmploymentTableRow = {
+  employer: string
+  position: string
+  year: number
+}
+
+export const EmploymentTableColumn: ColumnDef<EmploymentTableRow>[] = [
+  {
+    accessorKey: 'employer',
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Employer' />,
+  },
+  {
+    accessorKey: 'position',
+    header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Position' />,
+  },
+  {
+    accessorKey: 'year',
+    header: ({ column }) => <DataTableColumnHeader column={column} title='Year' />,
+  },
+]
