@@ -21,3 +21,6 @@ pnpm-debug.log*
 .DS_Store
 *.mp4
 *.mkv
+*.mov
+*.avi
+*.mov
