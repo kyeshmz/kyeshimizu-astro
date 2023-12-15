@@ -11,21 +11,20 @@ import sentry from '@sentry/astro'
 import compress from 'astro-compress'
 import critters from 'astro-critters'
 import { rehypeHeadingIds } from '@astrojs/markdown-remark'
-
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import lighthouse from 'astro-lighthouse'
-
 import rehypeToc from 'rehype-toc'
+import cloudflare from '@astrojs/cloudflare'
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://kyeshimizu.com',
   integrations: [
     tailwind({
       applyBaseStyles: false,
-      configFile: './tailwind.config.cjs',
+      configFile: './tailwind.config.js',
     }),
-
     mdx({
       remarkPlugins: [remarkModifiedTime, remarkReadingTime],
     }),
@@ -67,11 +66,17 @@ export default defineConfig({
       rehypeHeadingIds,
       rehypeSlug,
       rehypeToc,
-      [rehypeAutolinkHeadings, { behavior: 'append' }],
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: 'append',
+        },
+      ],
     ],
     shikiConfig: {
       wrap: true,
     },
   },
-  output: 'static',
+  output: 'hybrid',
+  adapter: cloudflare({ mode: 'directory' }),
 })

@@ -46,6 +46,15 @@ const allPosts = await getCollection('projects')
   <AboutAccordion
     client:only='react'
     PublicationData={[
+      {
+        work: '',
+        conference_name: 'PNAS',
+        reference:
+          'Shirado, H., Kasahara, S., & Christakis, N. A. (2023). Emergence and collapse of reciprocity in semiautomatic driving coordination experiments with humans. Proceedings of the National Academy of Sciences of the United States of America, 120(51), e2307804120. https://doi.org/10.1073/pnas.2307804120',
+        url: 'https://www.pnas.org/doi/10.1073/pnas.2307804120',
+        year: 2023,
+        pdf_path: '',
+      },
       ...allPosts
         .flatMap((post) =>
           (post.data.publications as PublicationTableRow[]).map((publication) => ({

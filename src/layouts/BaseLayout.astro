@@ -72,8 +72,8 @@ const { isProject, isBlog, posts } = Astro.props
       http-equiv='content-security-policy'
       content="
     upgrade-insecure-requests;
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' ajax.cloudflare.com  static.cloudflareinsights.com www.youtube.com player.vimeo.com vimeo.com platform.twitter.com;
-    connect-src react-tweet.vercel.app wss://localhost:4321/ ws://localhost:4321/ vimeo.com localhost:4321 https://cloudflareinsights.com static.cloudflareinsights.com *.ingest.sentry.io sentry.io kyeshimizu.com/cdn-cgi/rum; 
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' ajax.cloudflare.com  static.cloudflareinsights.com www.youtube.com player.vimeo.com vimeo.com platform.twitter.com us.umami.is;
+    connect-src react-tweet.vercel.app wss://localhost:4321/ ws://localhost:4321/ vimeo.com localhost:4321 https://cloudflareinsights.com static.cloudflareinsights.com *.ingest.sentry.io sentry.io kyeshimizu.com/cdn-cgi/rum us.umami.is; 
     worker-src 'self' blob:; 
     child-src 'self' giphy.com player.vimeo.com vimeo.com static.cloudflareinsights.com www.youtube.com platform.twitter.com blob:;
     media-src 'self' video.twimg.com *.kyeshimizu.com *.cloudfront.net data:;
@@ -82,7 +82,10 @@ const { isProject, isBlog, posts } = Astro.props
     <link rel='sitemap' href='/sitemap-index.xml' />
     <link rel='icon' href='/favicon.svg' />
     <link rel='preconnect' href='https://o4505485115719680.ingest.sentry.io' />
-    <script async src="https://us.umami.is/script.js" data-website-id="29671fc6-7b8b-4353-b2fe-e08de86601ae"></script>
+    <script
+      async
+      src='https://us.umami.is/script.js'
+      data-website-id='29671fc6-7b8b-4353-b2fe-e08de86601ae'></script>
 
     <SEO
       title='Kye Shimizu | Portfolio'
