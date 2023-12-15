@@ -11,9 +11,6 @@
     "astro": "astro",
     "lint": "eslint --ext .astro,.js,.jsx,.ts,.tsx ./src --fix"
   },
-  "trustedDependencies": [
-    "sharp"
-  ],
   "dependencies": {
     "@astrojs/check": "^0.3.2",
     "@astrojs/cloudflare": "^8.0.0",
