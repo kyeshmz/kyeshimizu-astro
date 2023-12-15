@@ -9,7 +9,7 @@ import type {
   MediaTableRow,
   PublicationTableRow,
   TalkTableRow,
-} from '../components/AboutAccordion/TableData'
+} from '../components/AboutAccordion/AboutTableSchema'
 import { Spacer } from '../components/layout/Spacer'
 import SocialButtonRow from '../components/SocialButtonRow'
 import { Separator } from '../components/ui/separator'
@@ -129,3 +129,4 @@ const allPosts = await getCollection('projects')
       .sort((a, b) => b.year - a.year)}
   />
 </BaseLayout>
+../components/AboutAccordion/AboutTableSchema

@@ -15,7 +15,7 @@ import {
   MediaTableColumn,
   TeachingTableColumn,
   GrantsTableColumn,
-} from './TableData'
+} from './AboutTableSchema'
 
 export default function AboutAccordion({
   PublicationData,
