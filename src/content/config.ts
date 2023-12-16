@@ -79,6 +79,7 @@ const projects = defineCollection({
         }),
       ),
       other: z.array(z.string()).optional(),
+      protected: z.boolean().default(false),
     }),
 })
 
