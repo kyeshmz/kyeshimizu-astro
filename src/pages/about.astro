@@ -17,6 +17,7 @@ import { Content as AboutContent } from '../content/about/about.mdx'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import aboutImage from '../content/about/images/profile.webp'
 import { Picture } from 'astro:assets'
+import { TeachingTableData } from '../components/AboutAccordion/AboutTableData'
 const allPosts = await getCollection('projects')
 ---
 
@@ -102,23 +103,7 @@ const allPosts = await getCollection('projects')
         })),
       )
       .sort((a, b) => b.year - a.year)}
-    TeachingData={[
-      {
-        workshop_name: 'TA for Data Driven Art Summer School with Yasuaki Kakehi, Daito Manabe',
-        place: 'Keio University SFC',
-        date: '2018',
-      },
-      {
-        workshop_name: 'TA for Data Driven Art Summer School with Yasuaki Kakehi, Daito Manabe',
-        place: 'Keio University SFC',
-        date: '2017',
-      },
-      {
-        workshop_name: 'TA for Moving Picture with Saito Tatsuya',
-        place: 'Keio University SFC',
-        date: '2018',
-      },
-    ]}
+    TeachingData={TeachingTableData}
     GrantData={allPosts
       .flatMap((post) =>
         (post.data.grants as GrantTableRow[]).map((grant) => ({
