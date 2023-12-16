@@ -294,8 +294,11 @@ export const AwardTableColumn: ColumnDef<AwardTableRow>[] = [
 // Keio Research Institute at SFC
 export type EmploymentTableRow = {
   employer: string
+
   position: string
-  year: number
+  fromYear: string
+  endYear: string
+  reference: string
 }
 
 export const EmploymentTableColumn: ColumnDef<EmploymentTableRow>[] = [
@@ -308,7 +311,25 @@ export const EmploymentTableColumn: ColumnDef<EmploymentTableRow>[] = [
     header: ({ column }) => <AlphabeticalColumnHeader column={column} title='Position' />,
   },
   {
-    accessorKey: 'year',
-    header: ({ column }) => <DataTableColumnHeader column={column} title='Year' />,
+    accessorKey: 'fromYear',
+    header: ({ column }) => <DataTableColumnHeader column={column} title='From Year' />,
+  },
+  {
+    accessorKey: 'endYear',
+    header: ({ column }) => <DataTableColumnHeader column={column} title='End Year' />,
+  },
+  {
+    id: 'actions',
+    cell: ({ row }) => {
+      const publicationRow = row.original
+
+      return (
+        <Button variant={'ghost'} asChild>
+          <a href={publicationRow.reference} className='flex gap-2'>
+            <ArrowUpRight className='w-4 h-4' />
+          </a>
+        </Button>
+      )
+    },
   },
 ]
