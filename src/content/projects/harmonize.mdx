@@ -3,6 +3,8 @@ title: 'Harmonize'
 
 date: '2019.01.02'
 
+role: 'Researcher / Engineer'
+
 hoverImage: './images/harmonize/Yuima-Nakazato-SS18-Couture-04.webp'
 
 tags: ['engineering', 'installation', 'research', 'fashion']
@@ -88,7 +90,7 @@ import { Picture } from 'astro:assets'
 import { Spacer } from '../../components/layout/Spacer'
 import TextSection from '../../components/blog/TextSection'
 import VideoPlayer from '../../components/VideoPlayer'
-import SingleColumnPicture from '../../components/layout/SingleColumnPicture'
+import TripleColumnPicture from '../../components/layout/TripleColumnPicture'
 
 import harmonize_1 from './images/harmonize/Yuima-Nakazato-SS18-Couture-01.webp'
 import harmonize_2 from './images/harmonize/Yuima-Nakazato-SS18-Couture-02.webp'
@@ -110,7 +112,7 @@ Experience the future apparel envisioned by Nakazato, who wishes to deliver ulti
 <Spacer size={16} />
 <VideoPlayer url={'https://www.youtube.com/watch?v=o1rscsWkOb0'} client:only='react' />
 <Spacer size={16} />
-<SingleColumnPicture>
+<TripleColumnPicture>
   <Picture
     widths={[360, 768, 1024, 1440]}
     src={harmonize_1}
@@ -211,6 +213,6 @@ Experience the future apparel envisioned by Nakazato, who wishes to deliver ulti
   pictureAttributes={{ style: 'display: flex; justify-content: center; align-items: center;' }}
 />
 
-</SingleColumnPicture>
+</TripleColumnPicture>
 <Spacer size={16} />
 <VideoPlayer url={'https://www.youtube.com/watch?v=IAPWKrpDj5w'} client:only='react' />

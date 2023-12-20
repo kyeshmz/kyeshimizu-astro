@@ -4,7 +4,7 @@
 
 import '../styles/globals.css'
 import '@fontsource/inter'
-import '@fontsource/rosarivo'
+import '@fontsource-variable/bodoni-moda'
 
 import { type CollectionEntry, getCollection } from 'astro:content'
 import { ViewTransitions } from 'astro:transitions'
@@ -160,10 +160,10 @@ const { isProject, isBlog, posts } = Astro.props
 
     <Toaster client:idle client:only='react' />
 
-    <main class='py-6 w-15 mx-6 md:mx-28 my-0 pt-[72px] relative'>
+    <main>
       <slot />
     </main>
     <Spacer size={32} />
-    <Footer />
+    <!-- <Footer /> -->
   </body>
 </html>

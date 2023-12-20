@@ -1,0 +1,17 @@
+---
+import Intro from '../../components/Intro.astro'
+import { Spacer } from '../../components/layout/Spacer';
+
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import LanguagePicker from '../../components/LanguagePicker.astro'
+---
+
+<BaseLayout>
+  <Spacer size={15}  />
+  <Intro />
+
+  <footer>
+    <LanguagePicker />
+  </footer>
+
+</BaseLayout>

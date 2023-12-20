@@ -1,0 +1,15 @@
+---
+
+import Intro from '../../components/Intro.astro';
+import { Spacer } from '../../components/layout/Spacer';
+import ProjectHoverImages from '../../components/project/ProjectHoverImages.astro';
+import ProjectYearList from '../../components/project/ProjectYearList.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout>
+  <section class='pt-3 w-full py-6 w-15 mx-6 md:mx-28 my-0 pt-[72px] relative'>
+    <ProjectYearList transition:persist />
+    <ProjectHoverImages /> 
+  </section>
+</BaseLayout>

@@ -55,4 +55,9 @@ export const TeachingTableData: TeachingTableRow[] = [
     place: 'Keio University SFC',
     date: '2018',
   },
+  {
+    workshop_name: 'YCAM InterLab Camp Vol.4 Digital Embodied Co-Creations 2022.12.16 - 12.18',
+    place: 'YCAM, Yamaguchi',
+    date: '2022',
+  },
 ]

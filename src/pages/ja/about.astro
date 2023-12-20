@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content'
 
-import AboutAccordion from '../components/AboutAccordion/AboutAccordion'
+import AboutAccordion from '../../components/AboutAccordion/AboutAccordion'
 import type {
   AwardTableRow,
   ExhibitionTableRow,
@@ -9,23 +9,23 @@ import type {
   MediaTableRow,
   PublicationTableRow,
   TalkTableRow,
-} from '../components/AboutAccordion/AboutTableSchema'
-import { Spacer } from '../components/layout/Spacer'
-import SocialButtonRow from '../components/SocialButtonRow'
-import { Separator } from '../components/ui/separator'
-import { Content as AboutContent } from '../content/about/about.mdx'
-import BaseLayout from '../layouts/BaseLayout.astro'
-import aboutImage from '../content/about/images/profile.webp'
+} from '../../components/AboutAccordion/AboutTableSchema'
+import { Spacer } from '../../components/layout/Spacer'
+import SocialButtonRow from '../../components/SocialButtonRow'
+import { Separator } from '../../components/ui/separator'
+import { Content as AboutContent } from '../../content/about/about.mdx'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+import aboutImage from '../../content/about/images/profile.webp'
 import { Picture } from 'astro:assets'
-import { TeachingTableData } from '../components/AboutAccordion/AboutTableData'
-import BaseContainer from '../layouts/BaseContainer.astro'
+import { TeachingTableData } from '../../components/AboutAccordion/AboutTableData'
+
 const allPosts = await getCollection('projects')
 ---
 
 <BaseLayout>
-  <BaseContainer>
-  <div class='flex mt-8 pb-8 xl:flex-row flex-col gap-4 flex-1 w-auto ' >
-      <Picture
+  <div class='flex mt-8 pb-8 xl:flex-row flex-col gap-4 flex-1 w-auto'>
+    <Picture
       class={'transition-all hover:scale-95 object-contain md:h-[500px] w-auto'}
       widths={[360, 768, 1024, 1440]}
       src={aboutImage}
@@ -115,5 +115,4 @@ const allPosts = await getCollection('projects')
       )
       .sort((a, b) => b.year - a.year)}
   />
-</BaseContainer>
 </BaseLayout>

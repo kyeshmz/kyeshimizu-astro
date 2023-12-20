@@ -27,7 +27,8 @@ export default function CommonTable<TData, TValue>({
   tableName,
   columns,
   data,
-}: { itemValue: string; tableName: string } & DataTableProps<TData, TValue>) {
+  hasHover = true,
+}: { itemValue: string; tableName: string; hasHover?: boolean } & DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([])
 
   const table = useReactTable({
@@ -67,7 +68,9 @@ export default function CommonTable<TData, TValue>({
                 <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
                   {row.getVisibleCells().map((cell) =>
                     // TODO: cancel out the hover card for the last cell in the row
-                    cell.column.id != 'actions' ? (
+                    cell.column.id !== 'actions' &&
+                    hasHover &&
+                    row.getVisibleCells()[0].getValue() !== '' ? (
                       <TableCell key={cell.id}>
                         <HoverCard key={row.id}>
                           <HoverCardTrigger key={row.id}>

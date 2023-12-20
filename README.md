@@ -16,3 +16,5 @@ https://web.archive.org/web/20211127181711/https://www.beneli.studio/
 https://www.creativelivesinprogress.com/article/a-guide-to-creating-your-pdf-portfolio
 
 https://ccbt.rekibun.or.jp/research-notes/camp2_setup
+
+https://pair-code.github.io/understanding-umap/
