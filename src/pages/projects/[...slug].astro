@@ -12,6 +12,9 @@ import { Button } from '../../components/ui/button'
 import { Card } from '../../components/ui/card'
 import { Separator } from '../../components/ui/separator'
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import { ArrowUpRight, ArrowUpRightSquare } from 'lucide-react'
+import { ArrowTopRightIcon, ExternalLinkIcon } from '@radix-ui/react-icons'
+import Link from '../../components/project/Link.astro'
 
 dayjs.extend(utc)
 
@@ -61,73 +64,127 @@ const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().format('Y
   }
 
   <Spacer size={32} />
-  <TextSection className='pb-8 gap-2'>
-    <h1 class='flex text-4xl'>
-      {entry.data.title}
-    </h1>
-    <h3 class='text-lg'>
-      {entry.data.subtitle}
-    </h3>
 
-    <div class='flex flex-wrap gap-3'>
-      {
-        entry.data.tags.map((tag: string) => {
-          const formattedTag = tag.charAt(0).toUpperCase() + tag.slice(1)
-          return (
-            <Button variant={'secondary'}>
-              <a href={'/types/' + tag}>{formattedTag}</a>
-            </Button>
-          )
-        })
-      }
+  <div class='flex flex-col gap-4 max-w-5xl mx-auto'>
+    <div class='flex items-center justify-between'>
+      <p class='text-slate-500'>Project name</p>
+      <p class='text-2xl text-left max-w-xs w-full'>
+        {entry.data.title}
+      </p>
     </div>
-    <Spacer size={4} />
-    <div class='flex gap-2 md:flex-row flex-col'>
-      <time>Created: {entry.data.date}</time>
-      <time>Updated: {lastModified}</time>
+
+    <div class='flex  justify-between'>
+      <p class='text-slate-500'>Description</p>
+      <p class='text-md text-left max-w-xs w-full'>
+        {entry.data.subtitle}
+      </p>
     </div>
-  </TextSection>
 
-  <!-- <div class='flex justify-center'>
-    {entry.data.youtube && <VideoPlayer url={entry.data.youtube!} client:only='react' />}
-  </div> -->
-  <Spacer size={32} />
+    <div class='flex items-center justify-between'>
+      <p class='text-slate-500 '>Role</p>
+      <p class='text-md text-left max-w-xs w-full'>
+        {entry.data.role}
+      </p>
+    </div>
 
-  <Content />
-  <Spacer size={32} />
+    <div class='flex items-center justify-between'>
+      <p class='text-slate-500'>Updated Date</p>
+      <p class='text-md text-left max-w-xs w-full'>
+        {lastModified}
+      </p>
+    </div>
 
-  <TextSection>
-    <Separator />
-    <Spacer size={32} />
-    <Card className='px-8 py-4 w-full'>
-      <h4 class='mb-4 text-xl font-medium leading-none text-center md:text-left'>Credits</h4>
-      <div class='flex flex-col gap-4 text-center md:text-left flex-wrap'>
+    <div class='flex items-center justify-between'>
+      <p class='text-slate-500'>Project Types</p>
+      <div class='flex flex-wrap gap-3 text-md text-left max-w-xs w-full'>
+         
         {
-          entry.data.credits.map((credit) => {
-            return <p class='text-sm'>{credit}</p>
+          entry.data.tags.map((tag: string) => {
+            const formattedTag = tag.charAt(0).toUpperCase() + tag.slice(1)
+            return (
+              <Button variant={'secondary'}>
+                <a href={'/types/' + tag}>{formattedTag}</a>
+              </Button>
+            )
           })
         }
       </div>
-    </Card>
-    {entry.data.thanks.length > 0 && <Spacer size={32} />}
-    {
-      entry.data.thanks.length > 0 && (
-        <Card className='px-8 py-4 w-full'>
-          <h4 class='mb-4 text-xl font-medium leading-none text-center md:text-left'>Thanks</h4>
-          <div class='flex flex-col gap-4 text-center md:text-left flex-wrap'>
-            {entry.data.thanks.map((credit) => {
-              return <p class='text-sm'>{credit}</p>
-            })}
+    </div>
+  </div>
+  <Spacer size={64} />
+
+  <Content />
+  <Spacer size={64} />
+  <div class='bg-[#F8F8F8]'>
+    <div>
+      <Spacer size={32} />
+      {
+        entry.data.credits.length > 0 && (
+          <div class='mx-6 md:mx-28'>
+            <h4 class='mb-4 text-3xl font-medium leading-none text-left'>Credits</h4>
+            <div class='flex flex-col gap-4 text-left flex-wrap'>
+              {entry.data.credits.map((credit) => {
+                return <p class='text-sm'>{credit}</p>
+              })}
+            </div>
+            <Spacer size={32} />
+            <Separator />
           </div>
-        </Card>
-      )
-    }
-    <Spacer size={32} />
-    {entry.data.grants.length > 0 && <GrantCard grants={entry.data.grants} />}
-  </TextSection>
-  <Spacer size={32} />
-  <TextSection>
-    <Separator />
-  </TextSection>
-  <Spacer size={32} />
+        )
+      }
+
+      {
+        entry.data.thanks.length > 0 && (
+          <div class='mx-6 md:mx-28'>
+            <Spacer size={32} />
+            <Card className='px-8 py-4 w-full'>
+              <h4 class='mb-4 text-3xl font-medium leading-none text-left'>Thanks</h4>
+              <div class='flex flex-col gap-4 text-left md:text-left flex-wrap'>
+                {entry.data.thanks.map((credit) => {
+                  return <p class='text-sm'>{credit}</p>
+                })}
+              </div>
+            </Card>
+          </div>
+        )
+      }
+
+      {
+        entry.data.media.length > 0 && (
+          <div class='mx-6 md:mx-28'>
+            <Spacer size={32} />
+            <h4 class='mb-4 text-3xl font-medium leading-none text-left'>Media</h4>
+            <div class='flex flex-col gap-4 text-left flex-wrap'>
+              {entry.data.media.map((media) => {
+                return <Link reference={media.reference} title={media.title} />
+              })}
+            </div>
+            <Spacer size={32} />
+            <Separator />
+          </div>
+        )
+      }
+      {
+        entry.data.exhibitions.length > 0 && (
+          <div class='mx-6 md:mx-28'>
+            <Spacer size={32} />
+
+            <h4 class='mb-4 text-3xl font-medium leading-none text-left '>Exhibitions</h4>
+            <div class='flex flex-col gap-4 text-left md:text-left flex-wrap'>
+              {entry.data.exhibitions.map((exhibition) => {
+                return (
+                  <p class='text-sm'>
+                    {exhibition.exhibition_name} / {exhibition.city} / {exhibition.place}{' '}
+                  </p>
+                )
+              })}
+            </div>
+          </div>
+        )
+      }
+    </div>
+    <Spacer size={64} />
+  </div> 
 </BaseLayout>
+
+<Spacer size={32} />

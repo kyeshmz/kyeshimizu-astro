@@ -6,7 +6,7 @@ export default function TextSection({
   ...props
 }: { children: React.ReactNode } & ComponentPropsWithoutRef<'section'>) {
   return (
-    <section className={clsx('max-w-2xl w-full flex flex-col  mx-auto ', props.className)}>
+    <section className={clsx(' md:max-w-2xl w-full flex flex-col  mx-auto ', props.className)}>
       {children}
     </section>
   )

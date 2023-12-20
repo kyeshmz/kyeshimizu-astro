@@ -1,14 +1,20 @@
 ---
 import Intro from '../components/Intro.astro'
+import { Spacer } from '../components/layout/Spacer';
 import ProjectHoverImages from '../components/project/ProjectHoverImages.astro'
 import ProjectYearList from '../components/project/ProjectYearList.astro'
+import BaseContainer from '../layouts/BaseContainer.astro';
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
 <BaseLayout>
-  <!-- <Intro /> -->
-  <section class='pt-3 w-full'>
-    <ProjectYearList transition:persist />
-    <ProjectHoverImages />
-  </section>
+  <BaseContainer>
+    <Spacer size={15}  />
+    <Intro />
+    <!-- <section class='pt-3 w-full'>
+      <ProjectYearList transition:persist />
+      <ProjectHoverImages /> 
+    </section> -->
+  </BaseContainer>
+
 </BaseLayout>

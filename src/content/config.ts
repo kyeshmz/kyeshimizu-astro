@@ -22,6 +22,7 @@ const projects = defineCollection({
       tags: z.array(z.string()),
       client: z.string().optional(),
       youtube: z.string().optional(),
+      role: z.string(),
       hoverImage: image()
         .refine((img) => img.width >= 200, {
           message: 'Cover image must be at least 1080 pixels wide!',
@@ -39,6 +40,7 @@ const projects = defineCollection({
       ),
       media: z.array(
         z.object({
+          title: z.string().optional(),
           media_name: z.string(),
           reference: z.string(),
           medium: z.string(),

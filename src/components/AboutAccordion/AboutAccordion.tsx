@@ -50,6 +50,7 @@ export default function AboutAccordion({
         tableName='Employment'
         columns={EmploymentTableColumn}
         data={EmployeeTableData}
+        hasHover={false}
       />
 
       <CommonTable
@@ -72,6 +73,7 @@ export default function AboutAccordion({
         tableName='Teaching Experience'
         columns={TeachingTableColumn}
         data={TeachingData}
+        hasHover={false}
       />
       <CommonTable
         itemValue='i8'
