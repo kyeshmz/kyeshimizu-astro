@@ -46,7 +46,7 @@
     "dayjs": "^1.11.10",
     "lucide-react": "^0.454.0",
     "million": "^2.6.4",
-    "nanostores": "^0.9.5",
+    "nanostores": "^0.11.0",
     "photoswipe": "^5.4.3",
     "react": "^18.2.0",
     "react-copy-to-clipboard": "^5.1.0",
