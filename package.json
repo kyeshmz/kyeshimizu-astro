@@ -22,7 +22,7 @@
     "@fontsource-variable/bodoni-moda": "^5.0.9",
     "@fontsource/inter": "^5.0.16",
     "@fontsource/rosarivo": "^5.0.18",
-    "@nanostores/react": "^0.7.1",
+    "@nanostores/react": "^0.8.0",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
